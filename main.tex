@@ -3471,6 +3471,7 @@ and $f(U^\prime) \subset V^\prime$ and $f(U) \subset V $, we have the following 
 
 i.e.$f^\#:f^{-1}(\mathcal O_Y)\rightarrow \mathcal O_X$ is a map of $Shv_{Ring}$
 \end{definition}
+
 \begin{proposition}
     Let $(X,\mathcal O_X)$ and $(Y,\mathcal O_Y)$ be ringed spaces, use prop \ref{prop 2.26}:
 $$
@@ -3481,8 +3482,22 @@ Hom((X,\mathcal O_X),(Y,\mathcal O_Y))
 $$
 \end{proposition}
 
+\begin{remark}
+Let be $f:X\to Y$ a map of schemes. We say $f^{\mathfrak b}$ is abjoint with $f^{\#}$. 
+
+The relation is between the map of $Y$-sheaves $\mathcal O_Y\to f_\ast \mathcal O_X$ being surjective and the adjoint map of $X$-sheaves $f^{-1}\mathcal O_Y\to \mathcal O_X$ being surjective :
+
+The first is asking that for all $y$ in $Y$ that the stalk $\mathcal O_{Y,y}\to (f_\ast\mathcal O_X)_y$ map is surjective. While the second is asking that for all $x$ in $X$ that the stalk map $\mathcal O_{Y,f(x)}\to \mathcal O_{X,x}$ is surjective. 
+
+Let me give counterexamples in one direction. Consider the map $f:\mathbb P^1_k\to Spec\, k$ with $X=\mathbb P^1_k$ and $Y=Spec\, k$. 
+Then this is an example where $O_Y\to f_\ast\mathcal O_X$ is surjective but $f^{-1}\mathcal O_Y\to\mathcal O_X$ is not surjective.
+
+Let me give a counterexample in the other direction. Let $X$ be a disjoint union of two copies of $Spec\, k$, and $Y$ just $Spec\, k$. Then $f^{-1}\mathcal O_Y=\mathcal O_X$ in particular the map is surjective. But the map $\mathcal O_Y=k\to k^2=f_\ast\mathcal O_X$ is not surjective.
+
+\end{remark}
+
 \begin{definition}
-Let $(\phi=)f:B \rightarrow A$ be a map of rings, and let $X={\mathrm{Spec}}\,A$ and $Y\,=\,\mathrm{Spec}\,B$ then spaces, and $\phi:(X,{\mathcal O}_{X})\to(Y,{\mathcal O}_{Y})$ is a morphism of ringed spaces given by $\phi:X\to Y$ on the level of topological spaces, and $\phi^{\#}=\phi^{\mathfrak b}:{\mathcal{O}}_{Y}\to\phi_{*}\mathcal{O}_{X}$ defined on a basis of principal opens by the nataral map for all $s\in B$ :
+Let $(\phi=)f:B \rightarrow A$ be a map of rings, and let $X={\mathrm{Spec}}\,A$ and $Y\,=\,\mathrm{Spec}\,B$ then spaces, and $\phi:(X,{\mathcal O}_{X})\to(Y,{\mathcal O}_{Y})$ is a morphism of ringed spaces given by $\phi:X\to Y$ on the level of topological spaces, and $\phi^{\mathfrak b}:{\mathcal{O}}_{Y}\to\phi_{\ast}\mathcal{O}_{X}$ defined on a basis of principal opens by the nataral map for all $s\in B$ :
 \[\begin{tikzcd}
 	{\mathcal O_{Y}(D(s))} && {\mathcal O_{X}(\phi^{-1}D(s))} \\
 	\\
@@ -3506,7 +3521,7 @@ Take $p$ some prime, then there is a morphism of ringed spaces $f_{\mathrm{p}}:(
 \end{remark}
 
 \begin{definition}
-    Let $(X,{\mathcal{O}}_{X})$ and $(Y,{\mathcal{O}}_{Y})$ be locally ringed spaces, then a \textbf{map of locally ringed spaces} is a map of ringed spaces s.t. for all $x\in X$, the map $f^{\#}_x:(\mathcal O_Y)_{f(x)}\to(\mathcal O_X)_x$ is a local map
+    Let $(X,{\mathcal{O}}_{X})$ and $(Y,{\mathcal{O}}_{Y})$ be locally ringed spaces, then a \textbf{map of locally ringed spaces} is a map of ringed spaces s.t. for all $x\in X$, the map $f^{\#}_x:(f^{-1}\mathcal O_{Y})_x=(\mathcal O_Y)_{f(x)}\to(\mathcal O_X)_x$ is a local map
 \end{definition}
 
 \begin{definition}
@@ -3539,6 +3554,68 @@ Hom\,((X,{\mathcal{O}}_{X}),(Y,{\mathcal{O}}_{Y}))
 \cong
 Hom_{Rings}(B,\Gamma(X,{\mathcal{O}}_{X}))
 $}
+
+How can we think of elements of $A$ as of functions of $Spec\, A$? Strictly speaking,
+we cannot. However, given $f \in A$ and $x \in Spec\, A$, we get an element $f(x) \in \kappa(x)$, where
+$f(x)$ is the residue class in $\kappa(x) := A_{\mathfrak p_x} /\mathfrak p_xA_{\mathfrak p_x}$ of the image of $f$ in the localization $A_{\mathfrak p_x}$ .
+This is completely analogous to the situation with prevarieties. However, we do not get
+a function with a well defined target, but rather a collection of values $f(x)$ in different
+targets $\kappa(x), x \in Spec\, A$. Nevertheless, this is a useful point of view. For instance, we
+can interpret $D(f)$ as the set of points where $f(x) = 0$, i. e. where the function $f$ does
+not vanish
+
+Let $(X,\mathcal O_X)$ be a locally ringed space and $x \in X$. We call the stalk $\mathcal O_{X,x}$ the local ring
+of $X$ in $x$, denote by $\mathfrak m_x$ the maximal ideal of $\mathcal O_{X,x}$, and by $\kappa(x) =\mathcal O_{X,x}/\mathfrak m_x$ the residue
+field. If $U$ is an open neighborhood of $x$ and $f \in\mathcal O_X(U)$, we denote by $f(x) \in \kappa(x)$ the image of $f$ under the canonical homomorphisms $\mathcal O_X(U) \to \mathcal O_{X,x} \to \kappa(x)$
+
+\begin{definition}
+Let $(X,\mathcal O_X)$ be a locally ringed space, and $f \in\mathcal O_X(X)$
+
+Define
+$\bm{
+X_f := \{ x \in X ; f(x) \ne 0 \}=\{ x \in X ; f_x \notin \mathfrak m_x \}
+}$
+\end{definition}
+
+Remark : $X_f=D(f)$ when $X$ is an affine scheme, since $f_{\mathfrak p_x} \notin \mathfrak p_xA_{\mathfrak p_x}
+\Leftrightarrow 
+f\notin \mathfrak p_x$ 
+
+\begin{proposition}
+    If $U = Spec\, B$ is an open affine subscheme of $X$, and if $f|_U \in B = \Gamma (U,\mathcal O_X|_U)$ is 
+the restriction of $f$, Then $U \cap X_f = D(f|_U)$. Conclude that $X_f$ is an open 
+subset of $X$
+\end{proposition}
+\begin{Proof}
+Recall:$\mathcal F_x=(\mathcal F|_U)_x$, so $\mathcal O_{X,x}=\mathcal O_{U,x}$
+
+    $D(f|_U)=
+    \{
+    x\in U,f|_U\notin x
+    \}
+    =
+    \{
+    \mathfrak p_x\in U,(f|_U)_{\mathfrak p_x} \notin \mathfrak p_x B_{\mathfrak p_x}
+    \}
+    =
+    \{
+    x\in U,f_{x} \notin \mathfrak m_x
+    \}
+    =
+    U \cap X_f
+    $
+\end{Proof}
+
+\begin{remark}
+$(f,f^{\#}):(X,\mathcal O_X)\to(Y,\mathcal O_Y)$
+
+Then
+$f^{-1}(Y_s) = \{x \in X | f^{\#}(s)_x \notin\mathfrak m_x \subseteq \mathcal O_{X,x} \} = X_{f^{\#}(s)}$
+
+(it is right when $(Y,\mathcal O_Y)=Spec\,B$, but for general scheme ?)
+\end{remark}
+
+
 \begin{definition}
     notation $\Gamma(X,\mathcal F)$ and $\mathcal F(X)$ for the global sections of a sheaf $\mathcal F$ over the topological space $X$
 
@@ -4113,7 +4190,8 @@ also generalise the functor $Spec$ to a functor called $\bm{Proj}$, and then def
 
 Another thing we could do is the functor of points approach, i.e. write down $R\to\mathbb{P}^{n}(R)$ . We are going and show this is in the essential image of the fully faithful functor $\mathrm{Sch}\to\mathrm{Fun}(\mathrm{Ring,Set)}$ 
 to do this explicitly, so don't worry
-Caution! It will usually not be the case that $\mathbb{P}^{n}(R)=R^{n+1}-0\,/R^{\times}$ , for a general ring i ${\mathbf{}}R$ 
+
+Caution! It will usually not be the case that $\mathbb{P}^{n}(R)=R^{n+1}-0\,/R^{\times}$ , for a general ring ${\mathbf{}}R$ 
 
 \begin{definition}
     (Construction of $\mathbb{P}^{n}$)
@@ -4161,7 +4239,7 @@ $$
 
 In particular, for all fields $k$  we have
 $$
-\mathbb{P}^{n}(k)={{{\bigcup_{i o}^{n}U_{i}(k)}}}={{{\bigcup_{i=0}^{n}k^{n}=\mathbb{P}^{n}(k)}}}. 
+\mathbb{P}^{n}(k)={{{\bigcup_{i=0}^{n}U_{i}(k)}}}={{{\bigcup_{i=0}^{n}k^{n}=\mathbb{P}^{n}(k)}}}. 
 $$
 
 Although this line seems tautological, the first $\mathbb{P}^{n}(k)$ is the $k$-valued points of a scheme and the latter is our old definition of projective space of a field
@@ -4283,6 +4361,46 @@ So $\Phi(F)=(f_i)_{i=0}^n$.
 \subsection{Vector Bundle}
 \subsubsection{Line bundle}
 \begin{definition}
+    An $A$-module $M$ is \textbf{invertible} if the endofunctor $M\otimes _A$ − on the category of $A$-modules
+is an equivalence of categories
+
+This is equivalent to the existence of an $A$-module $M^\prime$ such that $M\otimes_A M^\prime \cong A$ (this is simple to prove, one
+should try it)
+
+A module
+$M$ is called \textbf{finite locally free} if there exists $f_1,\cdots, f_n \in A$ generating the unit ideal such that
+$M[f^{-1}_i]$ is a free $A[f^{-1}_i]$-module of finite rank
+
+\end{definition}
+
+\begin{theorem}
+1) If $M$ is invertible, then $M$ is a direct summand of a finite free $A$-module
+
+2) A module $M$ is finite locally free if and only if it is flat and finitely presented
+
+3) A module $M$ is invertible if and only if it is locally free of rank 1
+
+(i.e. exist a cover of $Spec\, A$ by $D(f_j)$ such that $M[f_j^{-1}] \cong A[f_j^{-1}]$ is locally free of rank 1)
+\end{theorem}
+
+
+\begin{theorem}
+    For all rings $A$, there is a natural (functorial in $A$) bijection :
+    
+$\mathbb P^n(A)\;$
+$(Hom_{Sch/S}(Spec\, A,\mathbb P^n)) \leftrightarrow$ the set
+of all surjections: $\{A^{n+1} \twoheadrightarrow M\}/\sim$ 
+
+where $M$ is an invertible $A$-module, modulo the equivalence relation that
+$p : A^{n+1} \to M$ is equivalent to $p^\prime : A^{n+1} \to M^\prime$ if and only if there exists an isomorphism $\alpha : M \to M
+^\prime$
+such that $p
+^\prime = \alpha\circ p$
+\end{theorem}
+
+We can extend that result to arbitrary schemes
+
+\begin{definition}
     \textbf{line bundle}
 
     Let $X$ be a scheme, a \textbf{line bundle} of $X$ is an $\mathcal O_X$-module that is locally isomorphic to $\mathcal O_X$
@@ -4328,6 +4446,8 @@ The ideal $<t(\sigma)>\subseteq A$ does not depend on $t$. If $t_i:\mathcal L\xr
 
     $f^\ast s_i\cong\mathcal O_Y: f^\ast\mathcal O_X\to f^\ast\mathcal L$
 \end{definition}
+
+An $R$-valued point of $\mathbb P^n$ is the data of a line bundle together with $n+1$ section (subject to a vanishing locus condition). If $y_0, y_1,...,y_n$ denote the global sections $R$-linear combinations of the $y_i$ make sense as global sections of this line bundle and in particular it makes sense to impose the condition that a specific $R$-linear combination vanishes.
 
 \begin{theorem}
     $F$ is representable by $\mathbb P^n_{\mathbb Z}$. ($F(X)\cong Hom(X,\mathbb P^n_{\mathbb Z})$)
