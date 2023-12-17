@@ -3646,23 +3646,8 @@ $$
 
 is an  isomorphism
 \end{theorem}
-\begin{Proof}
-    \begin{figure}[htp]
-        \centering       \includegraphics[width=1\linewidth]{10.png}
-    \end{figure}
-    \begin{figure}[htp]
-        \centering       \includegraphics[width=1\linewidth]{11.png}
-    \end{figure}
-    \begin{figure}[htp]
-        \centering       \includegraphics[width=1\linewidth]{12.png}        
-    \end{figure}
-    \begin{figure}[htp]
-        \centering       \includegraphics[width=1\linewidth]{13.png}        
-    \end{figure}
-    \begin{figure}[htp]
-        \centering       \includegraphics[width=1\linewidth]{14.png}
-    \end{figure}
-\end{Proof}
+
+(See images 5-9 for proof)
 
 \newpage
 %\begin{remark}The functor $(X,\mathcal O_X)\mapsto \Gamma(X,\mathcal O_X)\in Rings$ is represented by $\mathrm{Spec}\,\mathbb Z=:\mathbb A^1_{\mathbb Z}$$$Hom(-,\mathbb A^1_{\mathbb Z})\congHom_{Rings}(\mathbb Z,\Gamma(-,\mathcal O_-))   \cong\Gamma(-,\mathcal O_-)$$
@@ -4403,9 +4388,9 @@ We can extend that result to arbitrary schemes
 \begin{definition}
     \textbf{line bundle}
 
-    Let $X$ be a scheme, a \textbf{line bundle} of $X$ is an $\mathcal O_X$-module that is locally isomorphic to $\mathcal O_X$
+    Let $X$ be a scheme, a \textbf{line bundle} (also be called \textbf{ invertible $\bm{\mathcal O_X}$-module}) of $X$ is an $\mathcal O_X$-module that is locally isomorphic to $\mathcal O_X$
 
-    More generally, $V$ is a \textbf{rank n vector bundle} if it is locally isomorphism to $\mathcal O_X^n=\bigoplus^n_{i=1}\mathcal O_X$
+    More generally, a \textbf{vector bundle} $V$ is a sheaf of $\mathcal O_X$-modules that is locally free of finite rank, i.e. there exists a cover $X =\cup_i U_i$ such that $V|_{U_i}\cong \mathcal O^{n_i}_{U_i}$, for some $n_i \geq 0$. $V$ is a \textbf{rank n vector bundle} if it is locally isomorphism to $\mathcal O_X^n=\bigoplus^n_{i=1}\mathcal O_X$ (all $n_i=n$)
 \end{definition}
 
 \begin{definition}
@@ -4422,42 +4407,6 @@ The ideal $<t(\sigma)>\subseteq A$ does not depend on $t$. If $t_i:\mathcal L\xr
     If $I\subseteq\Gamma(X,\mathcal L)$, we let $V(I)$ be given by $Spec(A/t(I))$
 \end{definition}
 
-\begin{definition}
-    Define $F:Sch^{op}\to Sets$
-
-    $F(X)=\{(\mathcal L,s_0,\cdots,s_n)|\mathcal L\;is\;line\;bundle,\;s_0,\cdots,s_n\in\Gamma(X,\mathcal L),\;s.t.V(\{s_0,\cdots,s_n\})=\emptyset\}/\sim$
-
-    $(\mathcal L^\prime,s_0^\prime,\cdots,s_n^\prime)
-    \sim
-    (\mathcal L^\prime,s_0^\prime,\cdots,s_n^\prime)$ if there is a isomorphism of $\mathcal O_X$-module $\alpha:\mathcal L\xrightarrow{\sim}\mathcal L^\prime$ with $\alpha(s_i)=s_i^\prime$
-
-    $F(X) \cong \{\mathcal O^{n+1}_X \xrightarrow{s_0,s_1,\cdots s_n} \mathcal L \;| \,surjection,\, with\; \mathcal L\; an\; line\; bundle\;of\;X\} /\sim$
-\\
-
-    If $Y\xrightarrow{t}X$, define $F(X)\xrightarrow{F(t)}F(Y)$
-
-    $F(f)(\mathcal L,s_0,\cdots,s_n)=(f^\ast\mathcal L,f^\ast s_0,\cdots,f^\ast s_n)$
-
-    $\Gamma(X,\mathcal L)\to\Gamma(X,f_\ast f^\ast\mathcal L)=\Gamma(Y,f^\ast\mathcal L)$
-
-    $s_i\mapsto f^\ast s_i$
-
-    global section : $s_i:\mathcal O_X\to \mathcal L$
-
-    $f^\ast s_i\cong\mathcal O_Y: f^\ast\mathcal O_X\to f^\ast\mathcal L$
-\end{definition}
-
-An $R$-valued point of $\mathbb P^n$ is the data of a line bundle together with $n+1$ section (subject to a vanishing locus condition). If $y_0, y_1,...,y_n$ denote the global sections $R$-linear combinations of the $y_i$ make sense as global sections of this line bundle and in particular it makes sense to impose the condition that a specific $R$-linear combination vanishes.
-
-\begin{theorem}
-    $F$ is representable by $\mathbb P^n_{\mathbb Z}$. ($F(X)\cong Hom(X,\mathbb P^n_{\mathbb Z})$)
-
-    Recall: We say a contravariant functor from $\mathcal C$ to
-$Sets$ is represented by $Y$ if it is naturally isomorphic to the functor $h_Y$ ($h_Y :\mathcal C \to Sets$ defined by
-$h_Y(X) = Mor(X, Y)$). We say it is
-\textbf{representable} if it is represented by some $Y$
-\end{theorem}
-
 \begin{proposition}
 \[\begin{tikzcd}	{\Gamma(X,\mathcal L)} & {Hom_{\mathcal O_X}(\mathcal O_X,\mathcal L)} \\
 	s & {[a\mapsto a\cdot s, \forall a\in\mathcal O_X(U)]} \\
@@ -4466,10 +4415,78 @@ $h_Y(X) = Mor(X, Y)$). We say it is
 	\arrow[maps to, from=2-1, to=2-2]
 	\arrow[maps to, from=3-2, to=3-1]
 \end{tikzcd}\]
+\label{prop 3.72}
 \end{proposition}
 
 \begin{definition}
-    For $R$ any ring, define $\mathbb P_{R}^n=\mathbb P_{\mathbb Z}^n\times_{Spec\,\mathbb Z}Spec\,R$
+    Define $F:Sch^{op}\to Sets$
+
+    $F(X)=\{(\mathcal L,s_0,\cdots,s_n)|\mathcal L\;is\;line\;bundle,\;s_0,\cdots,s_n\in\Gamma(X,\mathcal L),\;s.t.V(\{s_0,\cdots,s_n\})=\emptyset\}/\sim$
+
+    $(\mathcal L^\prime,s_0^\prime,\cdots,s_n^\prime)
+    \sim
+    (\mathcal L^\prime,s_0^\prime,\cdots,s_n^\prime)$ if there is a isomorphism of $\mathcal O_X$-module $\alpha:\mathcal L\xrightarrow{\sim}\mathcal L^\prime$ with $\alpha(s_i)=s_i^\prime$
+\end{definition}
+
+\begin{example}
+    Fix $k$ a field (PID), consider $F(k)$ :
+
+    $\mathcal L\cong\mathcal O_k,s_0,\cdots,s_n\in\Gamma(X,\mathcal O_X)=k$, $V(s_0,\cdots,s_n)=\emptyset\Leftrightarrow$ at least one $s_i\ne 0$. And $(k_0,\cdots,k_n)
+    \sim
+    (k_0^\prime,\cdots,k_n^\prime)$ means $(k_0,\cdots,k_n)/k^\times$, same as $k^{n+1}/\sim$, there is a automorphism of $\mathcal O_k$ sending $k_i\to k_i^\prime$
+
+    So $F(k)=\mathbb P^n(k)$
+\end{example}
+
+\begin{proposition}
+    $F(X) \cong \{\mathcal O^{n+1}_X \xrightarrow{s_0,s_1,\cdots s_n} \mathcal L \;| \,surjection,\, with\; \mathcal L\; an\; line\; bundle\;of\;X\} /\sim$
+\end{proposition}
+\begin{Proof}
+    We can define this map on every small enough open affine set $U$:
+    
+    $\mathcal O_X^{n+1}(U)\xrightarrow{s_0|_U,s_1|_U,\cdots s_n|_U} 
+    \mathcal L(U)$
+    
+    surjection on every stalk $\Leftrightarrow
+    V(\{s_0,\cdots,s_n\})_U=\emptyset,\,\forall U
+    \Leftrightarrow
+    V(\{s_0,\cdots,s_n\})=\emptyset$
+    
+\end{Proof}
+
+\begin{definition}
+    If $Y\xrightarrow{f}X$, $F(X)=\{(\mathcal L,s_0,\cdots,s_n)|\mathcal L\;is\;line\;bundle,\;s_0,\cdots,s_n\in\Gamma(X,\mathcal L),\;s.t.V(\{s_0,\cdots,s_n\})=\emptyset\}/\sim$
+    
+    Define $F(X)\xrightarrow{F(f)}F(Y)$ as follows :
+
+    $F(f)(\mathcal L,s_0,\cdots,s_n)=(f^\ast\mathcal L,f^\ast s_0,\cdots,f^\ast s_n)$
+
+    $\Gamma(X,\mathcal L)=\Gamma(X,f_\ast f^\ast\mathcal L)\to\Gamma(Y,f^\ast\mathcal L)$
+
+    $s_i\mapsto f^\ast s_i$
+
+    global section : $s_i:\mathcal O_X\to \mathcal L$
+
+    $f^\ast s_i: f^\ast\mathcal O_X\to f^\ast\mathcal L$
+\end{definition}
+
+An $A$-valued point of $\mathbb P^n$ is the data of a line bundle together with $n+1$ section (subject to a vanishing locus condition). If $y_0, y_1,...,y_n$ denote the global sections $A$-linear combinations of the $y_i$ make sense as global sections of this line bundle and in particular it makes sense to impose the condition that a specific $A$-linear combination vanishes.
+
+\begin{theorem}
+    $F$ is representable by $\mathbb P^n_{\mathbb Z}$. ($F(X)\cong Hom(X,\mathbb P^n_{\mathbb Z})$)
+
+    Recall: We say a contravariant functor from $\mathcal C$ to
+$Sets$ is represented by $Y$ if it is naturally isomorphic to the functor $h_Y$ ($h_Y :\mathcal C \to Sets$ defined by
+$h_Y(X) = Mor(X, Y)$). We say it is
+\textbf{representable} if it is represented by some $Y$
+
+Sometimes we also refer to $F(X)$ as $\mathbb P^n_{\mathbb Z}(X)$
+\end{theorem}
+
+(See images 5-7 for proof)
+
+\begin{definition}
+    For $A$ any ring, define $\mathbb P_{A}^n=\mathbb P_{\mathbb Z}^n\times_{Spec\,\mathbb Z}Spec\,A$
 \end{definition}
 
 
@@ -4623,7 +4640,7 @@ $$
 $$
 \cong\operatorname{Hom}_{B}(M\otimes_{A}B,{\mathcal{N}}(Y))\cong\operatorname{Hom}_{\mathcal O_Y}({\widetilde{M\otimes_{A}}}\,B,{\mathcal{N}}). 
 $$
-The Yoneda lemma now tells us that $f^{*}{\cal M}\cong \widetilde{M\otimes_{A}B}$
+The Yoneda lemma now tells us that $f^{\ast}{\cal M}\cong \widetilde{M\otimes_{A}B}$
 
 \end{Proof}
 
@@ -4631,7 +4648,7 @@ The Yoneda lemma now tells us that $f^{*}{\cal M}\cong \widetilde{M\otimes_{A}B}
     If $W$ is a vector bundle, then $\underline{Hom}_{\mathcal O_X}(W,\mathcal O_X)$ is a vectoe bundle
 \end{proposition}
 \begin{Proof}
-    If $W|U\cong \mathcal O_X^n|_U$, then :
+    If $W|_U\cong \mathcal O_X^n|_U$, then :
 \begin{align*}
 \label{sup}
 \underline{Hom}_{\mathcal O_X}(W,\mathcal O_X)|_U
@@ -4718,11 +4735,12 @@ $$
 \cong{\mathcal{O}}_{Y}(Y)^n
 \cong{\mathrm{Hom}}_{R i n g}(\mathbb{Z}[T_1,\cdots,T_n],{\mathcal{O}}_{Y}(Y)). 
 $$
-We then use the universal property of fibre products to obtain,
+
+We then use the universal property of fibre products to obtain :
 $$
 \mathbb V({W})(Y)
-=O_{Y}(Y)^n
-={\mathrm{Hom}}_{R i n g}(\mathbb{Z}[T_1,\cdots,T_n],O_{Y}(Y))\cong{\mathrm{Hom}}_{\operatorname{Sch}}(Y,\mathbb{A}^{n})\cong{\mathrm{Hom}}_{\operatorname{Sch}/X}(Y,\mathbb{A}^{n}\times X)
+=\mathcal O_{Y}(Y)^n
+={\mathrm{Hom}}_{R i n g}(\mathbb{Z}[T_1,\cdots,T_n],\mathcal O_{Y}(Y))\cong{\mathrm{Hom}}_{\operatorname{Sch}}(Y,\mathbb{A}^{n})\cong{\mathrm{Hom}}_{\operatorname{Sch}/X}(Y,\mathbb{A}^{n}\times X)
 $$
 
 In this way we can see that $\mathbb V({W})$ is represented by $X\times\mathbb{A}^{n}$ , locally
@@ -4735,6 +4753,53 @@ In this way we can see that $\mathbb V({W})$ is represented by $X\times\mathbb{A
     $$
 \end{proposition}
 
+\begin{remark}
+    We can now recount the definition of $V(s)$ :
+
+    Take $X$ scheme, $E$ a vector bundle over $X$, $s\in\Gamma(X,E)$, 
+    \[\begin{tikzcd}
+	{Hom_{Sch/X}(Y,\mathbb V(E))=} & {\{Y} && {\mathbb V(E)\}} & {=\Gamma(Y,f^\ast E)} \\
+	&& X
+	\arrow[from=1-2, to=2-3]
+	\arrow[dotted, from=1-2, to=1-4]
+	\arrow[from=1-4, to=2-3]
+\end{tikzcd}\]
+
+In particular, $Hom_{Sch/X}(X,\mathbb V(E))=\Gamma(X, E)$
+
+Define : let $s\in \Gamma(X, E)$, define $V(s)$ as the fiber product of 
+\[\begin{tikzcd}
+	{V(s)} & X \\
+	X & {\mathbb V(E)}
+	\arrow["0"', from=2-1, to=2-2]
+	\arrow["s", from=1-2, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+
+Some facts abput $V(s)$ :
+
+$\cdot$ $\forall\, Y\xrightarrow{f}X$ a $X$-scheme, $f$ factors over $V(s)\Leftrightarrow f^\ast s\in \Gamma(Y,f^\ast E)$ is zero, in other words 
+$$ 
+Hom_{Sch/X}(Y,V(s))
+=\left\{
+\begin{array}{rcl}
+\emptyset  &      & if \, f^\ast s\ne0\\
+\ast  &  & if \, f^\ast s=0
+\end{array} \right.
+$$
+
+$\cdot$ If $X=Spec\,A$ and $E=\widetilde {A^n},s=(f_1,\cdots,f_n)\in A^n$, then $V(s)=Spec(A/(f_1,\cdots,f_n))$
+
+$\cdot$ The underlying set of $V(s)$ is 
+\[\begin{tikzcd}
+	{\{x\in X\,:\, s\in ker(E(X)} & {E_x\otimes k(x))\}} \\
+	s & {s_x\otimes1=:s(x)}
+	\arrow["{ev_x}", from=1-1, to=1-2]
+	\arrow[maps to, from=2-1, to=2-2]
+\end{tikzcd}\]
+\end{remark}
 
 
 \newpage
@@ -4877,8 +4942,156 @@ S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
     $P_1,P_2\notin LOCS$
 \end{example}
 
+
+
+
+
 \newpage
 \subsection{Hausdorff Property for Schemes}
 
+\begin{definition}
+    A top space $T$ is \textbf{Hausdorff} if and only if the diagonal $\triangle \subseteq T \times T$ is closed
+\end{definition}
+
+\begin{definition}
+    A morphism of schemes $f : X \to S$ is called \textbf{separated} if the diagonal $\triangle_{X/S} : X \to X \times_S X; x \mapsto (x, x)$ is a closed immersion 
+    \[\begin{tikzcd}
+	X \\
+	& { X \times_S X} & X \\
+	& X & S
+	\arrow[from=2-2, to=3-2]
+	\arrow[from=3-2, to=3-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow["{\triangle_{X/S}}"{description}, dashed, from=1-1, to=2-2]
+	\arrow[from=1-1, to=3-2]
+	\arrow[from=1-1, to=2-3]
+\end{tikzcd}\]
+
+A scheme $X$ is called \textbf{separated} if $X \to Spec\mathbb Z$ is separated
+\end{definition}
+
+\begin{definition}
+    A morphism $i : X \to Y$ is called a \textbf{locally closed immersion} if
+    
+1. $|i| : |X| \to |Y |$ is a locally closed immersion, i.e $|X|$ is open in its closure : exists an open set $|V| \subseteq |Y|$
+such that $|X| \subseteq |V|$ is closed
+
+2. $i^{\#} : i^{-1}\mathcal O_Y \to \mathcal O_X$ is surjective
+\end{definition}
+
+\begin{proposition}
+    Equal to $i: X \to Y$ can factored into
+    $$
+    X
+    \xrightarrow{\rho_1}
+    Z
+    \xrightarrow{\rho_2}
+    Y
+    $$
+
+where $\rho_1$ is a closed embedding and $\rho_2$ is an open embedding
+\end{proposition}
+
+\begin{example}
+The morphism $Spec\, k[t, t^{-1}] \to Spec\, k[x, y]$ given by $(x, y) \to (t, 0)$ is a locally closed
+embedding
+\end{example}
+
+\begin{remark}
+Suppose $V \to X$ is a morphism. Consider three conditions:
+
+(i) $V$ is the intersection of an open subscheme of $X$ and a closed subscheme
+of $X$
+
+(ii) $V$ is an open subscheme of a closed subscheme of $X$, i.e., it factors into an open embedding followed by a closed embedding
+
+(iii) $V$ is a closed subscheme of an open subscheme of $X$, i.e., $V$ is a locally
+closed embedding
+
+(i) $\Leftrightarrow$ (ii) $\Rightarrow$ (iii). But (iii) does not always imply (i) and (ii)
+\end{remark}
+
+\begin{proposition}
+    Let $f : X \to S$ be an morphism of schemes, then the diagonal map $\triangle_{X/S} : X \to X \times_S X$ is a locally closed immersion
+    
+    If $X$ and $S$ are affine, then this is in fact just a closed immersion
+\end{proposition}
+
+\begin{corollary}
+    If $X$ is an affine scheme over an affine scheme $S$, $X$ is separated inside of $Sch /S$
+\end{corollary}
+
+\begin{corollary}
+    The scheme over $S$, $f : X \to S$ is separated if and only if $|\triangle_{X/S}|(|X|) \subseteq |X \times_S X|$ is a closed subspace
+\end{corollary}
+
+\begin{proposition}
+    Consider the following commutative diagram of schemes:
+    \[\begin{tikzcd}
+	X && Y \\
+	& Z
+	\arrow["h"', from=1-1, to=2-2]
+	\arrow["g", from=1-3, to=2-2]
+	\arrow["f", from=1-1, to=1-3]
+\end{tikzcd}\]
+
+1. If $f$ and $g$ are separated, then so is $h$
+
+2. If $h$ is separated, then so is $f$
+\end{proposition}
+
+
+
+
+
+\newpage
+\subsection{Finiteness Conditions and Dimension}
+
+\begin{proposition}
+    \textbf{affine communication}
+
+Let $P$ be some property of
+affine schemes, such that :
+
+(i) If $Spec\, A$ has property $P$ then for any $f \in A,
+D(f)=Spec\, A_f$ does too
+
+(ii) If $(f_1,\cdots, f_n) = A$, and $Spec A_{f_i}$ has $P$ for all $i$, then so does $Spec\, A$
+
+Suppose that $X = \cup_{i\in I} Spec\, A_i$ where $Spec\, A_i$ has property $P$. Then every affine open
+subset of $X$, $Spec\, B$ has $P$ too
+\end{proposition}
+
+\begin{definition}
+    A scheme $X$ is \textbf{locally Noetherian} if it has a open cover by $X=\cup_{i\in I} Spec\, A_i$ where each $A_i$ is a Noetherian ring
+\end{definition}
+
+\begin{proposition}
+    If $Spec\, B=U\subset(open)\,X$ affine open and $X$ is locally Noetherian, then $B$ is locally Noetherian
+\end{proposition}
+
+\begin{definition}
+    A scheme $X$ is \textbf{Noetherian} if it is ocally Noetherian and quasicompact (or equivalently can be covered by finitely many such affine open sets)
+\end{definition}
+
+\begin{definition}
+    Let $T$ be a topological space, then $T$ is \textbf{Noetherian} if every decreasing sequence of closed subsets of $T$ stabilises
+\end{definition}
+
+\begin{remark}
+    If $T$ is a Noetherian space, then $T$ is quasi-compact
+\end{remark}
+
+\begin{remark}
+    Any subspace $A$ of a Noetherian space $X$ is Noetherian, since closed subsets $Z_i \subseteq A$ come from closed subsets $\overline{Z_i} \subseteq X$, which stabilise by assumption
+\end{remark}
+
+\begin{proposition}
+    Let $X$ be a Notherian scheme, then $|X|$ is a Noetherian space
+\end{proposition}
+
+\newpage
+\subsection{12.7,12.11}
 
 \end{document}
