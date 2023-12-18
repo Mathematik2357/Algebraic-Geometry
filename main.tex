@@ -31,7 +31,7 @@
 \newenvironment{Proof}{{\noindent \indent \it Proof:\quad}}{\hfill $\square$\par}
 
 \title{Algebraic Geometry}
-\author{Alion}
+\author{Bo Han}
 
 \DeclareUnicodeCharacter{2212}{-}
 
@@ -4914,7 +4914,7 @@ S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
     $$
     (X \xrightarrow {f}Y)\in P
     \;and\; 
-    (S \xrightarrow {g}Y)\in P \Rightarrow
+    (S \xrightarrow {g}Y) \Rightarrow
     (X\times_Y S\to S)\in P
     $$
 
@@ -4992,6 +4992,15 @@ such that $|X| \subseteq |V|$ is closed
 
 where $\rho_1$ is a closed embedding and $\rho_2$ is an open embedding
 \end{proposition}
+\begin{Proof}
+Both open and closed immersions are locally closed immerions, and composites of locally closed
+immersions are locally closed immersions, so we have one direction.
+
+Conversely, take $\rho_1$ to be a locally
+closed immersion, then $|X| \subseteq |Y|$ is a locally closed map of spaces, as there exists an open set $|V| \subseteq |Y|$
+such that $|X| \subseteq |V|$ is closed. Then there exists a unique open subscheme $V \subseteq Y$ with underlying
+space $|V|$, and $X \to V$ is a closed immersion
+\end{Proof}
 
 \begin{example}
 The morphism $Spec\, k[t, t^{-1}] \to Spec\, k[x, y]$ given by $(x, y) \to (t, 0)$ is a locally closed
@@ -5017,6 +5026,28 @@ closed embedding
     
     If $X$ and $S$ are affine, then this is in fact just a closed immersion
 \end{proposition}
+\begin{Proof}
+    First assume that $X$ and $S$ are affine, so let $X = Spec\, A$ and $S = Spec\, R$, then we have,
+$X \times_S X \cong Spec\, (A \otimes_R A)$,
+and the map $\triangle_{X/S}
+: X \to X \times_S X$ corresponds to the multiplication map $A \otimes_R A \to A$, which is
+surjective. Hence $\triangle_{X/S}$ is a closed immersion in this case. 
+
+In general, for any $x \in X$, we choose some
+open affine $U$ with $x \in U = Spec\, A \subseteq X$ mapping to $Spec\, R \subseteq S$. Then again we have,
+$W = Spec\, A \times_{Spec\,R} Spec\, A \cong Spec\, (A \otimes_R A)$, which is an open neighbourhood of $\triangle(U)$
+\[\begin{tikzcd}
+	U & {\triangle(U)} & {\subset W} & {X\times X}
+	\arrow["closed", from=1-1, to=1-2]
+	\arrow[hook, from=1-3, to=1-4]
+	\arrow["open", curve={height=-12pt}, from=1-2, to=1-4]
+\end{tikzcd}\]
+
+$U\xrightarrow{closed}\triangle(U)$ is closed by the affine case, hence $\triangle_{X/S}$ is a locally closed immersion
+
+(Recall closed immersion and open immersion $\in LOCS$)
+
+\end{Proof}
 
 \begin{corollary}
     If $X$ is an affine scheme over an affine scheme $S$, $X$ is separated inside of $Sch /S$
@@ -5046,7 +5077,7 @@ closed embedding
 
 
 \newpage
-\subsection{Finiteness Conditions and Dimension}
+\subsection{Finiteness Conditions}
 
 \begin{proposition}
     \textbf{affine communication}
@@ -5061,6 +5092,8 @@ D(f)=Spec\, A_f$ does too
 
 Suppose that $X = \cup_{i\in I} Spec\, A_i$ where $Spec\, A_i$ has property $P$. Then every affine open
 subset of $X$, $Spec\, B$ has $P$ too
+
+(This property is also called affine-local)
 \end{proposition}
 
 \begin{definition}
@@ -5068,11 +5101,12 @@ subset of $X$, $Spec\, B$ has $P$ too
 \end{definition}
 
 \begin{proposition}
-    If $Spec\, B=U\subset(open)\,X$ affine open and $X$ is locally Noetherian, then $B$ is locally Noetherian
+    If $Spec\, B=U\mathop{\subset}\limits_{open}
+    \,X$ affine open and $X$ is locally Noetherian, then $B$ is Noetherian
 \end{proposition}
 
 \begin{definition}
-    A scheme $X$ is \textbf{Noetherian} if it is ocally Noetherian and quasicompact (or equivalently can be covered by finitely many such affine open sets)
+    A scheme $X$ is \textbf{Noetherian} if it is locally Noetherian and quasicompact (or equivalently can be covered by finitely many such affine open sets)
 \end{definition}
 
 \begin{definition}
@@ -5091,7 +5125,490 @@ subset of $X$, $Spec\, B$ has $P$ too
     Let $X$ be a Notherian scheme, then $|X|$ is a Noetherian space
 \end{proposition}
 
+\begin{definition}
+    Let $X$ be a Noetherian scheme, A a \textbf{coherent} $\mathcal O_X$-module is a quasi-coherent $\mathcal O_X$-module of finite type
+\end{definition}
+
+\begin{theorem}
+    Let $X$ be a scheme
+    
+1) The category $QCoh(X)$ of quasi-coherent modules on $X$ is a full abelian subcategory
+of the category $\mathcal O_X$-Mod of $\mathcal O_X$-modules that is closed under extensions. The functor
+$QCoh(X) \to\mathcal O_X$-Mod is exact
+
+2) Assume that $X$ is Noetherian. 
+The category $Coh(X)$ of coherent modules on $X$ is a full abelian subcategory
+of the category $\mathcal O_X$-Mod of $\mathcal O_X$-modules that is closed under extensions. The functor
+$Coh(X) \to\mathcal O_X$-Mod is exact
+\end{theorem}
+
+\begin{definition}
+    Let $f:X\to Y$ be a map
+
+    1) $f$ is \textbf{quasicompact} ($qc$) if for all $U\mathop{\subseteq}\limits_{open} Y$ with $U$ quasicompact, $f^{-1}(U)\subseteq X$ is quasicompact
+
+    2) $f$ is \textbf{quasiseparated} ($qs$) if $\triangle_{X/Y}:X\to X\times_Y X$ is quasicompact
+\end{definition}
+
+\begin{proposition}
+    Let $P_1=\{quasicompact\;maps\}$, $P_2=\{quasiseparated\;maps\}$
+
+    Then $P_1,P_2\in COMP,BC,LOCT$
+\end{proposition}
+\begin{Proof}
+    For $P_2$ : 
+    $COMP$ : $X\xrightarrow{f}Y\xrightarrow{g}Z$, $f,g\in P_2$
+\[\begin{tikzcd}
+	X & {X\times_YX} & {X\times_ZX} & {X\times X} \\
+	& Y & {Y\times_ZY} & {Y\times Y} \\
+	&& Z & {Z\times Z}
+	\arrow["{qc (hypo)}", from=1-1, to=1-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{qc (qc\in BC)}", from=1-2, to=1-3]
+	\arrow["{qc (hypo)}"', from=2-2, to=2-3]
+	\arrow[from=1-3, to=2-3]
+	\arrow[from=2-3, to=3-3]
+	\arrow[from=3-3, to=3-4]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=3-4]
+	\arrow[from=1-4, to=2-4]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-3, to=2-4]
+	\arrow[from=1-3, to=1-4]
+	\arrow["{qc (qc\in COPM)}", curve={height=-24pt}, from=1-1, to=1-3]
+\end{tikzcd}\]
+
+$BC$ : $[x\to Y]\in P_2$, 
+\[\begin{tikzcd}
+	{V=X\times_YU} & U \\
+	X & Y
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+\[\begin{tikzcd}
+	V && {V\times_UV} && V \\
+	& X && {X\times_YX} && X \\
+	&& V && U \\
+	&&& X && Y
+	\arrow[from=1-3, to=3-3]
+	\arrow["{qc (hypo)}"', from=2-2, to=2-4]
+	\arrow["{qc (BC)}", from=1-1, to=1-3]
+	\arrow[from=1-1, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125, rotate=45}, draw=none, from=1-1, to=2-4]
+	\arrow[from=1-3, to=2-4]
+	\arrow[from=2-4, to=2-6]
+	\arrow[from=1-3, to=1-5]
+	\arrow[from=1-5, to=2-6]
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=3-3, to=4-4]
+	\arrow[from=2-6, to=4-6]
+	\arrow[from=4-4, to=4-6]
+	\arrow[from=3-5, to=4-6]
+\end{tikzcd}\]
+\end{Proof}
+
+\begin{remark}
+    $X$ is $qc$ as a scheme iff $X\to Spec\,\mathbb Z$ is $qc$
+
+    $X$ is $qs$ as a scheme iff $X\to Spec\,\mathbb Z$ is $qs$
+\end{remark}
+
+\begin{proposition}
+Let $P$ be a prroperty of maps with $P\in COMP, BC$. And the following commutative diagram of schemes:
+    \[\begin{tikzcd}
+	X && Y \\
+	& Z
+	\arrow["h"', from=1-1, to=2-2]
+	\arrow["g", from=1-3, to=2-2]
+	\arrow["f", from=1-1, to=1-3]
+\end{tikzcd}\]
+
+Suppose $h\in P$ and that $[\triangle_{Y/Z}:Y\to Y\times_Z Y]\in P$, then $f\in P$
+\end{proposition}
+\begin{Proof}
+    Graph cartesian diagram :
+\[\begin{tikzcd}
+	X & {X\times_ZY} && {X\times_ZY} & Y \\
+	Y & {Y\times_ZY} && X & Z
+	\arrow[from=1-1, to=2-1]
+	\arrow["{\triangle_{Y/Z}}"', from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow["{\Gamma_f}", from=1-1, to=1-2]
+	\arrow["{\pi_Y}", from=1-4, to=1-5]
+	\arrow[from=1-4, to=2-4]
+	\arrow["{h}"', from=2-4, to=2-5]
+	\arrow[from=1-5, to=2-5]
+\end{tikzcd}\]
+
+From $\triangle_{Y/Z},h\in P$, and $P\in BC$, we know $\Gamma_f,\pi_Y\in P$. So $f=\pi_Y\circ \Gamma_f\in P$ since $P\in COMP$
+\end{Proof}
+
+\begin{corollary}
+    Set up as before and $X \xrightarrow{h} Z$ quasicompact and $Y \xrightarrow{g} Z$ quasiseparated $\Rightarrow$ $X\xrightarrow{f} Y$ is quasicompact
+\end{corollary}
+
+\begin{definition}
+    A map $f:X\to Y$ is \textbf{locally of finite type} (resp. \textbf{locally finite presentation}) if $\forall x\in X$, there is $X\in Spec\,A=U\mathop{\subseteq}\limits_{open} X $ and $Spec\,B=V\mathop{\subseteq}\limits_{open} Y$ with $f(U)\subseteq V$ and $B\to A$ finite type (resp. finite presentation)
+
+    A map is of \textbf{finite type} (resp. \textbf{finite presentation})
+    if it is locally of finite type (resp. finite presentation) and quasicompact
+\end{definition}
+
+i.e. a morphism $f : Y \to X$ of schemes is of finite type if $f$ is quasicompact, and
+there is an open cover of $Y$ by $Spec\, B_i$, such that $f|_{Spec\,B_i}$
+factors over some Spec $A_i \subseteq X$, and $B_i$ is a
+finitely generated $A_i$-algebra through the corresponding map of rings
+
+\begin{example}
+    1) $\mathop{\cup}\limits_{i=1}^{\infty}Spec\,\mathbb Z\to Spec\,\mathbb Z$ is locally of finite type
+
+    2) $Spec\, k \hookrightarrow
+    Spec\, k[x_1,\cdots,x_n]$ is of finite type, not of finite presentation
+\end{example}
+
+\begin{proposition}
+    If $f:Y = Spec\, B \to X = Spec\, A$ is a morphism of finite type, then $B$ is a finitely generated $A$-algebra
+\end{proposition}
+
+\begin{proposition}
+    $X\to Y$ finite type $+$ $Y$ Noetherian $\Rightarrow$ $Y$ is Noetherian and $X\to Y$ finite presentation
+\end{proposition}
+
+
+
+\begin{remark}
+    If $k$ is an algebraically closed field, then the classical notation of varieties over $k$ is essentially (up to being separated and irreducible as well) the same as a scheme of finite type over $Spec\, k$
+\end{remark}
+
+
+
+
+\newpage
+\subsection{Dimension}
+
+\begin{definition}
+    Let $X$ be an arbitrary topological space
+    
+(1) A point $x \in X$ is called \textbf{closed} if the set $\{x\}$ is closed
+
+(2) We say that a point $\eta \in X$ is a \textbf{generic point} if $\overline{\{\eta\}} = X$
+
+(3) Let $x$ and $x^\prime$ be two points of $X$. We say that $x$ is a \textbf{generization} of $x^\prime$ or that $x^\prime$ is a \textbf{specialization} of $x$ if $x^\prime \in \overline{\{x\}}$ 
+
+(4) A point $x \in X$ is called a \textbf{maximal point} if its closure $\overline{\{x\}}$ is an irreducible component of $X$
+\end{definition}
+
+\begin{example}
+    If $X = Spec A$ is the spectrum of a ring, the notions introduced above have the following algebraic meaning :
+    
+(1) A point $x \in X$ is closed if and only if $\mathfrak p_x$ is a maximal ideal
+
+(2) A point $\eta \in X$ is a generic point of $X$ if and only if $\mathfrak p_\eta$ is the unique minimal prime ideal. This exists if and only if the nilradical of $A$ is a prime ideal. Thus $X$ is irreducible if and only if its nilradical is a prime
+ideal
+
+(3) A point $x$ is a generization of a point $x^\prime$ (in other words, $x^\prime$ is a specialization of $x$) if and only if $\mathfrak p_x \subseteq \mathfrak p_{x^\prime}$
+
+(4) A point $x \in X$ is a maximal point if and only if $\mathfrak p_x$ is a minimal prime ideal
+\end{example}
+
+\begin{definition}
+    Let $X$ be a topological space. The dimension $dim\, X$ of $X$ is the supremum of all lengths of chains
+$X_0 \supsetneqq X_1 \supsetneqq \cdots \supsetneqq X_n$
+of irreducible closed subsets of $X$. (The length of a chain as above is $n$) 
+\end{definition}
+
+If $X$ is a scheme,
+then its dimension is by definition the dimension of the underlying topological space. A
+topological space $X$ is called equidimensional (of dimension $d$), if all irreducible components of $X$ have the same dimension (equal to $d$)
+
+So the dimension is $−\infty$ (if and only if $X = \empty$), a non-negative integer, or $\infty$
+
+For an affine scheme $X = Spec\, A$, we have an inclusion reversing bijection between
+irreducible closed subsets of $X$ and prime ideals of $A$. Thus we have
+$dim\, X = dim\, A$, where
+$$
+dim\, A := sup\{n \in \mathbb N ; \exists\, \mathfrak p_0 \subsetneqq \mathfrak p_1 \subsetneqq \cdots \subsetneqq \mathfrak p_n\; chain\; of\; prime\; ideals\; of\; A\}
+$$
+
+is called the Krull dimension or simply the dimension of the ring $A$
+
+\begin{proposition}
+    Let $X$ be a topological space
+    
+(1) Let $Y$ be a subspace of $X$. Then $dim\, Y \leq dim\, X$. If $X$ is irreducible, $dim\, X < \infty$,
+and $Y \subseteq X$ is a proper closed subset, then $dim\, Y < dim\, X$
+
+(2) Let $X =\mathop{\cup}\limits_\alpha U_\alpha$ be an open covering. Then
+$dim\, X = \mathop{sup}\limits_\alpha
+dim\, U_\alpha$
+
+(3) Let $I$ be the set of irreducible components of $X$. Then
+$dim\, X = \mathop{sup}\limits_{Y \in I} dim\, Y$
+\end{proposition}
+
+From these definitions and properties, we now give the definition of the dimension of scheme :
+
+\begin{definition}
+    Let $T$ be a locally spectral space, then the \textbf{(Krull) dimension} of $T$ is defined as the supremum minus one of the length of all chains of specialisations of points in $T$, i.e.
+    $$
+    \bm{
+    dim\, T = sup_{n}
+\{x_0 > x_1 > x_2 > \cdots > x_n | x_i \in T, x_i \ne x_j , \forall i = j\}
+    }$$
+
+    $x_1,x_2\in T$, we say $x_1>x_2$ if $x_2\in\overline{\{x_1\}}$ and $x_1\ne x_2$
+\end{definition}
+
+\begin{definition}
+    If $X$ is a scheme, define $\bm{dim \,X = dim \,|X|}$
+\end{definition}
+
+\begin{proposition}
+    If $X =\mathop{\cup}\limits_i U_i$ is an open cover of a scheme $X$, then $\bm{dim\, X = \mathop{sup}\limits_i dim\, U_i}$
+
+    So $\bm{dim\, X = \mathop{sup}\limits_{x\in X} dim\, \mathcal O_{X,x}}$
+\end{proposition}
+
+\begin{example}
+    1) Let $k$ be an algebraically closed field, and let $X =\mathbb A^1_k$
+then $|X|$ looks like $k$ but with
+a generic point. The generic point specialises to all closed points. This gives us specialisations of length
+$1$, which implies $dim\, X = 1$
+
+2) If $k$ is an algebraically closed and $X =\mathbb A^2_k$
+then the points of $X$ are closed points,
+irreducible curves, and the generic point. We then have a specialisation of length $2$, so at least $dim\, X \geq
+2$. See that $dim\, X =
+2$
+\end{example}
+
+\textbf{Warning} : there are Noetherian affine schemes of infinite dimension (Nagata)
+
+\begin{theorem}
+    Let $A$ be a domain finitely generated over a field $k$ ($A=k[x_1,\cdots,x_n]/I$)
+    
+    Let $n=tr.deg_k(Frac(A))$, then $dim\,Spec\, A=n$
+\end{theorem}
+
+\begin{definition}
+    A \textbf{prevariety} over $k$ is a reduced, irreducible scheme of finite type over $k$
+    
+    A \textbf{variety} over $k$ is a reduced, irreducible, separated scheme of finite type over $k$
+\end{definition}
+
+\begin{definition}
+    A scheme $X$ is \textbf{integral}, if $\mathcal O_X(U)$ is an integral domain for all $U \ne \emptyset$ open in $X$
+\end{definition}
+
+\begin{proposition}
+    A scheme $X$ is reduced and irreducible $\Leftrightarrow$ $X$ is integral
+\end{proposition}
+\begin{Proof}
+    Assume first that for all nonempty $U = Spec\, A \subseteq X$ we have $A$ is an integral domain. Then all such $A$ are reduced, so $A$ is a reduced domain. If $X$ was not irreducible, then there would exist $U, V \subseteq X$, a pair of non-empty open subsets with $U \cap V = \emptyset$. Without loss of generality we can take $U$ and $V$ to be affine, but then $U \cup V = U \sqcup V$ is affine, with $\mathcal O_X(U \sqcup V) = \mathcal O_X(U)\times \mathcal O_X(V)$. This has zero divisors, which is a contradiction.
+    
+Conversely, assume that $X$ is reduced and irreducible, and consider
+$Spec\, A \subseteq X$ a non-empty open subset. These hypotheses tell us that $Spec\, A$ is reduced and irreducible.
+Without loss of generality (again), we may take $X = Spec\, A$, so then $X$ being reduced implies that
+$A$ is a reduced ring. Now consider $f, g \in A$ with $fg = 0$, then $V (f) \cap V (g) = V (fg) = Spec\, A$, so
+$D(f) \cap D(g) = \emptyset$. The fact that $X$ is irreducible implies that $D(f) = \emptyset$ or $D(g) = \emptyset$. Hence either $f$ or $g$ are nilpotent, but $A$ is reduced, so $f = 0$ or $g = 0$
+\end{Proof}
+
+\newpage
+\subsection{Affine Morphisms}
+
+\begin{definition}
+    A morphism $f : X \to S$ of schemes is \textbf{affine} if there exists a cover of $S$ by open affines $U_i=Spec\,A_i$ such that $f^{-1}(U_i)$ is an affine scheme in $X$ for all $i$
+\end{definition}
+
+\begin{proposition}
+If $f : X \to S$ is affine, then for all $U \subseteq S$ open affine, the inverse image $f^{-1}(U)$
+is affine in $X$
+\end{proposition}
+\begin{Proof}
+    First we let $S = Spec A$. We need to check that $f$ is both quasi-compact and quasi-separated.
+This is true since both properties are $LOCT$ and affine schemes are quasi-compact and quasi-separated.
+
+This implies that $f_\ast\mathcal O_X$ is a quasi-coherent $\mathcal O_S$-algebra, and hence in this case $f_\ast\mathcal O_X = \widetilde B$ for some
+$A$-algebra $B$. We claim now that $X = Spec\, B$. Notice that,
+$$
+B = \Gamma(S, f_\ast\mathcal O_X) = \Gamma(X, \mathcal O_X)
+$$
+
+so we have maps of schemes,
+\[\begin{tikzcd}
+	X && {Spec\,B} \\
+	& {Spec\, A}
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-3, to=2-2]
+	\arrow["\varphi", from=1-1, to=1-3]
+\end{tikzcd}\]
+To check that $\varphi$ is an isomorphism, it suffices to work locally on S, but locally this is true by assumption :
+
+There is a cover $Spec\,A
+=\mathop{\cup}\limits_{i=1}^n Spec\,A[f_i^{-1}]
+=\mathop{\cup}\limits_{i=1}^n U_i$
+\[\begin{tikzcd}
+	{Spec\, C_i=f^{-1}(U_i)} && {Spec\,B[f_i^{-1}]} \\
+	& {Spec\, A[f_i^{-1}]}
+	\arrow[from=1-1, to=2-2]
+	\arrow[from=1-3, to=2-2]
+	\arrow["{\varphi|_{f^{-1}(U_i)}}", from=1-1, to=1-3]
+\end{tikzcd}\]
+
+But $B[f_i^{-1}]=f_\ast\mathcal O_X(U_i)=\Gamma(U_i,\mathcal O_{U_i})=C_i$, it is an isomorphism
+
+\end{Proof}
+
+\begin{theorem}
+    Moreover, for a fixed $S$, the functor from the category of affine morphisms into $S$ to the opposite category of quasi-coherent $\mathcal O_S$-algebras, defined by $(f : Y \to S) \mapsto f_\ast\mathcal O_Y$ is an equivalence of
+categories
+
+The inverse functor is denoted as $\mathcal A \mapsto \underline{Spec}_{\mathcal O_S}\mathcal A$ (that means $\underline{Spec}_{\mathcal O_S}\mathcal A$ is a scheme affine/$X$)
+\end{theorem}
+\begin{Proof}
+If $S = Spec\, A$ is affine, then affine maps $Y \to S$ are mapped via an equivalence of categories to
+the $A$-algebra $\Gamma(Y,\mathcal O_Y )$, then we arrive at the chain of equivalences :
+$$
+\{ affine\; maps\; f : Y \to S\} \cong {A-algebras} \cong \{quasi-coherent\;\mathcal O_S-algebras\}
+$$
+
+From this we obtain $\widetilde{\Gamma(Y, \mathcal O_Y)} = f_\ast\mathcal O_Y$ , which comes from the fact that $f_\ast\mathcal O_Y$ is quasi-coherent. Hence the composite functor is an equivalence of categories. In general, the equivalence from affine maps
+$Y \to S$ to quasi-coherent $\mathcal O_S$-algebras via $Y \mapsto f_\ast\mathcal O_Y$ comes by general gluing lemmas
+\end{Proof}
+
+\begin{definition}
+$X\in Sch$ and $\mathcal A$ a quasicoherent $\mathcal O_X$-algebra
+
+Let (Not the same thing as the definition above) $\underline{Spec}_{\mathcal O_X}\mathcal A : Sch/X\to Sets$
+$$
+\bm{
+\underline{Spec}_{\mathcal O_X}\mathcal A(Y\to X)=Hom_{\mathcal O_X-alg}(\mathcal A,f_\ast\mathcal O_Y)
+}
+$$
+\end{definition}
+
+\begin{proposition}
+
+$\underline{Spec}_{\mathcal O_X}\mathcal A$ is representable by a  scheme affine/$X$ : $\underline{Spec}_{\mathcal O_X}\mathcal A$
+
+    Moreover, all schemes affine over $X$ are of this form
+\end{proposition}
+\begin{Proof}
+%$\underline{Spec}_{\mathcal O_X}\mathcal A$ is a Zarsiki sheaf :
+
+Let $\cup_{i\in I}U_i\to Y\xrightarrow{f} X$ Zarsiki cover of $Y$, $U_{ij}=U_i\cap U_j$, then :
+\[\begin{tikzcd}
+	{\underline{Spec}_{\mathcal O_X}\mathcal A(Y)} & {\mathop{\Pi}\limits_{i\in I}\underline{Spec}_{\mathcal O_X}\mathcal A(U_i)} & {\mathop{\Pi}\limits_{i,j\in I}\underline{Spec}_{\mathcal O_X}\mathcal A(U_{ij})} \\
+	{Hom_{\mathcal O_X-alg}(\mathcal A,f_\ast\mathcal O_Y)} & {\mathop{\Pi}\limits_{i\in I}Hom_{\mathcal O_X-alg}(\mathcal A,f_\ast\mathcal O_{U_i})} & {\mathop{\Pi}\limits_{i,j\in I}Hom_{\mathcal O_X-alg}(\mathcal A,f_\ast\mathcal O_{U_{ij}})}
+	\arrow[from=1-1, to=1-2]
+	\arrow[shift right, from=1-2, to=1-3]
+	\arrow[shift left, from=1-2, to=1-3]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-1, to=2-2]
+	\arrow[shift left=2, from=2-2, to=2-3]
+	\arrow["{=}"', from=1-1, to=2-1]
+\end{tikzcd}\]
+
+Since $Hom_{\mathcal O_X-alg}(\mathcal A,-)$ is exact
+$$
+f_\ast\mathcal O_Y\xrightarrow{\sim} 
+Eq(
+\mathop{\Pi}\limits_{i\in I}f_\ast\mathcal O_{U_i}
+\rightrightarrows
+\mathop{\Pi}\limits_{i,j\in I}f_\ast\mathcal O_{U_{ij}}
+)
+$$
+
+To be continued...
+
+\end{Proof}
+
+\begin{definition}
+    \textbf{Tensor algebra constructions}
+    
+If $M$ is an $A$-module, then the
+\textbf{tensor algebra} $\bm{T(M)}$ is a noncommutative algebra, graded by $\mathbb Z_{\geq0}$, defined as
+follows. $T_0(M) = A$, $T_n(M) = M \otimes_A \cdots \otimes_A M$ (where $n$ terms appear in the
+product)
+$$
+T(M) := T_A(M) :=\bigoplus_{n\geq0}T_n(M)
+$$
+
+where the product is given by
+$$(m_1 \otimes\cdots\otimes m_n, m_1^\prime \otimes\cdots\otimes m_{n^\prime}^\prime) \mapsto m_1 \otimes\cdots\otimes m_n \otimes m_1^\prime \otimes\cdots\otimes m_{n^\prime}^\prime$$
+
+The \textbf{symmetric algebra} $\bm{Sym(M)}$ is a symmetric algebra, graded by $\mathbb Z_{\geq0}$, defined as the quotient of $T(M)$ by the (two-sided) ideal generated by all elements
+of the form $x\otimes y-y\otimes x$ for all $x, y \in M$. Thus $Sym_n M$ is the quotient of $M\otimes\cdots\otimes M$
+by the relations of the form $m_1 \otimes\cdots\otimes m_n - m_1^\prime \otimes\cdots\otimes m_n^\prime$ where $m_1^\prime, \cdots, m_n^\prime$
+is a rearrangement of $m_1, \cdots, m_n$. 
+$
+Sym(M) =\bigoplus_{n\geq0}
+Sym_n(M)
+$
+
+We have $Sym_0(M) = A$ and $Sym_1(M) = M$. The $A$-algebra $Sym(M)$ and the $A$-linear map $\iota: M = Sym_1(M) \hookrightarrow Sym(M)$ satisfy the following universal property :
+
+For every
+commutative $A$-algebra $B$, composition with $\iota$ yields a bijection
+$$
+Hom_{(A-Alg)}(Sym(M), B) \xrightarrow{\sim} Hom_{(A-Mod)}(M,B)\;\; \varphi \mapsto \varphi \circ \iota
+$$
+
+If $\varphi: A \to B$ is a ring homomorphism, the isomorphism above implies that there is an isomorphism
+of B-algebras
+$$
+Sym_A(M) \otimes_A B \xrightarrow{\sim} Sym_B(M \otimes_A B)
+$$
+
+Also an isomorphism of graded $A$-algebras, functorial in $A$-modules $M$ and $M^\prime$,
+$$Sym(M \oplus M^\prime) \xrightarrow{\sim} Sym(M) \otimes_A Sym(M^\prime)$$
+\end{definition}
+
+\begin{definition}
+    Let $(X,\mathcal O_X)$ be a ringed space and $\mathcal E$ an $\mathcal O_X$-module. The sheaf associated
+to the presheaf $U \mapsto Sym_{\Gamma(U,\mathcal O_X)}(\Gamma(U, \mathcal E ))$ on $X$ is a commutative graded $\mathcal O_X$-algebra :
+$$
+\bm{Sym(\mathcal E) =\bigoplus_{n\geq0}
+Sym_n(\mathcal E)}
+$$
+
+called the \textbf{symmetric algebra of} $\bm{\mathcal E}$
+\end{definition}
+
+\begin{proposition}
+$\mathcal E \mapsto Sym(\mathcal E )$ defines a functor from the category
+of $\mathcal O_X$-modules into the category of commutative $\mathcal O_X$-algebras which is left adjoint to the
+forgetful functor, that is, for every commutative $\mathcal O_X$-algebra $\mathcal A$ we have bijections which
+are functorial in $\mathcal A$ and in $\mathcal E$
+$$
+\bm{Hom_{\mathcal O_X-Alg}(Sym(\mathcal E), \mathcal A) \cong Hom_{\mathcal O_X-Mod}(\mathcal E,\mathcal A)}
+$$
+\end{proposition}
+
+\begin{remark}
+    If $\mathcal E$ is a vector bundle over $X$, $\mathbb V(\mathcal E)(Y\to X)=\Gamma(Y,f^\ast\mathcal E)$
+
+    Claim : $\bm{\mathbb V(\mathcal E)\cong\underline{Spec}_{\mathcal O_X}(Sym(\mathcal E^\vee))}$
+\end{remark}
+
+
+
+
+
 \newpage
 \subsection{12.7,12.11}
+%Prove that if an automorphism of $P^1_k$ fixes 3 points then it has to be the identity.
+
+%I thought of sharing a really neat problem I remember I enjoyed a while ago:) it touches on a more general important theorem in cohomology but can be solved directly by just spelling things out and some commutative algebra unless I'm mistaken
+
+%Let $X$ be locally Noetherian scheme and $F$ a coherent sheaf on $X$ (meaning that $F$ is quasi-coherent and its sections $F(U)$ form a finitely generated module over $\mathcal{O}_X(U)$ whenever $U \subset X$ is affine) 
+%Consider the map $d : \vert X \vert \to \mathbb{Z}_{\geq 0}$ which assigns to each point $x \in X$ the dimension $\text{dim}_{\kappa(x)}F_x \otimes_{\mathcal{O}_{X,x}} \kappa(x)$ of the fibre of $F$ above $x$ over the residue field of $x$.
+
+%Show that $d$ is upper semicontinuous with respect to the zariski topology on $X$ and the discrete topology on $\mathbb{Z}$ - this means the level sets $\{d(x) \geq n\}$ are closed in $X$ for all integers $n$
+
+%The fun part of the exercise is to figure out an example where $d$ isn't constant - you can take the nodal curve $Spec k[x,y]/I$ where $I=(x^3 + x^2 - y^2)$ and its cotangent sheaf $I/I^2$ for instance:)
 
 \end{document}
