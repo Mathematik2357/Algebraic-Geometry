@@ -3610,10 +3610,17 @@ Recall:$\mathcal F_x=(\mathcal F|_U)_x$, so $\mathcal O_{X,x}=\mathcal O_{U,x}$
 $(f,f^{\#}):(X,\mathcal O_X)\to(Y,\mathcal O_Y)$
 
 Then
-$f^{-1}(Y_s) = \{x \in X | f^{\#}(s)_x \notin\mathfrak m_x \subseteq \mathcal O_{X,x} \} = X_{f^{\#}(s)}$
-
-(it is right when $(Y,\mathcal O_Y)=Spec\,B$, but for general scheme ?)
+$f^{-1}(Y_s) = \{x \in X | f^{\#}(s)_x \notin\mathfrak m_x \subseteq \mathcal O_{X,x} \} = X_{f^{\#}(s)}$ is right when $(Y,\mathcal O_Y)=Spec\,B$. And it is this true for general schemes (even for locally ringed spaces!)
+\label{remark 3.22}
 \end{remark}
+\begin{Proof}
+To prove it for schemes you can work locally and reduce this way to the case of affine schemes.
+
+To prove it for locally ringed spaces take $p$ in $X$. Since $f$ is a morphism of locally ringed spaces the pullback of sections induces a local morphism of local rings $\mathcal O_{Y,f(p)} \to \mathcal O_{X,p}$. So we get an injection between the residue fields $\kappa(f(p)) \to \kappa(p)$ mapping $s(f(p))$ to $(f^\ast s)(p)$. This shows that $s(f(p)) = 0$ iff $(f^\ast s)(p) = 0$ and therefore $D(f^\ast s) = f^{-1}(D(s))$.
+
+Note that this is a trivial statement if the structure sheaves of the ringed spaces is their sheaf of continuous functions and the pullback of sections is given by precomposition with $f$. In that case $s(y)$ is really just the evaluation of the function at the point $y$. Therefore $(f^\ast s)(p) = (s\circ f)(p) = s(f(p))$
+\end{Proof}
+
 
 
 \begin{definition}
@@ -4033,7 +4040,7 @@ For each $U,\mathcal{M}(U)$ is an ${\mathcal{O}}_{X}(U)$-module. Furthermore, th
 
 commutes
 
-Recall that the notion of A-module generalizes the notion of abelian group,
+Recall that the notion of $A$-module generalizes the notion of abelian group,
 because an abelian group is the same thing as a $\mathbb Z$-module. Similarly, the notion of ${\mathcal{O}}_{X}$-module generalizes the notion of sheaf of abelian groups, because the latter is the same thingasa $\underline{\mathbb{Z}}$- module, where $\underline{\mathbb{Z}}$ is the constant sheaf associated to $\mathbb{Z}$. Hence when we are proving things about $\mathcal{O}_{X}$-modules, we are also proving things about sheaves of abelian groups
 \begin{exercise}
     If $(X,{\mathcal{O}}_{X})$ is a ringed space, and $\mathcal{F}$ is an ${\mathcal{O}}_{X}$-module, describe how for each $p\in X,{\mathcal{F}}_{p}$ is an ${\mathcal{O}}_{X,p}$-module.
@@ -4643,6 +4650,41 @@ $$
 The Yoneda lemma now tells us that $f^{\ast}{\cal M}\cong \widetilde{M\otimes_{A}B}$
 
 \end{Proof}
+
+
+\begin{definition}
+$X$ a scheme. The definition of $X_s$ makes sense when $s$ is a global section of any $\mathcal O_X$-module $\mathcal M$ :
+
+
+
+Let $s\in \mathcal M(X)$, 
+
+denote $i_x:Spec\,\kappa(x)\hookrightarrow X,\forall x\in X$
+$$
+\Gamma(X, \mathcal M\to (i_x)_\ast(i_x)^\ast\mathcal M): \mathcal M(X)\xrightarrow{ev_x} (i_x)^\ast \mathcal M(Spec\,\kappa(x))
+=\mathcal M_x \otimes_{\mathcal O_{X,x}} \kappa(x)
+=\mathcal M_x/\mathfrak m_x \mathcal M_x
+$$
+
+define $\bm{X_s = \{ p\; in\; X : s(p) \ne 0\; in\; \mathcal M_p \otimes \kappa(p) \}}$ 
+(i.e. $D(s)
+=\{x\in X,ev_x(s)\ne 0\}
+=\{x\in X,s_x\notin \mathfrak m_x\mathcal M_x\}
+=\{x\in X,s_x\in \mathcal M_x\;is\;a\;generator\}$), where $\kappa(p)$ is the residue field at $p$, $\mathcal M_p$ is the stalk of $\mathcal M$ at $p$ and $s(p)$ is the image of s under the map $\mathcal M(X) \to \mathcal M_p \to \mathcal M_p \otimes_{\mathcal O_{X,p}} \kappa(p)=\mathcal M_p/\mathfrak m_p \mathcal M_p$.
+
+But for $X_s$ to be an open subset of $X$ (and therefore interesting to consider) we need $\mathcal M$ to be locally free. To prove this work locally and reduce to the case where $\mathcal M$ is the structure sheaf.
+\end{definition}
+
+\begin{remark}
+    Remark \ref{remark 3.22} is true even when $f$ is a morphism of locally ringed spaces and $s$ is a global section of a locally free sheaf :
+
+$(f,f^{\#}):(X,\mathcal O_X)\to(Y,\mathcal O_Y)$, $f$ is a morphism of locally ringed spaces and $s$ is a global section of a locally free sheaf
+
+Then
+$f^{-1}(Y_s)= 
+%\{x \in X | f^{\#}(s)_x \notin\mathfrak m_x \subseteq \mathcal O_{X,x} \} = 
+X_{f^{\ast}(s)}$
+\end{remark}
 
 \begin{proposition}
     If $W$ is a vector bundle, then $\underline{Hom}_{\mathcal O_X}(W,\mathcal O_X)$ is a vectoe bundle
@@ -5462,11 +5504,23 @@ But $B[f_i^{-1}]=f_\ast\mathcal O_X(U_i)=\Gamma(U_i,\mathcal O_{U_i})=C_i$, it i
 
 \end{Proof}
 
+\begin{proposition}
+    Let $f : Y \to X$ be a morphism of schemes
+    
+1) Assume $|f|: |Y | \to |X|$ is a topological immersion with closed image. Then that $f$ is affine
+
+2) $f$ is a universal homeomorphism if and only if it is surjective, universally injective
+and integral
+
+Hint: For 1) show that each $x \in X$ has an open, affine neighborhood $U_x$ such that $f^{-1}(U_x)$ is affine
+by using arguments as in sheet 8, exercise 4.i)
+\end{proposition}
+
 \begin{theorem}
     Moreover, for a fixed $S$, the functor from the category of affine morphisms into $S$ to the opposite category of quasi-coherent $\mathcal O_S$-algebras, defined by $(f : Y \to S) \mapsto f_\ast\mathcal O_Y$ is an equivalence of
 categories
 
-The inverse functor is denoted as $\mathcal A \mapsto \underline{Spec}_{\mathcal O_S}\mathcal A$ (that means $\underline{Spec}_{\mathcal O_S}\mathcal A$ is a scheme affine/$X$)
+The inverse functor is denoted as $\mathcal A \mapsto \underline{Spec}_{\mathcal O_S}\mathcal A$ (that means $\underline{Spec}_{\mathcal O_S}\mathcal A$ is a scheme affine/$S$)
 \end{theorem}
 \begin{Proof}
 If $S = Spec\, A$ is affine, then affine maps $Y \to S$ are mapped via an equivalence of categories to
@@ -5493,6 +5547,11 @@ $$
 \begin{proposition}
 
 $\underline{Spec}_{\mathcal O_X}\mathcal A$ is representable by a  scheme affine/$X$ : $\underline{Spec}_{\mathcal O_X}\mathcal A$
+
+(since $Hom_{\mathcal O_x-alg}(Y,\underline{Spec}_{\mathcal O_X}\mathcal A)
+=
+Hom_{\mathcal O_x-alg}
+(\mathcal A, f_\ast\mathcal O_Y)$)
 
     Moreover, all schemes affine over $X$ are of this form
 \end{proposition}
@@ -5521,6 +5580,31 @@ Eq(
 \mathop{\Pi}\limits_{i,j\in I}f_\ast\mathcal O_{U_{ij}}
 )
 $$
+
+$\mathcal O_Y$ is a sheaf, so :
+\[\begin{tikzcd}
+	{Hom_{\mathcal O_X-alg}(\mathcal A, f_\ast\mathcal O_Y)} & {\Pi _{i\in I}Hom_{\mathcal O_X-alg}(\mathcal A, f_\ast\mathcal O_{U_i})} \\
+	{Hom_{\mathcal O_X}(\mathcal A, f_\ast\mathcal O_Y)} & {\Pi _{i\in I}Hom_{\mathcal O_X}(\mathcal A, f_\ast\mathcal O_{U_i}))}
+	\arrow[hook, from=2-1, to=2-2]
+	\arrow[hook, from=1-1, to=2-1]
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[hook, from=1-2, to=2-2]
+\end{tikzcd}\]
+
+Now we just need to proof $\underline{Spec}_{\mathcal O_X}\mathcal A$ is locally representable :
+
+If $Spec\, B=U\subseteq X$, consider car seqence :
+\[\begin{tikzcd}
+	F & {\underline{Spec}_{\mathcal O_X}\mathcal A} \\
+	U & X
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+
+Claim : $F=\underline{Spec}_{\mathcal O_X}\mathcal A(U)$
 
 To be continued...
 
