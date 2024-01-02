@@ -5259,7 +5259,7 @@ $BC$ : $[x\to Y]\in P_2$,
 \end{remark}
 
 \begin{proposition}
-Let $P$ be a prroperty of maps with $P\in COMP, BC$. And the following commutative diagram of schemes:
+Let $P$ be a property of maps with $P\in COMP, BC$. And the following commutative diagram of schemes:
     \[\begin{tikzcd}
 	X && Y \\
 	& Z
@@ -5269,6 +5269,7 @@ Let $P$ be a prroperty of maps with $P\in COMP, BC$. And the following commutati
 \end{tikzcd}\]
 
 Suppose $h\in P$ and that $[\triangle_{Y/Z}:Y\to Y\times_Z Y]\in P$, then $f\in P$
+\label{prop 3.131}
 \end{proposition}
 \begin{Proof}
     Graph cartesian diagram :
@@ -5458,8 +5459,14 @@ $A$ is a reduced ring. Now consider $f, g \in A$ with $fg = 0$, then $V (f) \cap
 $D(f) \cap D(g) = \emptyset$. The fact that $X$ is irreducible implies that $D(f) = \emptyset$ or $D(g) = \emptyset$. Hence either $f$ or $g$ are nilpotent, but $A$ is reduced, so $f = 0$ or $g = 0$
 \end{Proof}
 
+
+
+
+
 \newpage
 \subsection{Affine Morphisms}
+
+\subsubsection{affine morphisms}
 
 \begin{definition}
     A morphism $f : X \to S$ of schemes is \textbf{affine} if there exists a cover of $S$ by open affines $U_i=Spec\,A_i$ such that $f^{-1}(U_i)$ is an affine scheme in $X$ for all $i$
@@ -5505,16 +5512,119 @@ But $B[f_i^{-1}]=f_\ast\mathcal O_X(U_i)=\Gamma(U_i,\mathcal O_{U_i})=C_i$, it i
 \end{Proof}
 
 \begin{proposition}
+    The class of affine morphisms satisfies COMP, BC, PROD and LOCT
+\end{proposition}
+
+\begin{proposition}
+    An affine map $f : X \to S$ is separated
+\end{proposition}
+
+\begin{proposition}
     Let $f : Y \to X$ be a morphism of schemes
     
-1) Assume $|f|: |Y | \to |X|$ is a topological immersion with closed image. Then that $f$ is affine
+Assume $|f|: |Y | \to |X|$ is a topological immersion with closed image. Then that $f$ is affine
 
-2) $f$ is a universal homeomorphism if and only if it is surjective, universally injective
-and integral
-
-Hint: For 1) show that each $x \in X$ has an open, affine neighborhood $U_x$ such that $f^{-1}(U_x)$ is affine
-by using arguments as in sheet 8, exercise 4.i)
+(Hint: Show that each $x \in X$ has an open, affine neighborhood $U_x$ such that $f^{-1}(U_x)$ is affine
+by using arguments as in sheet 8, exercise 4.i))
 \end{proposition}
+
+\begin{proposition}
+    If $X$ is separated and $Y=Spec\, B$, then any $f:Y\to X$ is affine
+\end{proposition}
+\begin{Proof}
+    Need to check $Spec\,A=U\subseteq (open) X$, then $f^{-1}(U)$ is affine
+
+    The diagram 
+    \[\begin{tikzcd}
+	{f^{-1}(U)} & {U\times Y} \\
+	X & {X\times X}
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["\lrcorner"{anchor=center, pos=0.125}, draw=none, from=1-1, to=2-2]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+
+Since $U\times Y$ is affine and $f^{-1}(U)\to U\times Y$ is closed immersion, then $f^{-1}(U)$ is affine
+
+\end{Proof}
+
+\begin{definition}
+    Let $f:X\to Y$ be affine. Let $Spec\, A=U\subseteq(open)Y$ and $Spec\,B=f^{-1}(U)$
+
+    1) We say $f$ is \textbf{integral} if for all such $U$, the ring map $A\to B$ is integral
+
+    2) We say $f$ is \textbf{finite} if for all such $U$, the ring map $A\to B$ is finite
+\end{definition}
+
+\begin{definition}
+    $f:X\to S$ is \textbf{closed} if $|f|:|X|\to |S|$ is a closed map ($\forall Z\subseteq |X|$ closed subset $f(Z)\subseteq |S|$ is also closed)
+
+    $f:X\to S$ is \textbf{universally closed} if  $\forall\, Y$ and maps
+\[\begin{tikzcd}
+	{X\times_S Y} & Y \\
+	X & S
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+
+ then $X\times_S Y\to Y$ is also closed
+\end{definition}
+
+\begin{theorem}
+    Let $f:X\to S$ be a morphism of schemes. TFAE :
+
+    1) $f$ is integral
+
+    2) $f$ is affine and universally closed
+\end{theorem}
+\begin{Proof}
+    1)$\to$2):
+
+    By def it is affine. Suffices to prove integral $\Rightarrow$ closed
+
+    WLOG $X=Spec\, R$ and $S=Spec\, T$ (we can check closed on affine cover). Since integral $\in$ $COMP$:
+\[\begin{tikzcd}
+	{Spec\,R/I} & {Spec\,R} & {Spec\,T}
+	\arrow["integral"', curve={height=18pt}, from=1-1, to=1-3]
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+\end{tikzcd}\]
+
+Suffices to show $f(Spec\,R)\subseteq Spec\,T$ is closed. And this follows from going up of integral maps
+
+2)$\to$1): (affine universally closed $\Rightarrow$ integral)
+
+WLOG $f:Spec\,A\to Spec\,R$. We have $a\in A$ and consider $R[X]\to A\;(x\mapsto a)$ and $I=ker(R[X]\to A)$
+
+We need to prove $\exists x^n+r_{n-1}x^{n-1}+\cdots+r_0\in I$
+
+To be continued ...
+
+\end{Proof}
+
+%\begin{theorem}
+    %Let $Z\subseteq Spec\,T$ a subset. Then $Z$ is closed if and only if it is closed for the constructible topology on $Spec\,T$ and $Z$ is stable under specitlization
+%\end{theorem}
+
+\begin{proposition}
+Let $f : Y \to X$ be a morphism of schemes
+
+    $f$ is a universal homeomorphism if and only if it is surjective, universally injective and integral
+
+    (Hint : surjective is universally surjective)
+\end{proposition}
+
+
+
+
+
+
+
+\subsubsection{quasi-coherent $\mathcal O_X$-algebra}
+
 
 \begin{theorem}
     Moreover, for a fixed $S$, the functor from the category of affine morphisms into $S$ to the opposite category of quasi-coherent $\mathcal O_S$-algebras, defined by $(f : Y \to S) \mapsto f_\ast\mathcal O_Y$ is an equivalence of
@@ -5556,7 +5666,7 @@ Hom_{\mathcal O_x-alg}
     Moreover, all schemes affine over $X$ are of this form
 \end{proposition}
 \begin{Proof}
-%$\underline{Spec}_{\mathcal O_X}\mathcal A$ is a Zarsiki sheaf :
+First we prove $\underline{Spec}_{\mathcal O_X}\mathcal A$ is a Zarsiki sheaf :
 
 Let $\cup_{i\in I}U_i\to Y\xrightarrow{f} X$ Zarsiki cover of $Y$, $U_{ij}=U_i\cap U_j$, then :
 \[\begin{tikzcd}
@@ -5571,7 +5681,7 @@ Let $\cup_{i\in I}U_i\to Y\xrightarrow{f} X$ Zarsiki cover of $Y$, $U_{ij}=U_i\c
 	\arrow["{=}"', from=1-1, to=2-1]
 \end{tikzcd}\]
 
-Since $Hom_{\mathcal O_X-alg}(\mathcal A,-)$ is exact
+Since $Hom_{\mathcal O_X-alg}(\mathcal A,-)$ is exact, and :
 $$
 f_\ast\mathcal O_Y\xrightarrow{\sim} 
 Eq(
@@ -5677,10 +5787,142 @@ $$
 
     Claim : $\bm{\mathbb V(\mathcal E)\cong\underline{Spec}_{\mathcal O_X}(Sym(\mathcal E^\vee))}$
 \end{remark}
+\begin{Proof}
+\begin{align*}
+\label{sup}
+\mathbb V(\mathcal E)[Y\xrightarrow{f}X]
+&=
+\Gamma(Y,f^\ast\mathcal E)
+\\
+&\cong
+\Gamma(Y,\underline{Hom}(f^\ast\mathcal E^\vee,\mathcal O_Y))
+\\
+&\cong
+Hom_{\mathcal O_Y}(f^\ast\mathcal E^\vee, \mathcal O_Y)
+\\
+&\cong
+Hom_{\mathcal O_X}(\mathcal E^\vee,f_\ast\mathcal O_Y)
+\\
+&\cong
+Hom_{\mathcal O_X-alg}(Sym\mathcal E^\vee,f_\ast\mathcal O_Y)
+\\
+&\cong
+\underline{Spec_{\mathcal O_X}}(Sym\mathcal E^\vee)[Y\to X]
+\end{align*}
+    
+\end{Proof}
 
 
 
 
+
+\newpage
+\subsection{Proper Morphisms}
+
+\begin{definition}
+    A morphism $f : X \to S$ is \textbf{proper} if it is
+    
+    1) separated 
+    
+    2) finite type (locally of finite type $+$ quasicompact ) 
+    
+    3) universally closed
+    
+    A scheme over $S$ is proper if the structure map $X \to S$ is proper
+\end{definition}
+
+\begin{proposition}
+    Let $f:X\to Y$ be a map. TFAE:
+
+    1) $f$ is affine and proper
+
+    2) $f$ is finite
+\end{proposition}
+\begin{Proof}
+    1) $\Rightarrow$ 2): affine $+$ universally closed $\Rightarrow$ integral
+
+    integral $+$ finite type $\Rightarrow$ finite
+
+    2) $\Rightarrow$ 1): finite $\Rightarrow$ integral, affine, separated, finite type
+
+    integral $\Rightarrow$ universally closed
+    
+\end{Proof}
+
+\begin{example}
+    $\mathbb A_k^1\to Spec\,k$ is affine but not finite, so not proper
+\[\begin{tikzcd}
+	{V(xy-1)\subseteq\mathbb A_k^2} & {\mathbb A_k^1} \\
+	{\mathbb A_k^1} & {Spec\,k}
+	\arrow["{p_2}"', from=1-1, to=2-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-1, to=2-2]
+	\arrow["{p_1}", from=1-1, to=1-2]
+\end{tikzcd}\]
+
+$p_2(V(xy-1))=\mathbb A_k^1\ \{0\}$
+
+(In this place $V(xy-1)=Spec\,k[x,y]/(xy-1)$ is a scheme)
+\end{example}
+
+\begin{proposition}
+    proper $\in$ $LOCT,BC,COMP$
+\end{proposition}
+\begin{Proof}
+    separated and finite type $\in$ $LOCT,BC,COMP$
+
+    closed $\in$ $LOCT,COMP$
+
+    universally closed $\in$ $BC$ (almost by def)
+\[\begin{tikzcd}
+	{(X\times_Y Z)\times_Z W=X\times_Y W} & W \\
+	{X\times_Y Z} & Z \\
+	X & Y
+	\arrow["2", from=1-1, to=1-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=2-1, to=3-1]
+	\arrow["{universally\; closed}"', from=3-1, to=3-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=2-2, to=3-2]
+	\arrow["1", from=2-1, to=2-2]
+\end{tikzcd}\]
+
+$1+2$ Cartesian $\Rightarrow$ extended square is also Cartesian
+\end{Proof}
+
+\begin{proposition}
+    Let
+    \[\begin{tikzcd}
+	X && Y \\
+	& Z
+	\arrow["h"', from=1-1, to=2-2]
+	\arrow["f", from=1-1, to=1-3]
+	\arrow["g", from=1-3, to=2-2]
+\end{tikzcd}\]
+
+be a commutable diagram
+
+If $g$ is separated and $h$ is proper, then $f$ is proper
+\end{proposition}
+\begin{Proof}
+    Prop \ref{prop 3.131} tells we just need to prove $\triangle_g:Y\to Y\times_Z Y$ is proper, we know this map is a closed immersion since $g$ is separated
+
+    Closed immersion is a finite map, so it is a proper map
+\end{Proof}
+
+\begin{theorem}
+    $\mathbb P^n_{\mathbb Z}\to Spec\,\mathbb Z$ is proper
+\end{theorem}
+
+
+
+
+
+
+
+
+\newpage
+\subsection{Normalization}
 
 
 %Prove that if an automorphism of $P^1_k$ fixes 3 points then it has to be the identity.
