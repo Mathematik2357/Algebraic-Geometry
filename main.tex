@@ -5914,6 +5914,113 @@ If $g$ is separated and $h$ is proper, then $f$ is proper
     $\mathbb P^n_{\mathbb Z}\to Spec\,\mathbb Z$ is proper
 \end{theorem}
 
+\begin{definition}
+We call a morphism $f : X \to S$ \textbf{locally quasi-projective} (resp. \textbf{locally
+projective}) if there exists an open affine covering $(U_\alpha)_\alpha$ of $S$ and for all $\alpha$ a quasi-compact
+$U_\alpha$-immersion (resp. a closed $U_\alpha$-immersion) $f^{-1}(U_\alpha) \hookrightarrow \mathbb P^{n_\alpha}
+_{U_\alpha}$ for some integer $n_\alpha \geq 0$
+\[\begin{tikzcd}
+	& {\mathbb P^{n_\alpha} _{U_\alpha}} \\
+	{f^{-1}(U_\alpha)} & {U_\alpha}
+	\arrow["f"', from=2-1, to=2-2]
+	\arrow["\alpha", hook, from=2-1, to=1-2]
+	\arrow["\pi", from=1-2, to=2-2]
+\end{tikzcd}\]
+
+(where each $\alpha$ is a quasi-compact
+immersion (resp. a closed immersion), and $\pi$ is first projective. $\mathbb P^{n_\alpha} _{U_\alpha}=U_i\times_{Spec\,\mathbb Z}\mathbb P^{n_\alpha} _{\mathbb Z}$)
+\end{definition}
+
+\begin{proposition}
+    locally projective $\Rightarrow$ proper
+\end{proposition}
+\begin{Proof}
+    proper $\in$ $LOCT$, so WLOG $S=U_i$
+
+    From "$\mathbb P^n_{\mathbb Z}\to Spec\,\mathbb Z$ is proper" and "proper $\in$ $BC$", we know $[\mathbb P_{U_\alpha}^{n_\alpha}\to U_\alpha]$ is proper
+
+    closed immersion is proper and proper $\in$ $COMP$. So $f$ is proper
+\end{Proof}
+
+\begin{example}
+    Over $Spec\,k$, $k$ is a field, locally projective means 
+    \[\begin{tikzcd}
+	& {\mathbb P^{n} _{k}} \\
+	Z & {Spec\,k}
+	\arrow[from=2-1, to=2-2]
+	\arrow["s", hook, from=2-1, to=1-2]
+	\arrow["\pi", from=1-2, to=2-2]
+    \end{tikzcd}\]
+
+    ($s$ a closed immersion)
+\end{example}
+
+\begin{theorem}
+    \textbf{Chow's lemma}
+
+The Lemma of Chow says that every separated morphism of finite type (resp. every
+proper morphism) becomes quasi-projective (resp. projective) after modification with a
+birational projective morphism, more precisely:
+
+Let $S$ be a qcqs scheme and let $f : X \to S$ be a separated morphism of finite type (resp.
+proper morphism) such that $X$ has only finitely many irreducible components (which is automatic
+if $S$ is noetherian).
+Then there exists a commutative diagram
+\[\begin{tikzcd}
+	X && {X^\prime} \\
+	& S
+	\arrow["f"', from=1-1, to=2-2]
+	\arrow["g", from=1-3, to=2-2]
+	\arrow["\pi"', from=1-3, to=1-1]
+\end{tikzcd}\]
+
+where $g$ is quasi-projective  (resp. projective) and where $\pi$ is surjective, projective, and there exists a quasicompact open dense subscheme $U$ of $X$ such that $\pi^{-1}(U)$ is dense in $X^\prime$ and the restriction $\pi^{-1}(U) \to U$ of $\pi$ is an isomorphism. Moreover:
+
+(1) $f$ is proper if and only if $g$ is projective
+
+(2) If $X$ is reduced (resp. irreducible, resp. integral), then $X^\prime$ can be chosen to be reduced
+(resp. irreducible, resp. integral)
+\end{theorem}
+
+The definition of A will be given later, here we only need to use the special case of this lemma :
+
+\begin{corollary}
+Let $S$ be a Noetherian scheme. Let $f:X\to S$ be a separated morphism of finite type. Then there exist an $n\geq 0$ and a diagram
+\[\begin{tikzcd}
+	X & {X^\prime} & {\mathbb P_S^n} \\
+	& S
+	\arrow["f"', from=1-1, to=2-2]
+	\arrow["\pi"', from=1-2, to=1-1]
+	\arrow[from=1-2, to=2-2]
+	\arrow["i", hook, from=1-2, to=1-3]
+	\arrow[from=1-3, to=2-2]
+\end{tikzcd}\]
+
+where $i:X^\prime \to \mathbb P_S^n$ is an immersion, and $\pi:X^\prime\to X$ is proper and surjective. Moreover, we may arrange it such that there exists a dense open subscheme $U\subset X$ such that $\pi^{-1}(U)\to U$ is an isomorphism
+\end{corollary}
+
+\begin{remark}
+    In particular, if $S=Spec\,A$ ($A$ is Noetherian), for example : $S=Spec\,k$
+\end{remark}
+
+\begin{example}
+    If $X/Spec\,k$ is proper variety, then $X^\prime$ here is also proper and $i:X^\prime\hookrightarrow \mathbb P_k^n$ is closed immersion
+
+    (proper locally closed immersion $\Rightarrow$ closed immersion)
+\end{example}
+
+
+
+
+
+
+
+\newpage
+\subsection{Valuative Criterion}
+
+\begin{theorem}
+\textbf{valuative Criterion of separatedness}
+\end{theorem}
 
 
 
