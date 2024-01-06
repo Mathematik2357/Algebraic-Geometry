@@ -5317,7 +5317,7 @@ finitely generated $A_i$-algebra through the corresponding map of rings
 \end{proposition}
 
 \begin{proposition}
-    $X\to Y$ finite type $+$ $Y$ Noetherian $\Rightarrow$ $Y$ is Noetherian and $X\to Y$ finite presentation
+    $X\to Y$ finite type $+$ $Y$ Noetherian $\Rightarrow$ $X$ is Noetherian and $X\to Y$ finite presentation
 \end{proposition}
 
 
@@ -5466,7 +5466,7 @@ $D(f) \cap D(g) = \emptyset$. The fact that $X$ is irreducible implies that $D(f
 \newpage
 \subsection{Affine Morphisms}
 
-\subsubsection{affine morphisms}
+\subsubsection{Affine Morphisms}
 
 \begin{definition}
     A morphism $f : X \to S$ of schemes is \textbf{affine} if there exists a cover of $S$ by open affines $U_i=Spec\,A_i$ such that $f^{-1}(U_i)$ is an affine scheme in $X$ for all $i$
@@ -5623,7 +5623,7 @@ Let $f : Y \to X$ be a morphism of schemes
 
 
 
-\subsubsection{quasi-coherent $\mathcal O_X$-algebra}
+\subsubsection{Quasi-coherent $\mathcal O_X$-algebra}
 
 
 \begin{theorem}
@@ -6016,12 +6016,149 @@ where $i:X^\prime \to \mathbb P_S^n$ is an immersion, and $\pi:X^\prime\to X$ is
 
 
 \newpage
-\subsection{Valuative Criterion}
+\subsection{Valuative Criterion and Valuation Rings}
+
+\subsubsection{Valuative Criterion}
+
+\begin{definition}
+    A \textbf{valuation ring} is an integral domain $V$ with fraction field $K$ such that for all $x\in K^{\times}$, either $x\in V$ or $x^{-1}\in V$
+\end{definition}
 
 \begin{theorem}
-\textbf{valuative Criterion of separatedness}
+Let $K$ be a field, and $A \subset K$ with $Frac A = K$ such that $A$ is a local ring. Then the
+following are equivalent :
+
+1. $A$ is a valuation ring of $K$, so for all $x \in K-\{0\}$ either $x$ or $x^{-1}$ lies in $A$
+
+2. There exists a valuation $v : K \to \Gamma \cup \{\infty\}$ such that $A$ is $\{x \in K | v(x) \geq 0\}$
+
+3. For all local rings $A \subseteq B \subseteq K$ where $A \hookrightarrow B$ is a local map, $A = B$
 \end{theorem}
 
+\begin{example}
+    Let $k$ be a field, then $k[t]_{(t)}\subseteq k(t)$ is a valuation ring
+$$f\in k(t),\,f=t^n \cdot \frac{\Pi_{i=1}^n p_i(t)^{u_i}}{\Pi_{j=1}^m q_j(t)^{v_j}}$$
+
+each $p_i,q_j$ are irreducible polynomials and $p_i\ne0,q_j\ne0$
+\end{example}
+
+
+\begin{theorem}
+\textbf{Valuative Criterion for Separatedness}
+
+A morphism $f : X \to S$ of schemes is separated if and only if $f$ is quasi-separated and for any valuation ring $V$ with fraction field $K=Frac(V)$, then any
+diagram of the following form,
+\[\begin{tikzcd}
+	{Spec\,K} & X \\
+	{Spec\,V} & S
+	\arrow[from=2-1, to=2-2]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow["g", dashed, from=2-1, to=1-2]
+	\arrow["{\leq 1}"', dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+
+has at most one lift (the dotted arrow) such that the above diagram commutes
+\end{theorem}
+
+\begin{theorem}
+\textbf{Valuation Criterion for Properness}
+
+A morphism $f : X \to S$ of schemes is proper if
+and only if $f$ is of finite type (which implies quasi-compact) and quasi-separated, and for any valuation
+ring $V$ with fraction field $K$, then any diagram of the following form,
+\[\begin{tikzcd}
+	{Spec\,K} & X \\
+	{Spec\,V} & S
+	\arrow[from=2-1, to=2-2]
+	\arrow["f", from=1-2, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+
+there exists exactly one lift such that the above diagram commutes
+\end{theorem}
+
+\begin{example}
+$G_m=Spec\,k[T,T^{-1}]$, generic point $\eta\in G_m$, then $k(\eta)=k(T)$ and $k[T]_{(T)}$ is a valuation ring of $k(\eta)$
+\[\begin{tikzcd}
+	{Spec\,k(T)} & G_m \\
+	{Spec\,k[T]_{(T)}} & Spec\,k
+	\arrow[from=2-1, to=2-2]
+	\arrow[from=1-2, to=2-2]
+	\arrow[from=1-1, to=2-1]
+	\arrow[from=1-1, to=1-2]
+	\arrow[dashed, from=2-1, to=1-2]
+\end{tikzcd}\]
+\end{example}
+
+\begin{example}
+    The line with two origins $\mathbb A_{0,0}^1\to Spec\,k$ does not satisfy valuation criterion :
+
+    $K=k(t), V=k[t]_{(t)}$ with
+    \[\begin{tikzcd}
+	{Spec\,k(t)} && {\mathbb A_{0,0}^1} \\
+	& {\mathbb A_{k}^1\cup\mathbb A_{k}^1} \\
+	{Spec\,k[t]_{(t)}} && {Spec\,k}
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-1, to=1-3]
+	\arrow[curve={height=-6pt}, hook, from=2-2, to=1-3]
+	\arrow["{p_1}", curve={height=-12pt}, from=3-1, to=2-2]
+	\arrow["{p_2}", curve={height=12pt}, from=3-1, to=2-2]
+	\arrow[curve={height=12pt}, hook, from=2-2, to=1-3]
+    \end{tikzcd}\]
+\end{example}
+
+
+
+\subsubsection{Valuation Rings}
+
+\begin{definition}
+A \textbf{totally order group} is an abelian group $\Gamma$ with total order $\leq$ on $\Gamma$ (so $x \leq y$ and $y \leq x$ implies that $x = y$), such that if $x \leq y$ and $x^\prime \leq y^\prime$ we have $x + x^\prime \leq y + y^\prime$
+\end{definition}
+
+\begin{example}
+1) $\mathbb Z$ with the usual order
+
+2) $R$ with usual order
+
+3) $R\oplus R$ with the lexicographical
+ordering, which we will write as $R\oplus R\epsilon$, to imply that $\epsilon$ is some infinitesimal, i.e. $\epsilon < r$ for all $r \in R_{>0}$
+
+($a+b\epsilon \leq a^\prime+b^\prime\epsilon$ if $a \leq b$, or $a = a^\prime$ and $b \leq b^\prime$ , i.e. the first summand is in control)
+\end{example}
+
+\begin{definition}
+Given a ring $R$, then a \textbf{additive valuation} on $R$ is a map $v : R \to G \cup \{\infty\}$ for some totally
+ordered group $G$, such that
+
+1. $v(0) = \infty$ and $v(1) = 0_G$
+
+2. $v(xy) = v(x) + v(y)$, with the convention that $a + \infty = \infty + a = \infty + \infty = \infty$
+
+3. $v(x + y) \geq min(v(x), v(y))$
+
+If $G\cong\mathbb Z$, then $v$ is a discrete valuation
+\end{definition}
+
+\begin{definition}
+Given a ring $R$, then a \textbf{multiplicative valuation} on $R$ is a map $|\cdot| : R \to \Gamma \cup \{\ 0 \}$ for some totally
+ordered group $\Gamma$, such that
+
+1. $|0| = 0$ and $|1| = 1_\Gamma$
+
+2. $|xy| = |x|\cdot |y|$ with the convention that $|x|\cdot0 = 0\cdot|x| = 0 \cdot 0 = 0$
+
+3. $|x + y| \leq max(|x|, |y|)$
+\end{definition}
+
+\begin{remark}
+    additive valuation $=$ multiplicative valuation
+\end{remark}
 
 
 
@@ -6030,6 +6167,18 @@ where $i:X^\prime \to \mathbb P_S^n$ is an immersion, and $\pi:X^\prime\to X$ is
 
 \newpage
 \subsection{Normalization}
+
+\begin{definition}
+    Let $R$ be a domain, we say $Spec\,R$ is \textbf{normal} if $R$ is integrally closed in its fraction field 
+\end{definition}
+
+
+
+
+
+
+
+
 
 
 %Prove that if an automorphism of $P^1_k$ fixes 3 points then it has to be the identity.
