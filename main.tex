@@ -3957,7 +3957,16 @@ These factorisations $\tilde f(U)$ glue to a unique map $Y \rightarrow X_{red}$,
 property of sheafification.
 \end{Proof}
 
-
+\begin{proposition}
+    Given a scheme $X$, then there is a bijection between closed reduced subschemes of
+    $X$ and closed subsets of $|X|$
+\end{proposition}
+\begin{Proof}
+Assume that $X = Spec\, A$ then reduced closed subschemes are simply $Spec\, A/I$ where $A/I$ is
+reduced, which are the same as ideals $I \subsetneq A$ where $I$ is a radical ideal, which by definition give us our
+closed subsets $V(I)$. In general we just simply glue. We do observe though that the localisation of a
+reduced subscheme is still reduced
+\end{Proof}
 
 
 \newpage
@@ -3965,9 +3974,9 @@ property of sheafification.
 \begin{definition}
     A map $f:Y\to X$ of schemes is called a \textbf{closed immersion} if
     
-    1) the induced map on topological spaces $|f|:|Y|\to|X|$ is a closed imimersion (a homeomophism onto a closed subset) 
+    1) the induced map on topological spaces $|f|:|Y|\to|X|$ is a closed immersion (a homeomophism onto a closed subset) 
     
-    2) $f^{\mathfrak b}:{\mathcal{O}}_{X}\to f_{\ast}{\mathcal{O}}_{Y}$ is a surjective map of sheaves.
+    2) $f^{\mathfrak b}:{\mathcal{O}}_{X}\to f_{\ast}{\mathcal{O}}_{Y}$ is a surjective map of sheaves
 \end{definition}
 \begin{proposition}
     Let $f:Y\to X$ be a map of schemes, then the following are equivalent :
@@ -4082,13 +4091,14 @@ is a bijection.
 
 
 
-Necessarily we have $M={\mathcal{M}}(X)$ as $M={\widetilde{M}}(X)$  but we still don't really know $M$ exists yet. Assuming this theorem is true just for a little bit, we make the following definition.
+Necessarily we have $M={\mathcal{M}}(X)$ as $M={\widetilde{M}}(X)$  but we still don't really know $M$ exists yet. Assuming this theorem is true just for a little bit.
 
 
 
 
 \newpage
 \subsection{Quasi-coherent sheaf}
+\subsubsection{Quasi-coherent sheaves}
 \begin{definition}
 \textbf{quasi-coherent sheaf}
 
@@ -4113,15 +4123,17 @@ quasi-separated)
 \begin{theorem}
     $X$ scheme, $\mathcal M\in Mod_{\mathcal O_X}$, TFAE :
     
-    a) $\mathcal M$ qcoh (quasi-coherent)
+    1) $\mathcal M$ qcoh (quasi-coherent)
 
-    b) $\exists$ open sets $X=U_i$ with $\mathcal M|_{U_i}$ qcoh
+    2) $\exists$ open sets $X=\cup U_i$ with $\mathcal M|_{U_i}$ qcoh
 
-    c) $\exists$ open sets $X=U_i$, $U_i=Spec\, A_i$ with $\mathcal M|_{U_i}=\widetilde {M_i}$ for some $A_i$-module $M_i$
+    3) $\exists$ open sets $X=\cup U_i$, $U_i=Spec\, A_i$ with $\mathcal M|_{U_i}=\widetilde {M_i}$ for some $A_i$-module $M_i$
+\label{Thm 3.58}
 \end{theorem}
 
 \begin{theorem}
     Let $f : Y \to X$ be a map of schemes which is quasi-compact and quasi-separated, and let $\mathcal M$ be a quasi-coherent sheaf on $Y$ , then $f_\ast\mathcal M$ is a quasi-coherent sheaf on $X$ with its natural $\mathcal O_X$-structure
+    \label{Thm 3.59}
 \end{theorem}
 
 \begin{theorem}
@@ -4144,6 +4156,187 @@ We have equivalences of categories:
 \end{Proof}
  
 
+
+
+
+
+\subsubsection{Quasi-coherent sheaves $\&$ closed immersions}
+
+\[\begin{tikzcd}
+	{A\; ring} && {(X: = Spec\,A ,\mathcal O_X)\;\;locally\; ringed\; space} \\
+	{\Gamma(Y,\mathcal O_Y)=\mathcal O_Y(Y)} && Y \\
+	{ring\; of\; global\; function}
+	\arrow["geometrize", from=1-1, to=1-3]
+	\arrow[from=2-3, to=2-1]
+\end{tikzcd}\]
+
+Intuition : $A =\mathbb Z[x_i,i\in I]/(f_j,j\in J)$ $\to$ $X$:
+vanishing locus
+of polynomials
+$f_j,j\in J$
+
+Upshot can try to "geometrize" algebra
+and vice versa "algebrize" geometry
+
+Purpose of this subsubsection : "Geometrize" sujections of rings $A\to B =A/I$
+or equivalently , ideals $I\subseteq A$
+and "Geometrize" modules over $A$
+
+Recall : 
+
+A map $f:Y\to X$ of schemes is called a closed immersion if
+    
+    1) the induced map on topological spaces $|f|:|Y|\to|X|$ is a closed immersion (a homeomophism onto a closed subset) 
+    
+    2) $f^{\mathfrak b}:{\mathcal{O}}_{X}\to f_{\ast}{\mathcal{O}}_{Y}$ is a surjective map of sheaves
+
+We know 
+$$ 
+(f_\ast\mathcal O_Y)_x=\left\{
+\begin{array}{rcl}
+\mathcal O_{Y,y}       &      & if\;x=f(y) \\
+0     &      & else
+\end{array} \right. $$
+
+Thus 2) $\Leftrightarrow$ $\forall y\in Y$ $f^{\mathfrak b}_y:{\mathcal{O}}_{X, f(y)}\to {\mathcal{O}}_{Y,y}$ is a surjective map
+
+\begin{lemma}
+    $\varphi:A\to B$ surjection of rings $\Rightarrow$ $f=Spec\,\varphi:Spec\,B\to Spec\,A$ closed immersion
+\end{lemma}
+
+Given a map $f:Y\to X$ can considers
+$\mathcal I:= ker({\mathcal{O}}_{X}\to f_{\ast}{\mathcal{O}}_{Y})$. This is not merely a sheaf of abelian group
+
+Let $(f,f^{\mathfrak b})$ be a map of ringed spaces $(Y,{\mathcal{O}}_{Y})\to(X,{\mathcal{O}}_{X})$ 
+
+If $\mathcal N$ is an ${\mathcal{O}}_{Y}$ -module, then the pushforward $f_{\ast}{\mathcal{N}}$ is the ${\mathcal{O}}_{X}$ -module with the structure morphism
+$$
+{\cal O}_{X}\times f_{\ast}{\cal N}\;\;
+\xrightarrow{f^{\mathfrak b}\times id_{f_\ast\mathcal N}}
+f_\ast{\cal O}_{Y}\times f_{\ast}{\cal N}
+=f_{\ast}({\cal O}_{Y}\times{\cal N})\;\;
+\xrightarrow{f_{\ast}(-)}
+f_{\ast}{\cal N}\;\; 
+$$
+
+If $Y=\{x\}$ for some $x\in X$ closed, $\mathcal O_Y(Y):=\mathcal O_{X,x}$ and $g:(Y,\mathcal O_Y)\to (X,\mathcal O_X)$ given by :
+$$|g|(x)=x$$
+$$ 
+g_U^\mathfrak b : \mathcal O_X(U)\to g_\ast\mathcal O_Y(U)=\left\{
+\begin{array}{rcl}
+\mathcal O_{X,x}       &      & if\;x\in U \\
+0     &      & else
+\end{array} \right. $$
+
+canonical map
+
+get injection $\mathcal I:=ker(\mathcal O_X\to g_\ast\mathcal O_Y)\subseteq \mathcal O_X$ of $\mathcal O_X$-module (an ``ideal'' of $\mathcal O_X$)
+
+However $Y,\mathcal O_Y$ is a scheme iff $\# Spec\,\mathcal O_{X,x}=1$
+
+Thus 
+$$
+\{ closed\;immersions:Y\to X \} /isom\;over\;X
+\subsetneqq
+\{ideal\;\mathcal I\subseteq \mathcal O_X\}
+$$
+
+Aim:
+\[\begin{tikzcd}
+	{\{ closed\;immersions:Y\to X \} /isom\;over\;X} & {\{quasi-coherant\;ideals\;\mathcal I\subseteq \mathcal O_X\}}
+	\arrow["{1:1}", tail reversed, from=1-1, to=1-2]
+\end{tikzcd}\]
+
+%Need to see : A closed immersion $Y\to X$. If $U=Spec\,A\subset\,A \subseteq X$ open, then $f^{-1}(U)=Spec\,B$ affine and $A\to B$ is surjective
+
+%WLOG $X=Spec\,A$. Set $B:=\mathcal O_Y(f^{-1}(U))$
+
+%From Theorem \ref{Thm 3.59}, we know $f_\ast\mathcal O_Y$ quasi-coherent $\mathcal O_X$-module and $\mathcal O_X\to f_\ast\mathcal O_Y$ surjective
+
+%Using exactness of $\widetilde{(-)}$ $\Rightarrow$ $A\to B$ surjective
+
+
+\begin{definition}
+    A closed embedding $f: Y\to X$ determines an ideal sheaf on $X$, as the kernel
+$\mathcal I_{Y/X}$ of the map of $\mathcal O_X$-modules :$\mathcal O_X \to f_\ast\mathcal O_X$
+
+An \textbf{ideal sheaf} on $X$ is what it sounds like: it is a sheaf of ideals. It is a sub $\mathcal O_X$-module $\mathcal I$ of $\mathcal O_X$. On each open subset, it gives an ideal $\mathcal I(U)$ of the ring
+$\mathcal O_X(U)$. We thus have an exact sequence (of $\mathcal O_X$-modules)
+$$
+0\to \mathcal I_{Y/X} \to \mathcal O_X \to f_\ast\mathcal O_Y \to 0
+$$
+
+(On $Spec\, B$, the epimorphism $\mathcal O_X \to f_\ast\mathcal O_Y$ is the surjection $B \to A$)
+\end{definition}
+
+Thus for each affine open subset $Spec\, B \hookrightarrow X$, we have an ideal $\mathcal I(Spec\,B)=I(B) \subseteq B$ and
+we can recover $Y$ from this information: the $I(B)$ (as $Spec\, B\hookrightarrow X$ varies over the
+affine open subsets) defines an $\mathcal O$-module on the base, hence an $\mathcal O_X$-module on
+$X$, and the cokernel of $\mathcal I \to \mathcal O_X$ is $\pi_\ast \mathcal O_Y$. It will be useful to understand when
+the information of the $I(B)$ (for all affine opens $Spec\, B \hookrightarrow X$) actually determines
+a closed subscheme
+
+\begin{remark}
+Suppose $\mathcal I_{Y/X}$ is a sheaf of ideals corresponding to a closed
+embedding $Y \to X$. Suppose $Spec\, B \hookrightarrow X$ is an affine open subscheme, and $f \in B$
+
+Then the natural map $\mathcal I(Spec\,B)_f=I(B)_f \to I(B_f)= \mathcal I(Spec\,B_f)$ is an isomorphism
+\end{remark}
+
+\begin{remark}
+Suppose $X$ is a scheme, and for
+each affine open subset $Spec\, B$ of $X$, $I(B) \subseteq B$ is an ideal. Suppose further that for
+each affine open subset $Spec\, B \hookrightarrow X$ and each $f \in B$, restriction of functions from
+$B \to B_f$ induces an isomorphism $I(B_f) \cong I(B)_f$
+
+Then these data arise from a
+(unique) closed subscheme $Y \to X$ by the above construction. In other words, the
+closed embeddings $Spec\, B/I \to Spec\, B$ glue together in a well-defined manner to
+obtain a closed embedding $Y \to X$
+\end{remark}
+
+\begin{definition}
+\textbf{the vanishing scheme}
+
+(1) Suppose $X$ is a scheme, and $s \in \Gamma (X, \mathcal O_X)$. we can define the \textbf{closed subscheme cut out
+by} $\bm s$. We call this the vanishing scheme $\bm{V(s)}$ of $s$, as it is the scheme-theoretic
+version of our earlier (set-theoretical) version of $V(s)$ : 
+
+on affine open
+$Spec\, B$, we just take $Spec\,B/(s_B)$, where $s_B$ is the restriction of $s$ to $Spec\, B$. The previous note tells us this yields a well-defined closed subscheme
+
+(2) If $u$ is an invertible function, then $V(s) = V(su)$
+
+(3) If $S$ is a set of functions, we can define $V(S)$
+\end{definition}
+
+\begin{proposition}
+An $\mathcal O_X$-module $\mathcal M$ is quasicoherent
+if and only if for each such distinguished $Spec\, A_f \hookrightarrow Spec\, A \subseteq X$
+
+$\alpha:\mathcal M(Spec\,A)_f = \Gamma(Spec\,A,\mathcal M)_f \to \Gamma(Spec\,A_f,\mathcal M) = \mathcal M(Spec\,A_f)$ is an isomorphism
+\end{proposition}
+\begin{Proof}
+    Using Theorem \ref{Thm 3.58}
+\end{Proof}
+
+Now we get : a sheaf of ideals is quasicoherent if and only if it comes from a closed subscheme :
+
+\begin{theorem}
+\[\begin{tikzcd}
+	{\{ closed\;immersions:Y\to X \} /isom\;over\;X} & {\{quasi-coherant\;ideals\;\mathcal I\subseteq \mathcal O_X\}}
+	\arrow["{1:1}", tail reversed, from=1-1, to=1-2]
+\end{tikzcd}\]
+\end{theorem}
+
+We call
+$$
+0\to \mathcal I_{Y/X} \to \mathcal O_X \to f_\ast\mathcal O_Y \to 0
+$$
+
+the \textbf{closed subscheme exact sequence} corresponding to $Y \hookrightarrow X$
+
+\subsubsection{Schematic image}
 
 \newpage
 \subsection{Projective Space}
@@ -4591,7 +4784,7 @@ f_\ast{\cal O}_{Y}\times f_{\ast}{\cal N}
 f_{\ast}{\cal N}\;\; 
 $$
 
-2) If $\mathcal{M}$ is an ${\mathcal{O}}_{X}$ -module, then $f^{-1}{\mathcal{M}}$ isa sheaf of $f^{-1}{\mathcal{O}}_{X}$ -modules via
+2) If $\mathcal{M}$ is an ${\mathcal{O}}_{X}$ -module, then $f^{-1}{\mathcal{M}}$ is a sheaf of $f^{-1}{\mathcal{O}}_{X}$ -modules via
 $$
 f^{-1}{\mathcal{O}}_{X}\times f^{-1}{\mathcal{M}}=f^{-1}({\mathcal{O}}_{X}\times{\mathcal{M}})\longrightarrow f^{-1}({\mathcal{M}}). 
 $$
@@ -5912,7 +6105,11 @@ If $g$ is separated and $h$ is proper, then $f$ is proper
 
 \begin{theorem}
     $\mathbb P^n_{\mathbb Z}\to Spec\,\mathbb Z$ is proper
+    \
+    \label{Thm 3.172}
 \end{theorem}
+
+We will prove it later. (useing Theorem \ref{Thm 3.184})
 
 \begin{definition}
 We call a morphism $f : X \to S$ \textbf{locally quasi-projective} (resp. \textbf{locally
@@ -6062,6 +6259,8 @@ diagram of the following form,
 has at most one lift (the dotted arrow) such that the above diagram commutes
 \end{theorem}
 
+We will prove it later
+
 \begin{theorem}
 \textbf{Valuation Criterion for Properness}
 
@@ -6079,7 +6278,10 @@ ring $V$ with fraction field $K$, then any diagram of the following form,
 \end{tikzcd}\]
 
 there exists exactly one lift such that the above diagram commutes
+\label{Thm 3.184}
 \end{theorem}
+
+
 
 \begin{example}
 $G_m=Spec\,k[T,T^{-1}]$, generic point $\eta\in G_m$, then $k(\eta)=k(T)$ and $k[T]_{(T)}$ is a valuation ring of $k(\eta)$
@@ -6160,6 +6362,151 @@ ordered group $\Gamma$, such that
     additive valuation $=$ multiplicative valuation
 \end{remark}
 
+\begin{example}
+    $v:R\to R\cup\{\infty\}$ correspends to $|\cdot|:R\to R^{>0}\cup\{0\},\forall r\in R, |r|=e^{-v(r)}$
+\end{example}
+
+\begin{definition}
+    We say $|\cdot|$ is a \textbf{discrete valuation} if $\Gamma\cong\mathbb Z$ as an ordered group
+\end{definition}
+
+\begin{example}
+    $\mathbb Z\subset \mathbb R$, the $p$-adic valuation
+
+    $|\cdot|_p: \mathbb Z\to \mathbb R^{>0}\cup\{0\}$
+
+    Pick $0<r<1$ (traditionally $r=\frac{1}{p}$)
+$$ 
+|n|_p=\left\{
+\begin{array}{rcl}
+r^\alpha       &      & if\;n=p^\alpha q,\;(p,q)=1 \\
+0     &      & if\;n=0
+\end{array} \right. $$
+\end{example}
+
+\begin{example}
+    $R=k[T]$, the $T$-adic valuation
+
+    $|\cdot|_T: R=k[T]\to \mathbb R^{>0}\cup\{0\}$
+
+    Pick $0<r<1$ 
+$$ 
+|p(T)|_T=\left\{
+\begin{array}{rcl}
+r^\alpha       &      & if\;p(T)=T^\alpha q(T),\;q(0)\ne 0 \\
+0     &      & if\;p(T)=0
+\end{array} \right. $$
+\end{example}
+
+\begin{example}
+    $\Gamma=\mathbb R^{>0}\oplus \epsilon^{\mathbb Z}$, we think of $\epsilon$ as infinitesimally smaller than $1$, meaning $\forall r\in\mathbb R^{>0}$ with $r<1\Rightarrow r<\epsilon$ but $\epsilon<1$
+
+    $|\cdot|_ \epsilon: k[x,y]\to \Gamma\cup\{\infty\}$
+    
+    Pick $r\in\mathbb R^{>0}$
+
+    If $p(x,y)=\sum_{i,j}a_{ij}x^iy^j$,
+$$ 
+|p(x,y)|=\left\{
+\begin{array}{rcl}
+max_{i,j,a_{ij}\ne0}r^i\epsilon^j       &      & \\
+0     &      & if\;p(x,y)=0
+\end{array} \right. $$
+
+examples:
+    $|x+y|= max(r,\epsilon)= \epsilon$, $|xy^3+x^2|= max(r\epsilon^3,r^2)= r\epsilon^3$
+\end{example}
+
+\begin{proposition}
+    Let $R$ be a ring and $|\cdot|: R\to \Gamma\cup\{0\}$ a  multiplicative valuation the following hold :
+
+    1) $\{r\in R|\;|r|=0\}$ is a prime ideal $\mathfrak p_{|\cdot|}$
+
+    2) Let $K=Frac(R/\mathfrak p_{|\cdot|})$. We can extend $|\cdot|$ to a map $|\cdot|^\prime: K\to \Gamma\cup\{0\}$ satisfying $|[r]|^\prime = |r|$ if $r\in R,[r]\in Frac(R/\mathfrak p_{|\cdot|}$ and $r$ represents $[r]$
+\end{proposition}
+
+\begin{proposition}
+    Let $K$ be a field, and $A \subset K$ with $Frac A = K$ such that $A$ is a local ring. Then the
+following are equivalent :
+
+1. $A$ is a valuation ring of $K$, so for all $x \in K-\{0\}$ either $x$ or $x^{-1}$ lies in $A$
+
+2. There exists a valuation $|\cdot| : K \to \Gamma \cup \{0\}$ such that $A=\{x \in K | |x| \leq 1\}$
+
+3. For all local rings $A \subseteq B \subseteq K$ where $A \hookrightarrow B$ is a local map, $A = B$
+\end{proposition}
+
+Now suppose $A=V$ is a valuation ring. Let $a,b\in K\setminus\{0\},|a|\leq|b|\Leftrightarrow |\frac{a}{b}\geq_V 1 \Leftrightarrow \frac{a}{b}\in V$
+
+$\Gamma=K^\times/V^\times$ becomes an ordered group, a partial order on $K^\times$ given by $a\leq b$ if $\frac{a}{b}\in V$. It is well defined on $K^\times/V^\times$ : $\leq_V$
+
+For valuation ring $V$. We let $\Gamma_V=(K^\times/V^\times,\leq_V)$
+
+$|\cdot|_V:V\to\Gamma_V\cup\{0\}$ is the canonical one
+
+\begin{definition}
+    If $K^\times / V^\times \cong \mathbb Z$. We say that $V$ is a \textbf{DVR (discrete valuation ring)}
+\end{definition}
+
+\begin{remark}
+    A valuation $|\cdot|:R\to \Gamma\cup \{0\}$ with $|r|\leq1,\forall r\in R$ of this form factor as follows :
+\[\begin{tikzcd}
+	R & {R/\mathfrak p_{|\cdot|}} & V \\
+	{\Gamma\cup\{0\}} && {\Gamma_V\cup\{0\}}
+	\arrow["{|\cdot|_V}", from=1-3, to=2-3]
+	\arrow[two heads, from=1-1, to=1-2]
+	\arrow[hook, from=1-2, to=1-3]
+	\arrow[hook', from=2-3, to=2-1]
+	\arrow["{|\cdot|}"', from=1-1, to=2-1]
+\end{tikzcd}\]
+
+with $Frac(R/\mathfrak p_{|\cdot|}) = Frac(V)$
+\end{remark}
+
+\begin{example}
+    $|\cdot|_\infty : k[T]\to \mathbb R^{>0} \cup \{0\}$ pick $r>1$. $|p(T)|_\infty=r^d,d=deg(p(T))$
+\end{example}
+
+\begin{proposition}
+    Let $V$ be a valuation ring and $|\cdot|_V : V\to \Gamma_V\cup\{0\}$ its canonical valuation, then:
+
+    1) Principal ideals of $V$ are in bijection with sets $S_{\leq r}=\{g\in \Gamma_V|g\leq r\},I_{\leq r}=|\cdot|^{-1}S_{\leq r}$
+
+    2) Finitely generated ideals are principal (Bezout domain)
+
+    3) Ideals of $V$ are bijection with sets $S\subseteq \Gamma_V\cup\{0\}$ satisfying if $r\in S$ and $r^\prime\leq r$, then $r^\prime\in S$. $I_{S}=|\cdot|^{-1}S$
+
+    4) The set of ideals of $V$ is a total order under $\leq$
+\end{proposition}
+
+\begin{remark}
+    Every valuation ring has a unique maximal ideal (it is a local ring)
+\end{remark}
+
+\begin{corollary}
+    If $V$ is a Noetherian valuation ring, then $V$ is a $PID$ and a $DVR$ and $Spec\, V$ is $1$-dimensional, $Spec\,V=\{(0),\mathfrak m\}$
+\end{corollary}
+\begin{theorem}
+Let $A$ be a local noetherian integral domain of $dim\, Spec\, A = 1$, then $Spec\,A=\{(0),\mathfrak m\}$.
+More over $A$ is normal if and only if $\mathfrak m \subseteq A$ is a principal ideal if and only if $A$ is a discrete valuation
+ring
+\end{theorem}
+
+Back to prove Theorem \ref{Thm 3.172} :
+
+\begin{Proof}
+    Using Theorem \ref{Thm 3.184}, we just need to prove for all valuation rings $V$ with $K=Frac(V)$ : $$\mathbb P^n(V)=Hom(Spec\,V,\mathbb P^n_\mathbb Z) \cong Hom(Spec\,k,\mathbb P^n_\mathbb Z)=\mathbb P^n(k)$$
+
+    Because $V$ is a local, $V$ has trivial line bundles. $\mathbb P^n(V)=(\mathbb A^{n+1}\setminus\{0\})(V)/V^\times$, $\mathbb P^n(K)=K^{n+1}\setminus \{0\}/K^\times$, so we need to prove :
+    \[\begin{tikzcd}
+	{\{(x_0,\cdots,x_n)\in V^n\; with\;x_i\in V^\times\;for\;some\;i\}/V^\times} && {(K^n\setminus\{0\})/K^\times}
+	\arrow["bijecive", from=1-1, to=1-3]
+    \end{tikzcd}\]
+
+    Given a tuple $(a_0,\cdots,a_n)\in K^{n+1}\setminus\{0\}$,there is unique $j\in\{0,\cdots,n\},|a_i|\leq|a_j|,\forall i\in\{0,\cdots,n\}$ and $|a_i|< |a_j|,\forall i<j$, then $(\frac{a_0}{a_j},\cdots,1,\cdots,\frac{a_n}{a_j})\in \mathbb A^{n+1}\setminus\{0\})(V)$
+\end{Proof}
+
+
 
 
 
@@ -6172,12 +6519,88 @@ ordered group $\Gamma$, such that
     Let $R$ be a domain, we say $Spec\,R$ is \textbf{normal} if $R$ is integrally closed in its fraction field 
 \end{definition}
 
+i.e. an integral domain $A$ is normal if $x \in K$
+satisfies $x^n + a_{n-1}x^{n-1} + \cdots + a_0 = 0$ for some $a_i \in A$, then $x \in A$
+
+\begin{remark}
+    1) $R$ integrally closed, then $S^{-1}R$ integrally closed
+
+    2) If for all closed $\mathfrak m \in Spec\,R,\, R_{\mathfrak m}$ is integrally closed $\Rightarrow$ $R$ is integrally closed
+\end{remark}
+
+\begin{definition}
+We say $X$ a \textbf{integral scheme} if $X$ is reduced and irreducible
+
+We say $X$ \textbf{normal} if $Spec\,\mathcal O_{X,x}$ is normal for all $x\in X$ (i.e. the local ring $\mathcal O_{X,x}$ is a normal integral
+domain)
+\end{definition}
+
+\begin{example}
+(Non-example)
+
+Let A$ = k[x, y]/(y^2 - x^3)$, the cuspidal cubic. We claim that $A$ is
+not normal. To see this, embed $A$ into $k[t]$ by sending $x \mapsto t^2$ and $y \mapsto t^3$, then $A$ is identified with
+$f =\sum_{i=0}^n
+r_it^i$ with $r_i \in k$ and $r_1 = 0$ inside $k[t]$. In particular, $A$ is an integral domain, since it injects
+into $k[t]$, and $t = y/x \in K = Frac(A) = Frac(k[t])$, and $t$ satisfies the equation $t^2 - x = 0$. By $t \notin A$,
+so $A$ is not normal
+\end{example}
+
+\begin{proposition}
+If $X$ is normal, then $X$ is reduced
+
+If $X$ is integral, then $X$ is normal if and only if for all $U = Spec\, A \subseteq X$ an open affine subset, $A$ is a normal integral domain
+\end{proposition}
+
+\begin{example}
+If $X$ is normal, but not irreducible, it can be that for some $U = Spec\, A \subseteq X$ we have
+that $A$ is not an integral domain, for example $X = Spec\, k \sqcup Spec\, k = Spec\,(k \times k)$ for some field $k$. The
+definition of normality is designed to be a local property of $X$. One can show that if $X$ is noetherian
+and normal, then $X =\sqcup^n_{i=1} X_i$ with $X_i$
+irreducible, normal and noetherian
+\end{example}
+
+\begin{definition}
+    $f:Y\to X$ is \textbf{dominant} if $f(Y)\subseteq X$ is dense
+\end{definition}
+
+\begin{definition}
+    Let $X$ be an integral scheme. Let $\bm{\mathcal C_X}$ be category of $Y\to X$ such that the map $Y\to X$ is dominant and $Y$ is irreducible and normal 
+    
+    A \textbf{normalization} is a final object in $\mathcal C_X$
+\end{definition}
+
+\begin{proposition}
+    With set up as above, the normalization $\widetilde X \to X$ exists and it is integral over $X$, and $Frac(\widetilde X) = Frac(X)$
+\end{proposition}
+
+Claim : $\widetilde U=Spec\,\widetilde A \to Spec\,A$ is the normalization of $U=Spec\,A$
+
+If $Y\xrightarrow{f} U$ is dominant and $Y$ is normal, we get maps 
+\[\begin{tikzcd}
+	{g:A} & {\Gamma(Y,\mathcal O_Y)} & {Frac(Y)} \\
+	& {Frac(U)}
+	\arrow[from=2-2, to=1-3]
+	\arrow[hook, from=1-1, to=2-2]
+	\arrow[hook, from=1-1, to=1-2]
+	\arrow[hook, from=1-2, to=1-3]
+\end{tikzcd}\]
+
+then $A \hookrightarrow \widetilde A\subseteq \Gamma(Y,\mathcal O_Y)$ since $\Gamma(Y,\mathcal O_Y)$ is a normal ring
 
 
+\begin{example}
+    Let $X = Spec\, A$ with $A = k[x, y]/(y^2 - x^3)$ be our cuspidal cubic, then we have
+$(y/x)^2 = x$ inside $Frac(A) = K$. Let $t = y/x$, then we see that $t \in \widetilde A \subseteq K$, such that $x = t^2$ and
+$y = tx = t^3$, thus $\widetilde A \supseteq k[t] \supseteq A$, but $k[t]$ is normal so $\widetilde A = k[t]$. Let
+$$
+\widetilde X = Spec\, \widetilde A =\mathbb A^1_k \to Spec\, A = V (y^2 - x^3) \subseteq \mathbb A^2_k
+$$
 
-
-
-
+be defined by $t \mapsto (t^2, t^3)$, then geometrically this map sends the vertical line $\mathbb A^1_k$
+homeomorphically
+(not isomorphically as schemes) to the cuspidal cubic
+\end{example}
 
 
 
