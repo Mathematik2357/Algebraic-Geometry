@@ -5566,6 +5566,48 @@ Using the Yoneda lemma it suffices to treat the case that $\mathcal C$ is the ca
 
 \end{Proof}
 
+\begin{proposition}
+Let $S = Spec\, R$ be an affine scheme, let $X = Spec\, B \to S$ and
+$Y = Spec\, A \to S$ be affine $S$-schemes and let $f : X \to Y$ be an $S$-morphism corresponding
+to an $R$-algebra morphism $\varphi: A \to B$. Then the diagonal morphism $\triangle_{X/S}$ and graph
+morphism $\Gamma_f$ correspond to the following surjective ring homomorphisms
+\[\begin{tikzcd}
+	{\triangle_{B/R}:B\otimes_R B\to B} && {b\otimes b^\prime\mapsto bb^\prime} \\
+	{\Gamma_\varphi:A\otimes_R B\to B} && {a\otimes b \mapsto \varphi(a)b}
+\end{tikzcd}\]
+
+In particular $\triangle_{X/S}$ and $\Gamma_f$ are closed immersions
+\end{proposition}
+
+In general, $\triangle_{X/S}$ and $\Gamma_f$ are still immersions but not necessarily closed. To show this
+we first remark that if $S$ is a scheme, $X$ an $S$-scheme and $Z, Z^\prime \subseteq X$ are subschemes,
+we may consider $Z \times_S Z^\prime$ as a subscheme of $X \times_S X$ (immersions are stable under base
+change and composition) and we have an equality of subschemes of $X$,
+$$
+Z\cap Z^\prime = \triangle_{X/S}^{-1} ({Z\times_SZ^\prime})
+$$
+
+\begin{proposition}
+Let $S$ be a scheme, let $X$ and $Y$ be $S$-schemes, and let $f,g : X \to Y$ be
+morphisms of S-schemes. Then $\triangle_{X/S}$, $\Gamma_f$ , and the canonical morphism $Ker(f,g) \to X$
+are immersions
+\end{proposition}
+
+Therefore $\triangle_{X/S}$ yields an isomorphism of $X$ onto a subscheme of $X \times_S X$ which we
+call the \textbf{diagonal} of $X \times_S X$. Similarly, we call the subscheme of $X \times_S Y$ attached to the
+immersion $\Gamma_f$ the \textbf{graph} of $f$. Finally, we will usually consider $Ker(f,g)$ as a subscheme
+of $X$
+
+\begin{remark}
+1) A subscheme $\Gamma$ of $X \times_S Y$ is the graph of an $S$-morphism $f : X \to Y$ if and only if
+the restriction of the first projection $p: X \times_S Y$ to $\Gamma$ is an isomorphism (in this case
+$f = q \circ (p|_\Gamma)^{-1}$, where $q$ is the second projection)
+
+2) Let $p, q : X \times_S X \to X$ be the projections, and $\triangle \subseteq X \times_S X$ the diagonal. Then we
+have an inclusion of sets $\triangle \subseteq \{ z \in X \times_S X ; p(z) = q(z) \}$ but this inclusion is in
+general not an equality
+\end{remark}
+
 \subsubsection{$\star$ Scheme theoretic closure and density}
 
 \begin{definition}
@@ -6919,7 +6961,172 @@ Back to prove Theorem \ref{Thm 3.172} :
 
 
 \newpage
-\subsection{Normalization}
+\subsection{Curves and Normalization}
+
+\subsubsection{Curves}
+\begin{proposition}
+$X\to Spec\,k$ morphism of finite type. TFAE : 
+
+1) $dim\,X = 0$
+
+2) $X=Spec A$, $A$ finite dim $k$-algebra
+\end{proposition}
+\begin{Proof}
+2) $\Rightarrow$ 1) :
+
+WLOG $A$ reduced
+$\Rightarrow$
+$A = \Pi_{i=1}^n k_i ,\, k_i/k$ finite field extension
+$\&\,X=\sqcup Spec\,k_i$
+
+1) $\Rightarrow$ (2) :
+
+X of finite type ovor a field
+$\Rightarrow$
+$|X|$ noethorian
+$\Rightarrow$
+$|x|=\cup_{i=1}^n T_i , T_i \subseteq |X|)$ closed
+irreducible
+$T_i \not\subset T_j, i\ne j$
+
+To be continued...
+
+\end{Proof}
+
+\begin{corollary}
+If $X$ as above, and $X$ is connected, reduced, then $X = Spec\, k^\prime$
+where
+$k^\prime/k$ is a finite field extension
+\end{corollary}
+\begin{Proof}
+$X$ is connected implies that $X = Spec\, A$ where $A$ is a local Artinian ring, and $X$ reduced implies
+that $A$ is reduced. But a reduced Artinian ring is a field
+
+\end{Proof}
+
+\textbf{Q}: Can we classify, $0$-dim. schemes $X$, which are of finite type over $k$ ?
+
+WLOG $X$ connected, i.e. $X=Spec\,A$, $A$ finite dim 
+over $k$ $\&$ local. $X$ reduced $\Rightarrow$ $A$ finite field extension of $k$
+
+Impossible to classify !
+
+Thus, should assume $k$ alg.closed.
+
+If $dim_kA=2$, then $A\cong k[x]/x^2$
+
+If $dim_kA=3$, then $A\cong k[x]/x^3$ or $k[x,y]/(x,y)^2$
+
+In higher dimension : no chance !
+
+\begin{definition}
+    A noetherian local ring $(A,\mathfrak m)$ is regular if $dim_{A/\mathfrak m}\, (\mathfrak m/\mathfrak m^2) = dim\,A$
+\end{definition}
+
+Intuition : $Hom_{A/\mathfrak m}\, (\mathfrak m/\mathfrak m^2, A/\mathfrak m)$ is the ``tangent space at $\mathfrak m\in Spec\,A$" $\&$ regulatity is a varsion of ``smoothness"
+
+\begin{example}
+    1)$(\mathbb Z_{(p)},(p))$ are regular
+    
+    $\mathcal O_{\mathbb A_k^n,(z_1,\cdots,z_n)}$ regular ($A=k[x_1,\cdots,x_n]_{(x_1-z_1,\cdots,x_n-z_n)}$)
+
+    2) $k[x]/x^2$ not regular : $dim\,Spec\,A=0\ne1=dim_k((x)/(x^2))$
+\end{example}
+
+\begin{lemma}
+    $(A,\mathfrak m)$ local, $dim\,Spec\,A=0$. TFAE :
+
+    1) $A$ regular
+
+    2) $A$ reduced
+
+    3) $A$ field
+\end{lemma}
+
+\begin{lemma}
+If $T$ is a noetherian topological space, then $T$ is a finite union $T =\cup^n_{i=1} T_i$ where $T_i \subseteq T$
+are irreducible closed subspaces of $T$
+\end{lemma}
+
+\begin{lemma}
+Let $T$ be a noetherian spectral topological space with $d = dim\, T < \infty$, then $T =\cup^n_{i=1} T_i$
+for $T_i \subseteq T$ pointwise distinct closed irreducible subsets, which can be seen as $T_i =\overline {\{ \eta_i\}}$ where $\eta_i \in T_i$ is
+the unique generic point of $T_i$. Moreover, if $T_i \ne T_j$ , then $dim(T_i \cap T_j ) < d$
+\end{lemma}
+
+\begin{example}
+Let’s have a look at the case when $d = 0$, then $T$ has no specialisations so $T_i = \overline {\{ \eta_i\}} =
+\{\eta_i\}$, so $T =\cup^n_{i=1} T_i$
+is a discrete finite space
+\end{example}
+
+\begin{example}
+For $d = 1$, then our $T$ might be a finite collection of curves and points, and two curves
+always intersect each other at finitely many point, one dimension lower than curves
+\end{example}
+
+Let's move to $X$ a $1$-dimensional scheme of finite type over $k$
+
+Assume $X$ reduced $\Rightarrow$ $|X|=\cup_{i=1}^n T_i \bigsqcup \sqcup_{j=1}^mZ_j, \;dim\,T_i=1, dim\,Z_j=0$. Each $T_i$ defines closed subscheme $X_i\subseteq X$ (with reduced subscheme structure)
+
+WLOG $\bigcap Z_j = \emptyset$ i.e.equidimensional
+
+Can ``reconstruct" $X$ from the $X_i$ $\&$ their intersections $Z_{ij}:=X_i\cap X_j$
+
+For simplicity $n=2$. Then toplogically $|X|=|X_i|\sqcup|X_2|/|Z_{12}|$
+$$
+\{U\subseteq X\;open\}
+\leftrightarrow
+\{
+(U_1.U_2)|U_i\subseteq X_i\;open\;s.t.\;U_i\cap|Z_{12}|=U_2\cap|Z_{12}|
+\}
+$$
+
+Moreover $\mathcal O_X(U)\xrightarrow{\sim} \mathcal O_{X_1}(U_1) \times_{\mathcal O_{Z_{12}}(U_1\cap|Z_{12}|)} \mathcal O_{X_2}(U_2)$
+
+\begin{example}
+$\mathbb A_k^2=Spec\,k[y_1,y_2], $
+    
+$X_1=Spec\,A_1\;\;A_1=k[y_1,y_2]/y_2-y_1^2, $
+
+$X_2=Spec\,A_2\;\;A_2=k[y_1,y_2]/y_2,Z=X_1\cap X_2=Spec\,B,B=k[y_1,y_2]/(y_2,_2-y_1^2)\cong k[\epsilon]/\epsilon^2$
+
+$X=Spec\,A,A=k[y_1,y_2]/(y_2-y_1^2)\cap(y_2)$
+\end{example}
+
+\begin{definition}
+Let $k$ be a field. A \textbf{curve} over $k$ is a reduced, irreducible and separated $1$-dimensional scheme
+$C$ of finite type over $k$ (i.e. $1$-dimensional
+$k$-variety)
+\end{definition}
+
+As with $0$-dim . schemes, understanding
+singularities is hard !
+
+In $dim\,0$ :
+regular=reduced
+
+In $dim\,1$ : regular =normal
+
+\textbf{Tangent curves}
+
+\begin{definition}
+    $(A,\mathfrak m)$ local ring, $\bm{gr_\mathfrak mA:= \oplus_{n\leq 0}\,\mathfrak m^n/\mathfrak m^{n+1}}$. It is a graded $A/\mathfrak m$-algebra. Then $Spec\,gr_\mathfrak m A$ is the tangent cone of $\mathfrak m$ in $Spec\,A$
+\end{definition}
+
+\begin{example}
+    1) $(A,\mathfrak m)=(\mathbb Z_{(p)},(p))$, $\;\;\;gr_\mathfrak mA\cong \mathbb F_p[u],u=p+(p)^2$
+
+In particular, $Spec\,gr_\mathfrak m A$ is not a closed
+subscheme of $Spec\,A$!
+
+    2) $\mathfrak m=(x_1,\cdots,x_n) \subseteq A=k[x_1,\cdots,x_n]_{(x_1,\cdots,x_n)}$, $\;\;\;gr_\mathfrak m A=k[u_1,\cdots,u_n],u_i=x_i+\mathfrak m^2$
+
+    3) $\mathfrak m^\prime=(x,y) \subseteq A^\prime=k[x,y]/y^2-x^2-x^3$, $A=A^\prime_{\mathfrak m^\prime},\mathfrak m=\mathfrak m^\prime A^\prime_{\mathfrak m^\prime}$,
+    $\;\;\;gr_\mathfrak m A= gr_{\mathfrak m^\prime} A^\prime \cong k[u,v]/u^2-v^2,u=x+\mathfrak m^2,v=y+\mathfrak m^2$
+\end{example}
+
+\subsubsection{Normalization}
 
 \begin{definition}
     Let $R$ be a domain, we say $Spec\,R$ is \textbf{normal} if $R$ is integrally closed in its fraction field 
@@ -6977,7 +7184,13 @@ irreducible, normal and noetherian
 \end{definition}
 
 \begin{definition}
-    Let $X$ be an integral scheme. Let $\bm{\mathcal C_X}$ be category of $Y\to X$ such that the map $Y\to X$ is dominant and $Y$ is irreducible and normal 
+    Let $X$ be an integral scheme. Let $\bm{\mathcal C_X}$ be category of morphisms $Y\to X$ with 
+    
+    1) $Y\to X$ dominant 
+    
+    2) $Y$ normal
+    
+    3) $Y$ irreducible
     
     A \textbf{normalization} is a final object in $\mathcal C_X$
 \end{definition}
@@ -6985,7 +7198,7 @@ irreducible, normal and noetherian
 \begin{proposition}
     With set up as above, the normalization $\widetilde X \to X$ exists and it is integral over $X$, and $Frac(\widetilde X) = Frac(X)$
 \end{proposition}
-
+\begin{Proof}
 Claim : $\widetilde U=Spec\,\widetilde A \to Spec\,A$ is the normalization of $U=Spec\,A$
 
 If $Y\xrightarrow{f} U$ is dominant and $Y$ is normal, we get maps 
@@ -7000,6 +7213,13 @@ If $Y\xrightarrow{f} U$ is dominant and $Y$ is normal, we get maps
 
 then $A \hookrightarrow \widetilde A\subseteq \Gamma(Y,\mathcal O_Y)$ since $\Gamma(Y,\mathcal O_Y)$ is a normal ring
 
+To be continued...
+
+\end{Proof}
+
+\begin{lemma}
+    If $B\to C$ ring map and $C^\prime =$ integral closure of $B$ in $C$ and $S\subseteq B$ be multiplicate subset, then $S^{-1}B\subseteq S^{-1}C^\prime$ is the integral closure of $S^{-1}B$
+\end{lemma}
 
 \begin{example}
     Let $X = Spec\, A$ with $A = k[x, y]/(y^2 - x^3)$ be our cuspidal cubic, then we have
@@ -7014,25 +7234,131 @@ homeomorphically
 (not isomorphically as schemes) to the cuspidal cubic
 \end{example}
 
+\begin{remark}
+    Suppose $X$ is a scheme with $|X|$ noetherian, then $|X|=\cup_{i=1}^nT_i$, where $T_i$ is irreducible components. Let $X_i=$ reduced closed subscheme with $|X_i|=T_i$
 
+    Then $\sqcup_{i=1}^n X_i^{nor} \to X$ is called the \textbf{normalization} of $X$
+\end{remark}
 
+\begin{theorem}
+    $k$ field, $X \mapsto Spec\,k$. Then $X^{norm} \to X$ is a finite morphism
+\end{theorem}
 
-\newpage
-\subsection{Curve}
+\begin{theorem}
+    $(A,\mathfrak m)$ local noetherian domain, $dim\,A=1$
+    
+    Then $Spec\,A=\{(0).\mathfrak m\}$. Moreover, TFAE :
+
+    1) $A$ is normal
+
+    2) $\mathfrak m$ is principal
+
+    3) $A$ is a DVR
+\end{theorem}
+
+\begin{corollary}
+    $k$ field, $C$ curve over $k$. TFAE :
+
+    1) $C$ normal
+
+    2) $\forall x\in C$, $\mathcal O_{C,x}$ is regular
+
+    3) $\forall x\in C$ closed, $\mathcal O_{C,x}$ is a DVR
+\end{corollary}
+
+Given field $k$, set $\bm{\mathcal C_K}=\{A\subseteq K\; local\;domain\; with\; Frac(A)\}$
+
+\begin{example}
+    $C$ curve/$k$, $\eta\in C$ generic point $K=k(\eta)$ $\Rightarrow$ Have map $\Phi:|C| \to \mathcal C_K, \; x\mapsto \mathcal O_{C,x}$
+\end{example}
 
 \begin{proposition}
-$X\to Spec\,k$ morphism of finite type. TFAE : 
+    $R$ domain, $K=Frac(R),\widetilde R$ integral closure. Then
 
-1) $dim\,X = 0$
+1)
+$$
+R=\bigcap_{\substack{R\subseteq A\\[3pt]A\in \mathcal C_K}}A
+=\bigcap_{\substack{\mathfrak p\in Spec\,R}}R_{\mathfrak p}
+$$
 
-2) $X=Spec A$, $A$ finite dim $k$-algebra
+2)
+$$
+\widetilde R=\bigcap_{\substack{R\subseteq V,V\in\mathcal C_K\\[3pt]V\;valuation\;ring}}V
+$$
+
+3) If $R=\widetilde R$ noetherian, then
+$$
+R=\bigcap_{\substack{R\subseteq V\\[3pt]V\in \mathcal C_K,\, DVR}}V
+$$
+\end{proposition}
+
+\begin{proposition}
+    $k$ field, $K/k$ finitely generated field extension with $tr.deg_k(K)=1$
+
+    If $k\subseteq V \subseteq K$ is a valuation ring with $Frac(V)=K$, then $V=K$ or $V$ is a DVR
+\end{proposition}
+
+Wrong for $tr.deg_k(K)\geq 2$
+
+\begin{corollary}
+    $k$ field, $X=Spec\,A$ normal affine curve over $k$. Set $K:=Frac(A)$
+
+    Then $A = \bigcap \limits_{x\in X} \mathcal O_{X,x} \subseteq K$ $\&$ each $\mathcal O_{X,x}$ is a DVR
+\end{corollary}
+
+\begin{theorem}
+    Let $k$ be a field, let $\mathcal G_k$ denote the category of normal proper curves over $k$. Let $\mathcal F_k^1$ denote the category of finitely generated field extensions with $tr.deg_k(K)=1$
+
+    The functor $\varphi : \mathcal G_k \to \mathcal F_k^{1,op}$ sending a curve to its function field is an equivalence
+\end{theorem}
+\begin{Proof}
+    To be continued...
+    
+\end{Proof}
+
+\begin{definition}
+    Let $X$ and $Y$ be integral schemes. Consider pairs $(U,f)$ with $U\subseteq X$ open and $f:U\to Y$ a map of schemes
+
+    Two pairs $(U,f)\sim(V,g)$ are equivalent if there is $W\subseteq U\cap V$ with $f|_W=g|_W$
+
+    A \textbf{rational map} $X\dashrightarrow Y$ is an equivalence class of pairs
+\end{definition}
+
+\begin{definition}
+    $k$-varieties together with rational maps form a category. Two $k$-varieties are said to be \textbf{birational} if they are isomorphic in this category
+\end{definition}
+
+\begin{example}
+    If $\eta \in X$ is the generic point of the variety, then $k(\eta)=\{rational\; maps\; X\dashrightarrow \mathbb A_{\mathbb Z}^1 \}$
+\end{example}
+
+\begin{proposition}
+    Let $k$ be a field. Let $\mathcal V_k$ be the category of $k$-varieties with rational dominant morphisms. Let $\mathcal F_k$ be the category of finitely generated field extension over $k$
+
+    The functor $\mathcal V_k \to \mathcal F_k^{op}$ sending a variety to its function field is an equivalence
+\end{proposition}
+
+\begin{proposition}
+    Every curve is birational to a proper normal curve
+\end{proposition}
+
+\begin{proposition}
+    Every dominant rational map of proper normal curves is represented by a morphism of schemes
+\end{proposition}
+
+\begin{example}
+$Bl_{[0:0:1]}\mathbb P_k^2 \to \mathbb P_k^2$ as an example of two $2$-dimension $k$-varieties, proper and smooth and birational but not isomorphic
+\end{example}
+
+\begin{proposition}
+    Every dominant morphism of proper curves is finite
 \end{proposition}
 
 
 \subsubsection{smooth}
 
 Normal scheme is equivalent to a smooth scheme if the dimension
-of our scheme is less than or equal to 1
+of our scheme is less than or equal to $1$
 
 \begin{proposition}
 (Corollary 3.36). Let $k$ be algebraically closed and let $X$ be a $k$-scheme locally of finite
@@ -7041,6 +7367,7 @@ $$
 \{ x \in X ; x \; closed \} = \{ x \in X ; k = \kappa(x) \} = X(k) := Hom_k(Spec\, k,X)
 $$
 \end{proposition}
+
 
 \begin{definition}
 Let $X$ be a scheme, and let $x \in X$. Then $\mathfrak m_x/\mathfrak m_x^2$ is a vector space over
@@ -7089,11 +7416,25 @@ Hint: Use that a $1$-dimensional normal local noetherian domain is a discrete va
 
 
 
+\newpage
+\subsection{Ample Line Bundles}
+
+Recall that a map $X\to\mathbb P_{\mathbb Z}^n$ consists of $\{\mathcal L \in Pic(X)\;and\;s_0,\cdots,s_n \in \Gamma(X,\mathcal L)\;s.t.\cup_{i=0}^nD(s_i)=X\}/\sim$ where $D(s_i)=\{x\in X|s_i(x)\ne 0 \}$
+
+\textbf{Q} : Can we understand locally closed immersion $X\to \mathbb P_{\mathbb Z}^n$ is terms of this data ?
+
+\begin{definition}
+    Let $X$ be a scheme, $\mathcal L\in Pic(X)$, we say that $\mathcal L$ is ample if 
+
+    1) $X$ is quasi-compact
+
+    2) $\forall x\in X$ there is $n\geq0$ and $s\in\Gamma(X.\mathcal L^{\otimes n})$ s.t. $x\in D(s)\subseteq X$ and $D(s)$ is an affine scheme
+\end{definition}
 
 
 
 \newpage
-\subsection{Permanence for properties of morphisms of schemes}
+\section{Permanence for properties of morphisms of schemes}
 
 See Red Book
 
