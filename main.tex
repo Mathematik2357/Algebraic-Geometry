@@ -4020,6 +4020,7 @@ $$
 
 
 \newpage
+\section{Sheaf of Module}
 \subsection{$\mathcal O_X$-module}
 \begin{definition}
     Given a ring $A$ and an $A$-module $M$. Then we define a presheaf $\widetilde{M}$ on $X={\mathrm{Spec}}\,A$, defined on the basis of principal opens by
@@ -5312,6 +5313,17 @@ S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
 \end{equation*}
 \end{Proof}
 
+
+
+
+
+
+\newpage
+
+\section{Morphisms of Schemes}
+
+
+\subsection{Hausdorff Property for Schemes}
 \subsubsection{Properties of morphisms of schemes}
 \begin{definition}
     Let $P$ be a property of morphisms of schemes, we say that $P$ is 
@@ -5353,13 +5365,6 @@ S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
     Then $P_1,P_2\in COMP,BC,LOCT$, but
     $P_1,P_2\notin LOCS$
 \end{example}
-
-
-
-
-
-\newpage
-\subsection{Hausdorff Property for Schemes}
 
 A topological space $X$ is Hausdorff if and only if the diagonal $\triangle \subseteq X\times X$ is a closed subset. The analogue in algebraic geometry is, given a scheme $X$ over a base scheme $S$, to consider the diagonal morphism
 $$\triangle_{X/S}:X \to X\times_SX$$
@@ -6660,6 +6665,7 @@ where $i:X^\prime \to \mathbb P_S^n$ is an immersion, and $\pi:X^\prime\to X$ is
 
 
 \newpage
+\section{Curves}
 \subsection{Valuative Criterion and Valuation Rings}
 \subsubsection{Diagonal of scheme morphisms and separated morphisms}
 
@@ -7431,6 +7437,262 @@ Recall that a map $X\to\mathbb P_{\mathbb Z}^n$ consists of $\{\mathcal L \in Pi
     2) $\forall x\in X$ there is $n\geq0$ and $s\in\Gamma(X.\mathcal L^{\otimes n})$ s.t. $x\in D(s)\subseteq X$ and $D(s)$ is an affine scheme
 \end{definition}
 
+Observe that $D(s^n)=D(s)$, where if $s\in \Gamma(X,\mathcal L)$ $\Rightarrow$ $s^n\in \Gamma(X,\mathcal L^{\otimes n})$, in particular, $\mathcal L$ is ample iff $\mathcal L^{\otimes n}$ is ample $\forall\,n\geq1$
+
+\begin{proposition}
+    $\mathcal L$ is ample iff $\exists\,n>0$ and $s_1,\cdots,s_n \in \Gamma(X,\mathcal L^{\otimes n})$ with $D(s_i)$ affine and $X=\cup_{i=1}^n D(s_i)$
+\end{proposition}
+
+\begin{example}
+    $\mathcal O(1)$ is ample line bundle of $\mathbb P_{k,\mathbb Z}^n$, more generally $\mathcal O(m)$ is ample if $m\geq1$, but $\mathcal O(m)$ is not ample if $m\leq0$
+\end{example}
+
+\begin{theorem}
+    Let $X$ be a scheme of finite type over a field $k$, then $X$ is quasi-projective iff $X$ has an ample line bundle
+\end{theorem}
+
+\begin{remark}
+    If $i:X\to \mathbb P_k^n$ is a locally closed immersion, then $i^\ast\mathcal O(1)$ is ample. Conversely, if $\mathcal L$ is ample, then there is $m\geq1$ and $s_0,\cdots,s_N \in \Gamma(X,\mathcal L^{\otimes m})$ s.t. the data $(\mathcal L,s_0,\cdots,s_N)f: X\to \mathbb P_k^N$ defines a locally closed immersion and $f^\ast\mathcal O(1)=\mathcal L^{\otimes m}$
+\end{remark}
+
+\begin{proposition}
+Let $X$ be a scheme of finite type over a field $k$, then projective implies $X$ is proper
+and quasi-projective, proper implies separated, quasi-projective implies separated, and affine implies
+quasi-projective. Moreover, $X$ is projective if and only if $X$ is proper and quasi-projective
+\end{proposition}
+\begin{Proof}
+(Using the Valuative Criterion)
+
+To be continued ...
+\end{Proof}
+
+\begin{corollary}
+    Let $X$ be a finite type scheme/$k$. Then TFAE :
+
+    1) $X$ is projective/$k$
+
+    2) $X$ is proper and has an ample line bundle
+\end{corollary}
+
+\begin{lemma}
+    Let $X=Spec\,A$ and $\mathcal L\in Pic(X)$. Then $\mathcal L$ is ample
+
+    Moreover for any $s\in \Gamma(X,\mathcal L^{\otimes m})$, $D(s)$ is affine
+\end{lemma}
+\begin{Proof}
+    To be continued ...
+    
+\end{Proof}
+
+\begin{remark}
+    Although $D(s)$ is affine it might not be a distinguished affine
+\end{remark}
+
+\begin{proposition}
+    If $X$ has an ample line bundle, then it is a separated scheme
+\end{proposition}
+\begin{Proof}
+(Using the Valuative Criterion)
+
+To be continued ...
+    
+\end{Proof}
+
+\begin{proposition}
+    Let $X$ be a qcqs scheme and $\mathcal L\in Pic(X)$. Let $s\in \Gamma(X,\mathcal L)$ and $\mathcal M\in Qcoh(X)$. Then : $$\,\Gamma(D(s),\mathcal M)=colim_{n\in\mathbb N}(\,\Gamma(X,\mathcal M) \xrightarrow{s} \Gamma(X,\mathcal M\otimes \mathcal L)\xrightarrow{s} \Gamma(X,\mathcal M\otimes \mathcal L^{\otimes 2})\cdots)$$
+
+    $s:\mathcal M\otimes \mathcal L^{\otimes n} \to \mathcal M\otimes \mathcal L^{\otimes n+1}$ is given as : take $s\in \Gamma(X,\mathcal L)$ is a map $\mathcal O_X\xrightarrow{s} \mathcal L$, then we tensor it by $[\mathcal M\otimes \mathcal L^{\otimes n}] \otimes [\mathcal O_X\xrightarrow{s} \mathcal L]$
+\end{proposition}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof}
+
+Version of followings : If $A$ is a ring and $M$ is an $A$-module, then $$M\otimes_AA[f^{-1}]
+=colim
+(M \xrightarrow{f} M \xrightarrow{f} 
+M\xrightarrow{f}
+\cdots)$$
+
+The $n$th piece of the colimit is given by $M\to M[f^{-1}],\;m\mapsto \frac{m}{f^n}$, this is compatible $n$ transition maps
+
+\begin{lemma}
+    Let $X$ be qc and $\mathcal L\in Pic(X)$. Then $\mathcal L$ is ample iff the collection of $D(s)$ varying over $s\in \Gamma(X,\mathcal L^{\otimes m})$ form a basis for the topology of $X$
+\end{lemma}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof}
+
+\begin{corollary}
+    If $f:X\to Y$ is a locally closed immersion and $\mathcal L\in Pic(Y)$, then $f^\ast\mathcal L$ is ample
+\end{corollary}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof}
+
+\begin{proposition}
+    Let $X$ be a noetherian scheme $\mathcal L\in Pic(X)$. TFAE :
+
+1) $\mathcal L$ is ample on $X$
+
+2) For all coherent sheaves $\mathcal M$ on $X$ there exists $m > 0$ such that $\mathcal M \otimes \mathcal L^{\otimes m}$ is globally generated
+
+3) For all coherent ideal sheaves $\mathcal I$ on $X$ there exists $m > 0$ such that $\mathcal I \otimes \mathcal L^{\otimes m}$ is globally generated
+
+4) For all coherent sheaves $\mathcal M$ on $X$ there exists $m_0 > 0$ such that for all $m \geq m_0$ the sheaf $\mathcal M \otimes \mathcal L^{\otimes m}$
+is globally generated
+
+5) For all coherent ideal sheaves I on $X$ there exists $m_0 > 0$ such that for all $m \geq m_0$ the sheaf
+$\mathcal I \otimes \mathcal L^{\otimes m}$ is globally generated
+\end{proposition}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof}
+
+\begin{proposition}
+If $f : X^\prime \to X$ is an affine map of schemes, and $\mathcal L$ is an ample line bundle on $X$, then
+$f^\ast\mathcal L$ is ample on $X$
+\end{proposition}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof}
+\begin{theorem}
+    If $f : X^\prime \to X$ is an finite map of schemes, and $f^\ast\mathcal L$ is an ample line bundle on $X$, then $\mathcal L$ is ample on $X$
+\end{theorem}
+
+\begin{theorem}
+Let $X$ be a separated normal curve over a field $k$, then $C$ is quasi-projective. Moreover,
+if $C$ is proper then $C$ is projective
+\end{theorem}
+\begin{Proof}
+To be continued ...
+    
+\end{Proof} 
+
+\begin{theorem}
+(?)
+    
+Let $k$ be a field. Then all curves over $k$ are quasi-projective
+\end{theorem}
+
+In class today when we were proving that every curve (including non-proper and non-regular) is quasi-projective I mentioned one has to use a statement of the form. 
+
+\begin{theorem}
+    If $X \to Y$ is finite and $\mathcal L$ is a line bundle over $Y$ then it is ample if and only if the pullback to $X$ is ample
+\end{theorem}
+
+The idea was then to use this theorem to reduce the statement to proper normal curves. 
+In the proof I presented I started by saying take $C$ a curve and $X\to C$ be its normalization, which is a finite map. Then I said that if we prove $X$ is quasi-projective we can use the theorem we mentioned above to show that C is also quasi-projective. This is a bit more complicated than that since we have to construct a line bundle L on Y for which we can show that its pullback to the normalization is ample, and I did not construct this line bundle for you. As it turns out this line bundle can be constructed using what we will see next Thursday. I apologize for the confusion!
+
+
+
+\newpage
+\subsection{Divisors for Curves}
+For this lecture and the next, let $C$ be a proper normal curve over a field $k$ (which will be algebraically
+closed)
+
+\begin{definition}
+1) A \textbf{divisor} on a curve $C$ is a formal sum $D=\sum_{x\in C(k)} n_x[x]$ with $n_x\in \mathbb Z$ and almost all $n_x=0$. In other words, the (abelian) group $Div(C)$ of
+divisors on $C$ is the free abelian group on the set of closed points of $C$. (We will often not say that
+$x \in C$ is closed to clean up some equations, but when we are talking about divisors in this lecture, we always mean $x \in C$ with $x$ closed)
+
+2) $D \in Div(C)$ is an \textbf{effective divisor} if $n_x \geq 0$ for all $x \in C$ closed. We call $Div^+(C) \subseteq Div(C)$ the
+semi-group of effective divisors
+
+3) Let $D \in Div(C)$, then we define the $\mathcal O_C$-module $\bm{\mathcal O_C (D)}$ by :
+$$
+\Gamma(U, \mathcal O_C (D)) = \{f \in K | \forall\, x \in U\; closed, v_x(f) \geq -n_x\}
+$$
+
+where $v_x : K \to \mathbb Z$ is the discrete valuation corresponding to $x$, $K = K(C)$ is the function field of $C$ and $U \subseteq C$ is a non-empty open subset
+\end{definition}
+
+\begin{example}
+1) If our divisor is the unique zero divisor, $D = 0$, then $\mathcal O_C (D) = \mathcal O_C$ . Indeed, for
+all $U = Spec\, A \subseteq C$ we have :
+\begin{align*}
+\label{sup}
+\Gamma(U, \mathcal O_C (D))
+&=\{f \in K |\, \forall\,x\in U(k), v_x(f) \geq 0\}\\
+&=\{f \in K |\, \forall\,x\in U(k), f\in\mathcal O_{C,x}\subseteq K\}\\
+&=
+\{f \in K = Frac\, A |\,\forall\,x \in Spec_{max} A, f \in A_x\}
+=\bigcup\limits_{x\in U(k)}\mathcal O_{C,x}
+=A
+=\Gamma(U, \mathcal O_C )
+\end{align*}
+
+as $A_x$ is all $f \in K$ with $v_x(f) \geq 0$
+
+2) If $D = -[x]$ for some closed point $x \in C$, then $\mathcal O_C (D)$ is the ideal sheaf of the reduced closed
+subscheme $\{x\} \subseteq C$, which means
+$$
+\Gamma(U,\mathcal  O_C (D)) = \{f \in \mathcal O_C (U) |\, f \in \mathfrak m_x \subseteq \mathcal  O_{C,x}\}
+$$
+
+3) If $D = -n[x]$ for some $n \geq 0$, then $\mathcal O_C (D) \subseteq \mathcal O_C$ is the subsheaf of functions with zero of order greater than $n$ at $x$. It is the ideal sheaf corresponding to closed immersion $i_{x,n}:Spec\,\mathcal O_{C,x}/\mathfrak m_x^n \hookrightarrow C$
+
+4) If $D = n[x]$ and $n \geq 0$ then $\mathcal O_C (D) \subseteq \mathcal O_C$ is the subsheaf of functions with a pole of order at
+most $n$ at $x$
+\end{example}
+
+\begin{proposition}
+    For any divisor $D \in Div(C)$, the $\mathcal O_C$-module $\mathcal O_C(D)$ is a line bundle
+\end{proposition}
+\begin{Proof}
+    To be continued...
+\end{Proof}
+
+\begin{lemma}
+    There is a natural map of abelian groups $Div(C) \to Pic(C)$ which sends $D \mapsto \mathcal O_C (D)$ is a homomorphism
+
+    In other words, for two divisors $D, D \in Div(C)$, there is a canonical isomorphism :
+    \[\begin{tikzcd}
+	{\mathcal O_C(D_1)\otimes_{\mathcal O_C}\mathcal O_C(D_1)} & {\mathcal O_C(D_1+D_2)} \\
+	{f\otimes g} & fg
+	\arrow["\sim", from=1-1, to=1-2]
+	\arrow[maps to, from=2-1, to=2-2]
+\end{tikzcd}\]
+\end{lemma}
+\begin{Proof}
+    To be continued...
+\end{Proof}
+
+\begin{proposition}
+    The map $Div(C) \to Pic(C)$ is surjective
+\end{proposition}
+\begin{Proof}
+    To be continued...
+\end{Proof}
+
+Given any $f \in K^\times$, we can construct the divisor :
+\[\begin{tikzcd}
+	{K^\times} & {Div(C)} \\
+	f & {\sum\limits_{x\in C(k)}v_x(f)[x]}
+	\arrow["div", from=1-1, to=1-2]
+	\arrow[maps to, from=2-1, to=2-2]
+\end{tikzcd}\]
+
+Note that if there exists $U, U^\prime$ such that $f \in \Gamma(U,\mathcal O_C)$ and $f^{-1} \in \Gamma(U^\prime,\mathcal O_C)$, then we have $v_x(f) = 0$
+for all $x \in U \cap U^\prime$
+
+We now come to the theorem which tells us how to calculate the Picard group of a curve $C$, if we
+know about its function field and divisors
+
+\begin{theorem}
+    We have an exact sequence
+    $$
+    \bm{0 \to k^\times \to K^\times \xrightarrow{div} Div(C) \to Pic(C) \to 0}
+    $$
+
+    Important thing : $\bm{Pic(C) \cong Div(C)/K^\times}$
+\end{theorem}
+
+
 
 
 \newpage
@@ -7483,9 +7745,12 @@ purely inseparable. Immersions; (LOCT), (COMP), (BC), (CANC): [EGAInew]
 (3.7.6); (IND): [EGAIV] (8.10.5); (DESC): [EGAInew] (3.7.6)
 
 
+\newpage
+\section{Relations between properties of
+morphisms of schemes}
 
-
-
+\newpage
+\section{Constructible and open properties}
 
 
 
