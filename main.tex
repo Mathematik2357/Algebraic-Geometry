@@ -1765,7 +1765,7 @@ a subgroup $H < G$. Then induction and restriction are an adjoint pair $(Ind^G_H
        & & & of scalars) &
       \\
       \hline
-      quasicoherent sheaves, & $QCoh_X$ & $QCoh_Y$ & &
+      quasi-coherent sheaves, & $QCoh_X$ & $QCoh_Y$ & &
       \\
       affine $\pi: X \rightarrow Y$ & & & $\pi_\ast$ & $\pi^!_{sh}$
       \\
@@ -3207,7 +3207,7 @@ we get sheaf cohomology from
     Let $X$ be a topological space, and let $\mathcal{F}$ and $\mathcal{G}$ be sheaves, and let $\phi:{\mathcal{F}} \rightarrow{\mathcal{G}}$ be a morphism of sheaves.
     
 1. The maps $\phi$ is called \textbf{injective} (resp.\textbf{bijective}) if for all $x\in X\ \phi_{x}:{\mathcal{F}}_{x} \rightarrow{\mathcal{G}}_{x}$ is injective (resp.
-bijective). This is eguivalent to $\phi_{U}$ being injective (resp.bijective) for all open subsets $U\subseteq X$ 
+bijective). This is equivalent to $\phi_{U}$ being injective (resp.bijective) for all open subsets $U\subseteq X$ 
 
 2. The map $\phi$ is called \textbf{surjective} if for all $x\in X\,\phi_{x}:{\mathcal{F}}_{x} \rightarrow{\mathcal{G}}_{x}$ is surjective. This is not equivalent to $\phi_U$ being surjective for all $U\subseteq X$
 \end{definition}
@@ -3259,7 +3259,16 @@ $$
 that $B\cong A_{\mathfrak{p}_x},$ The above colimit is taken over the structure maps ${\frac{a}{f^{n}}}\longmapsto{\frac{a}{f^{n}}}\ ={\frac{a g^{n}}{(f g)^{n}}}$
 \end{Proof}
 
+\begin{definition}
+\textbf{support of a section}
 
+This motivates a concept we will find useful
+later. Suppose $\mathcal F$ is a sheaf (or indeed separated presheaf) of abelian groups on $X$, and $s$ is a global section of $\mathcal F$. Then let the support of $s$, denoted $Supp(s)$, be the
+points $p$ of $X$ where $s$ has a nonzero germ:
+$$\bm{
+Supp(s) := \{p \in X : s_p = 0\; in\;\mathcal F_p\}
+}$$
+\end{definition}
 
 
 \newpage
@@ -3358,7 +3367,20 @@ Hom\left(\left(X, \mathcal{O}_{X}\right),\left(Y, \mathcal{O}_{Y}\right)\right) 
 $$
 \end{corollary}
 
+\begin{definition}
+\textbf{support of a sheaf}
 
+A support of a sheaf $\mathcal G$ of sets, denoted $Supp\,\mathcal G$ , as the locus
+where the stalks are not the one-element set:
+$Supp\,\mathcal G := \{p \in X : |\mathcal G_p| \ne 1\}$
+
+(More generally, if the sheaf has value in some category, the support consists of
+points where the stalk is not the final object. For a sheaf $\mathcal G$ of abelian groups,
+the support consists of points with nonzero stalks  $Supp\,\mathcal G := \{p \in X :\mathcal G_p \ne
+0\}$  or equivalently is the union of supports of sections over all open sets) Suppose $Supp\,\mathcal G \subset Z$ where $Z$ is closed. Show that the natural
+map $\mathcal G \to i_\ast i^{-1}\mathcal G$ is an isomorphism. Thus a sheaf supported on a closed subset
+can be considered a sheaf on that closed subset
+\end{definition}
 
 \newpage
 \subsection{Recovering sheaves from a “sheaf on a base”}
@@ -3545,8 +3567,6 @@ Take $p$ some prime, then there is a morphism of ringed spaces $f_{\mathrm{p}}:(
     The functor $\mathrm{Spec} : \{Ring\}^{op}\to\{locally\;ringed\;spaces\}$ is fully faithful onto its image, which we’ll call the category of affine schemes
 \end{theorem}
 
-
-
 \newpage
 \subsection{Affine Schemes with Strucutre Sheaf are Rings}
 \subsubsection{$
@@ -3569,6 +3589,8 @@ of $X$ in $x$, denote by $\mathfrak m_x$ the maximal ideal of $\mathcal O_{X,x}$
 field. If $U$ is an open neighborhood of $x$ and $f \in\mathcal O_X(U)$, we denote by $f(x) \in \kappa(x)$ the image of $f$ under the canonical homomorphisms $\mathcal O_X(U) \to \mathcal O_{X,x} \to \kappa(x)$
 
 \begin{definition}
+\textbf{support of a section}
+
 Let $(X,\mathcal O_X)$ be a locally ringed space, and $f \in\mathcal O_X(X)$
 
 Define
@@ -4020,7 +4042,7 @@ $$
 
 
 \newpage
-\section{Sheaf of Module}
+\section{Sheaf of Modules}
 \subsection{$\mathcal O_X$-module}
 \begin{definition}
     Given a ring $A$ and an $A$-module $M$. Then we define a presheaf $\widetilde{M}$ on $X={\mathrm{Spec}}\,A$, defined on the basis of principal opens by
@@ -4110,7 +4132,7 @@ Necessarily we have $M={\mathcal{M}}(X)$ as $M={\widetilde{M}}(X)$  but we still
 
 
 \newpage
-\subsection{Quasi-coherent sheaf}
+\subsection{Quasi-coherent Sheaf}
 \subsubsection{Quasi-coherent sheaves}
 \begin{definition}
 \textbf{quasi-coherent sheaf}
@@ -4182,7 +4204,7 @@ Given a short exact sequence of $\mathcal O_X$-modules $0 \to F_1 \to F_2 \to F_
 
 7) Given a quasi-coherent $\mathcal O_X$-module $\mathcal F$ the tensor, symmetric and exterior algebras on $\mathcal F$ are quasi-coherent, see Stacks project : Modules, Lemma 17.21.6
 
-8) Given two quasi-coherent $\mathcal O_X$-modules $\mathcal F, \mathcal G$ such that $\mathcal F$ is of finite presentation, then the internal hom $Hom_{\mathcal O_X}(\mathcal F,v G)$ is quasi-coherent, see Prop \ref{prop 3.117}
+8) Given two quasi-coherent $\mathcal O_X$-modules $\mathcal F, \mathcal G$ such that $\mathcal F$ is of finite presentation, then the internal hom $Hom_{\mathcal O_X}(\mathcal F,\mathcal G)$ is quasi-coherent, see Prop \ref{prop 4.79}
 \label{prop 3.61}
 \end{proposition}
 
@@ -4340,7 +4362,7 @@ $Spec\, B$, we just take $Spec\,B/(s_B)$, where $s_B$ is the restriction of $s$ 
 \end{definition}
 
 \begin{proposition}
-An $\mathcal O_X$-module $\mathcal M$ is quasicoherent
+An $\mathcal O_X$-module $\mathcal M$ is quasi-coherent
 if and only if for each such distinguished $Spec\, A_f \hookrightarrow Spec\, A \subseteq X$
 
 $\alpha:\mathcal M(Spec\,A)_f = \Gamma(Spec\,A,\mathcal M)_f \to \Gamma(Spec\,A_f,\mathcal M) = \mathcal M(Spec\,A_f)$ is an isomorphism
@@ -4349,7 +4371,7 @@ $\alpha:\mathcal M(Spec\,A)_f = \Gamma(Spec\,A,\mathcal M)_f \to \Gamma(Spec\,A_
     Using Theorem \ref{Thm 3.58}
 \end{Proof}
 
-Now we get : a sheaf of ideals is quasicoherent if and only if it comes from a closed subscheme :
+Now we get : a sheaf of ideals is quasi-coherent if and only if it comes from a closed subscheme :
 
 \begin{theorem}
 \[\begin{tikzcd}
@@ -4753,6 +4775,15 @@ such that $p
 We can extend that result to arbitrary schemes
 
 \begin{definition}
+1) A \textbf{free sheaf} on a ringed space $X$ is an $\mathcal O_X$-module isomorphic to $\mathcal O_X^{\oplus I}$ where
+the sum is over some index set $I$
+
+2) A \textbf{locally free sheaf} on a ringed space X is an
+$\mathcal O_X$-module locally isomorphic to a free sheaf (This corresponds to the notion of a
+vector bundle)
+\end{definition}
+
+\begin{definition}
     \textbf{line bundle}
 
     Let $X$ be a scheme, a \textbf{line bundle} (also be called \textbf{ invertible $\bm{\mathcal O_X}$-module}) of $X$ is an $\mathcal O_X$-module that is locally isomorphic to $\mathcal O_X$
@@ -4919,7 +4950,7 @@ $$\bm{\underline{Hom}(\mathcal M,-)\perp
 \end{proposition}
 
 \begin{proposition}
-    1) If $\mathcal M$ and $\mathcal N$ are qcoh of $\mathcal O_X$-modules, then $\mathcal M\otimes_{\mathcal O_X}\mathcal N$ is also qcho
+    1) If $\mathcal M$ and $\mathcal N$ are qcoh of $\mathcal O_X$-modules, then $\mathcal M\otimes_{\mathcal O_X}\mathcal N$ is also qcoh
 
     2) If $X=Spec\,A$, then $\bm{\widetilde M\otimes_{\mathcal O_X}\widetilde N=\widetilde {M\otimes_{A}N}}$
     \label{prop 3.69}
@@ -4936,7 +4967,7 @@ $$\bm{\underline{Hom}(\mathcal M,-)\perp
  \end{align*}
 \end{Proof}
 
-Caution : $\underline{Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)$ might not be quasicoherent even if $\mathcal F$ and $\mathcal G$ are
+Caution : $\underline{Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)$ might not be quasi-coherent even if $\mathcal F$ and $\mathcal G$ are
 
 \begin{definition}
 Let $(f,f^{\mathfrak b})$ be a map of ringed spaces $(Y,{\mathcal{O}}_{Y})\to(X,{\mathcal{O}}_{X})$ 
@@ -4955,7 +4986,7 @@ $$
 $$
 f^{-1}{\mathcal{O}}_{X}\times f^{-1}{\mathcal{M}}=f^{-1}({\mathcal{O}}_{X}\times{\mathcal{M}})\longrightarrow f^{-1}({\mathcal{M}}). 
 $$
-We now define the pallback $f^{*}{\mathcal{M}}$ as the ${\mathcal{O}}_{Y}$ -module
+We now define the pullback $f^{*}{\mathcal{M}}$ as the ${\mathcal{O}}_{Y}$ -module
 $$
 \bm{f^{\ast}{\mathcal M}=f^{-1}{\mathcal M}\otimes_{f^{-1}\mathcal O_{X}}{\mathcal O}_{Y}} 
 $$
@@ -5214,9 +5245,16 @@ $\cdot$ The underlying set of $V(s)$ is
 \end{proposition}
 
 
+
+
+
+
+
+
+
 \newpage
 \subsection{Internal Hom Sheaves}
-\subsubsection{Zariski Sheaf}
+\subsubsection{Zariski sheaf}
 Recall:
 Prop \ref{prop 3.24} (Gluing of morphisms) 
     
@@ -5248,14 +5286,14 @@ Every representable functor $F : (Sch_S)
     A Zariski sheaf is representable if and only if it admits an open cover by representable Zariski sheaves
 \end{theorem}
 
-\subsubsection{Internal Hom Sheaves}
+\subsubsection{Internal Hom sheaves}
 Back to ${Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)(U)
 ={Hom}_{\mathcal O_U}(\mathcal F|_U,\mathcal G|_U)
 \to {Hom}_{\mathcal O_X(U)}(\mathcal F(U),\mathcal G(U))
 \quad (\mathcal O_U=\mathcal O_X|_U)$
 
 \begin{example}
-    Suppose that $\mathcal F,\mathcal G\in \mathcal O_X$-modules are quasicoherent and $Spec\,A=U\subseteq X$, then 
+    Suppose that $\mathcal F,\mathcal G\in \mathcal O_X$-modules are quasi-coherent and $Spec\,A=U\subseteq X$, then 
     $$
     \bm{{Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)(U)
     = {Hom}_{\mathcal O_X(U)}(\mathcal F(U),\mathcal G(U))} 
@@ -5263,7 +5301,7 @@ Back to ${Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)(U)
 \end{example}
 
 \begin{example}
-    In general, even if $\mathcal F,\mathcal G\in Qcoh(X)$, ${Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)$ might not be quasicoherent. A counter example :
+    In general, even if $\mathcal F,\mathcal G\in Qcoh(X)$, ${Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)$ might not be quasi-coherent. A counter example :
     $$
     X=Spec\,\mathbb Z,\quad {Hom}_{\mathcal O_X}(\oplus_{i=1}^{\infty}\mathcal O_X,\mathcal O_X)(D(p))
     =Hom_{\mathbb Z[p^{-1}]}(\oplus_{i=1}^{\infty}\mathbb Z[\frac{1}{p}],\mathbb Z[\frac{1}{p}])
@@ -5301,9 +5339,9 @@ Back to ${Hom}_{\mathcal O_X}(\mathcal F,\mathcal G)(U)
 \end{proposition}
 
 \begin{proposition}
-    If $X\in Sch,\mathcal F,\mathcal G\in Qcoh(X)$ and $\mathcal F$ is f.p, then $Hom_{\mathcal O_X}(\mathcal F,\mathcal G)$ is quasicoherent
+    If $X\in Sch,\mathcal F,\mathcal G\in Qcoh(X)$ and $\mathcal F$ is f.p, then $Hom_{\mathcal O_X}(\mathcal F,\mathcal G)$ is quasi-coherent
+    \label{prop 4.79}
 \end{proposition}
-\label{prop 3.117}
 \begin{Proof}
 Use Ex \ref{example 1.75} :
 
@@ -5312,6 +5350,205 @@ Suppose $M$ is a finitely presented $A$-module, then :
 S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
 \end{equation*}
 \end{Proof}
+
+
+
+
+\newpage
+\subsection{Coherent Sheaf}
+
+\subsubsection{Finite type and coherent sheaves}
+
+Here are three natural finiteness conditions on an $A$-module $M$. (In the case
+when $A$ is a Noetherian ring, which is the case that almost all of you will ever care
+about, they are all the same)
+
+\begin{definition}
+1) The first is the most naive : a module could be \textbf{finitely generated}. In other
+words, there is a surjection $A^{\oplus p} \to M \to 0$
+
+2) The second is reasonable too. It could be \textbf{finitely presented} — it could have a
+finite number of generators with a finite number of relations: there exists a finite
+presentation, i.e., an exact sequence
+$A^{\oplus q} \to A
+^{\oplus p} \to M \to 0$
+
+3) The third notion is frankly a bit surprising. We say that an $A$-module $M$ is
+\textbf{coherent} if 
+
+(i) it is finitely generated, and 
+
+(ii) whenever we have a map $A
+^{\oplus p} \to M$
+(not necessarily surjective!), the kernel is finitely generated
+\end{definition}
+
+\begin{proposition}
+Suppose $M$ is a finitely presented $A$-module, and $A^{\oplus p} \to M \to 0$ is any surjection
+
+Then $ker \varphi$ is finitely generated
+\end{proposition}
+\begin{Proof}
+Write $M$ as the quotient of $A^{\oplus p}$ by
+a finitely generated module $K$. Figure out how to map the short exact sequence
+$0 \to K \to A^{\oplus p} \to M \to 0$ to the exact sequence $0 \to ker \varphi \to A^{\oplus p} \to M \to 0$, and
+use the Snake Lemma
+\end{Proof}
+
+\begin{proposition}
+If $A$ is Noetherian, then these three definitions are the same
+\end{proposition}
+
+\begin{proposition}
+The coherent $A$-modules form an abelian subcategory of the category of $A$-modules
+\end{proposition}
+
+\begin{proposition}
+If $f \in A$, show that if $M$ is a finitely generated (resp. finitely
+presented, coherent) $A$-module, then $M_f$ is a finitely generated (resp. finitely presented, coherent) $A_f$-module. (The “coherent” case is the tricky one)
+\end{proposition}
+
+\begin{proposition}
+If $(f_1,\cdots, f_n) = A$, and $M_{f_i}$
+is a finitely generated (resp.
+finitely presented, coherent) $A_{f_i}$
+-module for all $i$, then $M$ is a finitely generated
+(resp. finitely presented, coherent) $A$-module
+\end{proposition}
+
+
+\begin{definition}
+A quasi-coherent sheaf $\mathcal F$ is \textbf{finite type} (resp. \textbf{finitely presented}, \textbf{coherent}) if for every affine open $Spec\, A$, $ \Gamma (Spec\, A,\mathcal F)$ is a finitely generated (resp. finitely presented, coherent) $A$-module
+\end{definition}
+
+\begin{remark}
+1) Coherent sheaves
+are always finite type
+
+2) On a locally Noetherian scheme, all three notions
+are the same (by Proposition apove)
+
+Proposition above implies that the coherent
+sheaves on $X$ form an abelian category, which we denote $Coh_X$ (The kernel and cokernel of a morphism of coherent $\mathcal O_X$-module is also coherent)
+\end{remark}
+
+\begin{remark}
+Thanks to the Affine Communication Lemma, it suffices to check “finite typeness” (resp. finite presentation, coherence) on the open sets in a single affine cover. Notice that finite rank
+locally free sheaves are always finite type, and if $\mathcal O_X$ is coherent, finite rank locally
+free sheaves on $X$ are coherent. (If $\mathcal O_X$ is not coherent, then coherence is a pretty
+useless notion on $X$)
+\end{remark}
+
+\subsubsection{Pleasant properties of finite type and coherent sheaves}
+
+\begin{proposition}
+1) (\ref{prop 4.79}) Suppose $\mathcal F$ is a coherent sheaf on $X$, and $\mathcal G$ is a quasi-coherent sheaf on $X$. Then $Hom(\mathcal F,\mathcal G)$ is a quasi-coherent sheaf
+
+2)  If further $\amthcal G$ is coherent and $\mathcal O_X$ is coherent, show that $Hom(\mathcal F,\mathcal G)$ is also coherent
+
+3) Suppose $\mathcal F$ is a coherent sheaf on $X$, and $\mathcal G$ is a quasi-coherent sheaf on $X$.
+Show that $Hom(\mathcal F, \cdot)$ is a left-exact covariant functor $QCoh_X \to QCoh_X$, and that
+$Hom(\cdot,\mathcal G)$ is a left-exact contravariant functor $Coh_X \to QCoh_X$
+\end{proposition}
+
+\begin{proposition}
+\textbf{Duals of coherent sheaves}
+
+Assuming $\mathcal O_X$ is coherent,
+if $\mathcal F$ is coherent, its dual $\bm{\mathcal F^\vee := Hom(\mathcal F,\mathcal O_X)}$ is too
+
+This generalizes
+the notion of duals of vector bundles. Your argument there generalizes to show that there is always a natural morphism $F \to (F ^\vee)
+^\vee$. Unlike in
+the vector bundle case, this is not always an isomorphism. (For an example, let
+$\mathcal F$ be the coherent sheaf associated to $k[t]/(t)$ on $\mathbb A^1 = Spec\, k[t]$, and show that
+$F^\vee= 0$.) 
+Coherent sheaves for which the “double dual” map is an isomorphism
+are called \textbf{reflexive sheaves}, but we won’t use this notion. The canonical map
+$\mathcal F \otimes \mathcal F^\vee  \to \mathcal O_X$ is called the \textbf{trace map} 
+ (why?)
+\end{proposition}
+
+\begin{proposition}
+Suppose $\mathcal F$ is a finite rank locally free sheaf, and $\mathcal G$ is a quasi-coherent sheaf. Describe an isomorphism $Hom(\mathcal F, \mathcal G ) \cong \mathcal F^\vee \otimes \mathcal G$ . (This holds more
+generally if $\mathcal G$ is an $\mathcal O$-module, but we won’t use that, so you may as well prove
+the simpler result given in this exercise)
+\end{proposition}
+
+\begin{proposition}
+Suppose $0 \to \mathcal F \to \mathcal G \to \mathcal H \to 0$
+is an exact sequence of quasi-coherent sheaves on a scheme $X$, where $\mathcal H$ is a locally
+free quasi-coherent sheaf, and suppose $\mathcal E$ is a quasi-coherent sheaf. By left-exactness of Hom
+$$
+0 \to Hom(\mathcal H , \mathcal E ) \to Hom(\mathcal G ,\mathcal  E ) \to Hom(\mathcal F,\mathcal  E ) \to 0
+$$
+
+is exact except possibly on the right. In fact, it is also exact on the right.
+\end{proposition}
+\begin{Proof}
+This is local, so assume that $X$ is affine, say $Spec\, A$, and $\mathcal H = \widetilde{A^{\oplus n}}$, so it can be written as $0 \to M \to N \to A^{\oplus n} \to 0$. Show that this exact
+sequence splits, so we can write $N = M \oplus A^{\oplus n}$ in a way that respects the exact
+sequence.) In particular, if $\mathcal F,\mathcal  G ,\mathcal  H$ , and $\mathcal O_X$ are all coherent, and $\mathcal H$ is locally
+free, then we have an exact sequence of coherent sheaves
+$0 \to \mathcal H^\vee \to \mathcal G^\vee \to \mathcal F^\vee \to 0$
+
+\end{Proof}
+
+Suppose $\mathcal F$ is a sheaf of abelian groups. Recall Definition of
+the support of a section $s$ of $\mathcal F$, and the definition of the support of $\mathcal F$. (Support is a stalk-local notion, and hence behaves well with respect
+to restriction to open sets, or to stalks. Warning: Support is where the $germ(s)$ are
+nonzero, not where the $value(s)$ are nonzero) 
+
+
+\begin{proposition}
+Let $(X,\mathcal O_X)$ be a ringed space. Let $\mathcal F$ be a sheaf of $\mathcal O_X$-modules. Let $U\subset X$ open
+
+1) The support of $s\in \mathcal F(U)$ is closed in $U$
+
+2) The support of $fs$ is contained in the intersections of the supports of $f\in \mathcal O_X(U)$ and $s\in \mathcal F(U)$
+
+3) The support of $s+s^\prime$ is contained in the union of the supports of $s,s^\prime\in \mathcal F(U)$
+
+4) The support of $\mathcal F$ is the union of the supports of all local sections of $\mathcal F$
+
+5) If $\varphi:\mathcal F\to\mathcal  G$ is a morphism of $\mathcal O_X$-modules, then the support of $\varphi(s)$ is contained in the support of $s\in \mathcal F(U)$
+\end{proposition}
+\begin{Proof}
+This is true because if $s_x=0$, then $s$ is zero in an open neighbourhood of $x$ by definition of stalks. Similarly for $f$. Details omitted
+\end{Proof}
+
+\begin{remark}
+    In general the support of a sheaf of modules is not closed. Namely, the sheaf could be an abelian sheaf on $\mathbb R$ (with the usual archimedean topology) which is the direct sum of infinitely many nonzero skyscraper sheaves each supported at a single point $p_i$ of $\mathbb R$. Then the support would be the set of points pi which may not be closed
+\end{remark}
+
+
+\begin{proposition}
+The support of a finite type
+quasi-coherent sheaf on a scheme $X$ is a closed subset
+
+(Hint: Reduce to the case $X$
+affine. Choose a finite set of generators of the corresponding module) 
+\end{proposition}
+
+\begin{remark}
+The support of a quasi-coherent sheaf need not be closed.
+
+(Hint: If $A = C[t]$, then
+$C[t]/(t-a)$ is an $A$-module supported at a. Consider $\oplus_{a\in\mathbb C}\mathbb C[t]/(t-a)$. Be careful:
+this example won’t work if $\oplus$ is replaced by $\Pi$)
+\end{remark}
+
+\begin{remark}
+In particular, if $X$ is a locally Noetherian scheme, then the sheaf of
+nilpotents is coherent and hence finite type, and thus has closed
+support
+\end{remark}
+
+We next come to a geometric interpretation of Nakayama’s Lemma, which is
+why Nakayama’s Lemma should be considered a geometric fact (with an algebraic
+proof)
+
+(See rising sea !)
 
 
 
@@ -5366,12 +5603,14 @@ S^{-1} Hom_A(M, N) \cong Hom_{S^{-1}A}(S^{-1}M, S^{-1}N)
     $P_1,P_2\notin LOCS$
 \end{example}
 
+
+
+\subsubsection{Separated}
 A topological space $X$ is Hausdorff if and only if the diagonal $\triangle \subseteq X\times X$ is a closed subset. The analogue in algebraic geometry is, given a scheme $X$ over a base scheme $S$, to consider the diagonal morphism
 $$\triangle_{X/S}:X \to X\times_SX$$
 
 This is the unique morphism of schemes such that $pr_1\circ \triangle_{X/S} = id_X$ and $pr_2\circ \triangle_{X/S} = id_X$ (it exists in any category with fibre products)
 
-\subsubsection{Separated}
 
 \begin{definition}
     A top space $T$ is \textbf{Hausdorff} if and only if the diagonal $\triangle \subseteq T \times T$ is closed
@@ -5496,6 +5735,13 @@ $U\xrightarrow{closed}\triangle(U)$ is closed by the affine case, hence $\triang
 2. If $h$ is separated, then so is $f$
 \end{proposition}
 
+\begin{proposition}
+Suppose $X \to Spec\, A$ is a separated morphism to an affine
+scheme, and $U$ and $V$ are affine open subsets of $X$. Then $U \cap V$ is an affine open subset of $X$
+\end{proposition}
+
+
+
 \subsubsection{Diagonal of scheme morphisms}
 
 \begin{definition}
@@ -5565,6 +5811,7 @@ $q : X \times_S Y \to Y$ be the projections, and $f,g : X \to Y$ two $S$-morphis
 	\arrow["s"', from=1-1, to=2-1]
 	\arrow["s", from=1-1, to=1-2]
 \end{tikzcd}\]
+\label{prop 5.15}
 \end{proposition}
 \begin{Proof}
 Using the Yoneda lemma it suffices to treat the case that $\mathcal C$ is the category of sets
@@ -5587,9 +5834,9 @@ In particular $\triangle_{X/S}$ and $\Gamma_f$ are closed immersions
 In general, $\triangle_{X/S}$ and $\Gamma_f$ are still immersions but not necessarily closed. To show this
 we first remark that if $S$ is a scheme, $X$ an $S$-scheme and $Z, Z^\prime \subseteq X$ are subschemes,
 we may consider $Z \times_S Z^\prime$ as a subscheme of $X \times_S X$ (immersions are stable under base
-change and composition) and we have an equality of subschemes of $X$,
+change and composition) and we have an equality of subschemes of $X$ :
 $$
-Z\cap Z^\prime = \triangle_{X/S}^{-1} ({Z\times_SZ^\prime})
+\bm{Z\cap Z^\prime = \triangle_{X/S}^{-1} ({Z\times_SZ^\prime})}
 $$
 
 \begin{proposition}
@@ -5627,7 +5874,7 @@ We say $U$ is \textbf{scheme theoretically dense} in $X$ if for every open $V \s
 Here is an example where scheme theoretic closure being X does not imply dense for the underlying topological spaces :
 
 Let $k$ be a field. Set $A=k[x,z_1,z_2,\cdots]/(x^nz_n)$ Set $I=(z_1,z_2,\cdots) \subseteq A$.
-Consider the affine scheme $X=Spec(A)$ and the open subscheme $U=X\setminus V(I)$. Since $A \to \pi_nA_{z_n}$ is injective we see that the scheme theoretic closure of $U$ is $X$. 
+Consider the affine scheme $X=Spec(A)$ and the open subscheme $U=X\setminus V(I)$. Since $A \to \Pi_nA_{z_n}$ is injective we see that the scheme theoretic closure of $U$ is $X$. 
 Consider the morphism $X \to Spec(k[x])$. This morphism is surjective (set all $z_n=0$ to see this). But the restriction of this morphism to $U$ is not surjective because it maps to the point $x=0$. Hence $U$ cannot be topologically dense in $X$
 \end{example}
 
@@ -5639,7 +5886,7 @@ Consider the morphism $X \to Spec(k[x])$. This morphism is surjective (set all $
 \end{Proof}
 
 \begin{example}
-    Let $A$ be a ring and $X=Spec(A)$. Let $f_1,\cdots,f_n\in A$ and let $U=D(f_1)\cup\cdots\cup D(f_n)$. Let $I=Ker(A \to \pi A_{f_i})$. Then the scheme theoretic closure of $U$ in $X$ is the closed subscheme $Spec(A/I)$ of $X$. Note that $U \to X$ is quasi-compact. Hence we see $U$ is scheme theoretically dense in $X$ if and only if $I=0$
+    Let $A$ be a ring and $X=Spec(A)$. Let $f_1,\cdots,f_n\in A$ and let $U=D(f_1)\cup\cdots\cup D(f_n)$. Let $I=Ker(A \to \Pi A_{f_i})$. Then the scheme theoretic closure of $U$ in $X$ is the closed subscheme $Spec(A/I)$ of $X$. Note that $U \to X$ is quasi-compact. Hence we see $U$ is scheme theoretically dense in $X$ if and only if $I=0$
 \end{example}
 
 \begin{proposition}
@@ -5647,7 +5894,7 @@ Consider the morphism $X \to Spec(k[x])$. This morphism is surjective (set all $
 \end{proposition}
 
 \begin{corollary}
-    Let $X$ be a scheme. If $U, V$ are scheme theoretically dense open subschemes of $X$, then so is $U∩V$
+    Let $X$ be a scheme. If $U, V$ are scheme theoretically dense open subschemes of $X$, then so is $U\cap V$
 \end{corollary}
 \begin{Proof}
 Let $W \subseteq X$ be any open. Consider the map $\mathcal O_X(W) \to \mathcal O_X(W\cap V) \to \mathcal O_X(W\cap V\cap U)$. Both maps are injective. Hence the composite is injective. Hence $U\cap V$ is scheme theoretically dense in $X$
@@ -5693,14 +5940,18 @@ If this holds then $X$ is a reduced scheme
     Moreover, if $Y$ is separated over $S$, then $Z$ is a closed subscheme
 \end{proposition}
 \begin{Proof}
-    The equalizer of $(a,b)$ is for categorical reasons the fibre product $Z$ in the following diagram
-    \[\begin{tikzcd}
-	{Z=Y\times_{Y\times_S Y}X} & X \\
-	Y & {Y\times_S Y}
-	\arrow["{(a,b)}", from=1-2, to=2-2]
-	\arrow["{\triangle_{Y/S}}", from=2-1, to=2-2]
-	\arrow[from=1-1, to=2-1]
-	\arrow[from=1-1, to=1-2]
+Prop \ref{prop 5.15} (2) :
+\[\begin{tikzcd}
+	{Ker(f,g)} && X && Y \\
+	& \square && \square \\
+	X && {X\times_SY} && {Y\times_SY}
+	\arrow["can", from=1-1, to=1-3]
+	\arrow["can"', from=1-1, to=3-1]
+	\arrow["{\Gamma_f}", from=1-3, to=3-3]
+	\arrow["{\triangle_{Y/S}}", from=1-5, to=3-5]
+	\arrow["{f\times_S id_Y}"', from=3-3, to=3-5]
+	\arrow["f", from=1-3, to=1-5]
+	\arrow["{\Gamma_g}"', from=3-1, to=3-3]
 \end{tikzcd}\]
 \end{Proof}
 
@@ -5912,7 +6163,7 @@ From $\triangle_{Y/Z},h\in P$, and $P\in BC$, we know $\Gamma_f,\pi_Y\in P$. So 
 \end{corollary}
 
 \begin{definition}
-    A map $f:X\to Y$ is \textbf{locally of finite type} (resp. \textbf{locally finite presentation}) if $\forall x\in X$, there is $X\in Spec\,A=U\mathop{\subseteq}\limits_{open} X $ and $Spec\,B=V\mathop{\subseteq}\limits_{open} Y$ with $f(U)\subseteq V$ and $B\to A$ finite type (resp. finite presentation)
+    A map $f:X\to Y$ is \textbf{locally of finite type} (resp. \textbf{locally finite presentation}) if $\forall x\in X$, there is $x\in Spec\,A=U\mathop{\subseteq}\limits_{open} X $ and $Spec\,B=V\mathop{\subseteq}\limits_{open} Y$ with $f(U)\subseteq V$ and $B\to A$ finite type (resp. finite presentation)
 
     A map is of \textbf{finite type} (resp. \textbf{finite presentation})
     if it is locally of finite type (resp. finite presentation) and quasicompact
@@ -6111,7 +6362,7 @@ $P$ geometrically if the $K$-scheme $X_K$ possesses $P$ for every field extensio
 \newpage
 \subsection{Affine Morphisms}
 
-\subsubsection{Affine Morphisms}
+\subsubsection{Affine morphisms}
 
 \begin{definition}
     A morphism $f : X \to S$ of schemes is \textbf{affine} if there exists a cover of $S$ by open affines $U_i=Spec\,A_i$ such that $f^{-1}(U_i)$ is an affine scheme in $X$ for all $i$
@@ -6193,6 +6444,45 @@ by using arguments as in sheet 8, exercise 4.i))
 Since $U\times Y$ is affine and $f^{-1}(U)\to U\times Y$ is closed immersion, then $f^{-1}(U)$ is affine
 
 \end{Proof}
+
+\begin{definition}
+Let $\varphi: R \to S$ be a ring homomorphism. We say
+
+1) $\varphi$ is of \textbf{finite type} if $S$
+becomes, via $\varphi$, a finitely generated $R$-algebra
+
+(Equivalently, S is isomorphic to a quotient of $R[x_1,\cdots,x_n]$ as an $R$-algebra)
+
+2) $\varphi$ is \textbf{finite} if $S$ becomes,
+via $\varphi$, a finitely generated $R$-module
+
+3) $\varphi$ is \textbf{integral} if every element $y \in S$
+is integral over $R$, that is, there is a positive integer $n$, and elements $a_1,\cdots, a_n \in R$, such
+that $y^n + a_1y^{n-1} + \cdots + a_n = 0$ in $S$
+\end{definition}
+
+\begin{remark}
+1) It is clear that if $\varphi$ is finite, then it is of finite type: if $y_1,\cdots, y_m \in S$
+generate $S$ as an $R$-module, then they also generate it as an $R$-algebra
+
+2) The converse is
+of course false: for example, the inclusion $R \to R[x]$ is finitely generated, but not finite
+(the $R$-submodule of $R[x]$ generated by finitely many polynomials consists of polynomials
+of bounded degree)
+\end{remark}
+
+\begin{proposition}
+    $\varphi : R\to S$ is finite iff it is integral and finite type
+\end{proposition}
+
+\begin{proposition}
+Let $R \xrightarrow{\varphi} S
+\xrightarrow{\phi}
+ T$ be two ring homomorphisms
+ 
+If both $\varphi$ and $\phi$ are
+of finite type (respectively finite, integral), then $\phi\circ\varphi$ has the same property
+\end{proposition}
 
 \begin{definition}
     Let $f:X\to Y$ be affine. Let $Spec\, A=U\subseteq(open)Y$ and $Spec\,B=f^{-1}(U)$
@@ -6289,7 +6579,7 @@ $Y \to S$ to quasi-coherent $\mathcal O_S$-algebras via $Y \mapsto f_\ast\mathca
 \end{Proof}
 
 \begin{definition}
-$X\in Sch$ and $\mathcal A$ a quasicoherent $\mathcal O_X$-algebra
+$X\in Sch$ and $\mathcal A$ a quasi-coherent $\mathcal O_X$-algebra
 
 Let (Not the same thing as the definition above) $\underline{Spec}_{\mathcal O_X}\mathcal A : Sch/X\to Sets$
 $$
@@ -6463,6 +6753,12 @@ Hom_{\mathcal O_X-alg}(Sym\mathcal E^\vee,f_\ast\mathcal O_Y)
 
 \newpage
 \subsection{Proper Morphisms}
+
+Recall that a map of topological spaces (also known as a continuous map!)
+is said to be \textbf{proper} if the preimage of any compact set is compact
+
+To motivate the definition of properness for schemes, we remark that a continuous map $\pi: X \to Y$ of locally compact Hausdorff spaces which have countable bases for their topologies is universally closed if and only if it is proper (i.e.,
+preimages of compact subsets are compact)
 
 \begin{definition}
     A morphism $f : X \to S$ is \textbf{proper} if it is
@@ -6665,11 +6961,13 @@ where $i:X^\prime \to \mathbb P_S^n$ is an immersion, and $\pi:X^\prime\to X$ is
 
 
 \newpage
-\section{Curves}
-\subsection{Valuative Criterion and Valuation Rings}
-\subsubsection{Diagonal of scheme morphisms and separated morphisms}
 
-\subsubsection{Valuative Criterion}
+\subsection{Valuative Criterion and Valuation Rings}
+
+
+%{Diagonal of scheme morphisms and separated morphisms}
+
+\subsubsection{Valuative criterion}
 
 \begin{definition}
     A \textbf{valuation ring} is an integral domain $V$ with fraction field $K$ such that for all $x\in K^{\times}$, either $x\in V$ or $x^{-1}\in V$
@@ -6771,7 +7069,7 @@ $G_m=Spec\,k[T,T^{-1}]$, generic point $\eta\in G_m$, then $k(\eta)=k(T)$ and $k
 
 
 
-\subsubsection{Valuation Rings}
+\subsubsection{Valuation rings}
 
 \begin{definition}
 A \textbf{totally order group} is an abelian group $\Gamma$ with total order $\leq$ on $\Gamma$ (so $x \leq y$ and $y \leq x$ implies that $x = y$), such that if $x \leq y$ and $x^\prime \leq y^\prime$ we have $x + x^\prime \leq y + y^\prime$
@@ -6967,6 +7265,7 @@ Back to prove Theorem \ref{Thm 3.172} :
 
 
 \newpage
+\section{Curves}
 \subsection{Curves and Normalization}
 
 \subsubsection{Curves}
@@ -7361,7 +7660,7 @@ $Bl_{[0:0:1]}\mathbb P_k^2 \to \mathbb P_k^2$ as an example of two $2$-dimension
 \end{proposition}
 
 
-\subsubsection{smooth}
+\subsubsection{Smooth}
 
 Normal scheme is equivalent to a smooth scheme if the dimension
 of our scheme is less than or equal to $1$
@@ -7592,6 +7891,7 @@ In the proof I presented I started by saying take $C$ a curve and $X\to C$ be it
 
 \newpage
 \subsection{Divisors for Curves}
+\subsubsection{Divisor}
 For this lecture and the next, let $C$ be a proper normal curve over a field $k$ (which will be algebraically
 closed)
 
@@ -7691,6 +7991,159 @@ know about its function field and divisors
 
     Important thing : $\bm{Pic(C) \cong Div(C)/K^\times}$
 \end{theorem}
+
+
+
+
+
+\subsubsection{Introduction to sheaf cohomology}
+\begin{theorem}
+    Let $k$ be an algebraically closed field and $C/k$ a normal proper curve. Let $\mathcal L$ a line bundle$/C$. Then $\mathcal L$ is ample if and only if $deg(\mathcal L)>0$
+    \label{Thm 6.71}
+\end{theorem}
+
+We will prove it later
+
+\begin{definition}
+    Given a divsor $D=\sum n_x[x] \in Div(C)$. We let $deg(D)=\sum n_x \in \mathbb Z$
+\end{definition}
+
+\begin{example}
+    If $C = \mathbb P^1_k$ and $f\in k(\mathbb P^1_k)^\times=k(t)^\times$, then $deg(div(f))=0$. Observe that $k(t)^\times$ is generated as a group by $(t-\alpha)$, $\alpha \in k$, $div(t-\alpha)=1[\alpha]-1\cdot\infty$, $deg([\alpha]-\cdot\infty)=0$
+\[\begin{tikzcd}
+	{} & {Div(\mathbb P^1_k)} & {\mathbb Z} \\
+	& {Pic(\mathbb P_k^1)=Div(\mathbb P^1_k)/k(t)^\times}
+	\arrow[from=1-2, to=2-2]
+	\arrow["deg"', from=2-2, to=1-3]
+	\arrow["deg", from=1-2, to=1-3]
+\end{tikzcd}\]
+
+Actually $ \mathbb P_k^1\xrightarrow[deg]{\sim} \mathbb Z$ and $\mathcal O(D)=\mathcal O(deg(D))$
+\end{example}
+
+\begin{corollary}
+    $\mathcal L$ is a line bundle of $\mathbb P_k^1$, then it is ample iff $deg\,\mathcal L>0$
+\end{corollary}
+\begin{Proof}
+    $deg(\mathcal L)=d$, then $\mathcal L=\mathcal O(d)$, we know $\mathcal O(d)$ is ample when $d\geq 1$, $\Gamma(C,\mathcal (D))=k$ and $\Gamma(C,\mathcal (d))=0$ $d<0$
+\end{Proof}
+
+\begin{theorem}
+    The map $deg:Div\to \mathbb Z$ factors as 
+\[\begin{tikzcd}
+	{} & {Div(C)} & {\mathbb Z} \\
+	& {Pic(C)}
+	\arrow[from=1-2, to=2-2]
+	\arrow["deg"', from=2-2, to=1-3]
+	\arrow["deg", from=1-2, to=1-3]
+\end{tikzcd}\]
+\end{theorem}
+
+To prove these theorems we will use sheaf cohomology !
+\\
+
+Fix $X$ a scheme over $k$, then for every quasi-coherent sheaf $\mathcal F\in Qcoh(X)$ and $i\geq0$, we will define $k$ vector spaces $H^i(X,\mathcal F)$, key properties :
+
+1) $H^0(X,\mathcal F)=\Gamma(X,\mathcal F)$
+
+2) For any short exact sequence $0\to\mathcal F_1\to\mathcal F_2\to\mathcal F_3\to0$. We set a long exact seqence
+\[\begin{tikzcd}
+	0 & {H^0(X,\mathcal F_1)} & {H^0(X,\mathcal F_2)} & {H^0(X,\mathcal F_3)} & {} \\
+	& {H^1(X,\mathcal F_1)} & {H^1(X,\mathcal F_2)} & {H^1(X,\mathcal F_3)} & {} \\
+	& {} & \cdots \\
+	& {H^n(X,\mathcal F_1)} & {H^n(X,\mathcal F_2)} & {H^n(X,\mathcal F_3)} & {} \\
+	&& \cdots
+	\arrow[from=1-1, to=1-2]
+	\arrow[from=1-2, to=1-3]
+	\arrow[from=1-3, to=1-4]
+	\arrow[from=1-4, to=1-5]
+	\arrow[from=2-2, to=2-3]
+	\arrow[from=2-3, to=2-4]
+	\arrow[from=2-4, to=2-5]
+	\arrow[from=4-2, to=4-3]
+	\arrow[from=4-3, to=4-4]
+	\arrow[from=4-4, to=4-5]
+\end{tikzcd}\]
+
+3) If $X$ is affine then $H^i(X,\mathcal F)=0$, $i>0$
+
+4) If $X$ is proper and $\mathcal F$ is coherent then $H^i(X,\mathcal F)$ is finite dimension
+
+5) If $i> dim(X)$, then $H^i(X,\mathcal F)=0$
+
+\begin{definition}
+    When $H^i(X,\mathcal F)$ is finite dimensional, then we let $h^i(\mathcal F)=dim_kH^i(X,\mathcal F)$
+\end{definition} 
+
+\begin{definition}
+    If $X$ is proper and $\mathcal F\in Coh(X)$, we let the \textbf{Euler characteristic} be 
+    $$
+    \chi(\mathcal F)=\sum_{i=0}^\infty(-1)^ih^i(\mathcal F)
+    $$
+\end{definition}
+
+\begin{proposition}
+    If $X$ is proper and $\mathcal F_i$ coherent and $0 \to \mathcal F_1 \to \mathcal F_2 \to \mathcal F_3 \to 0$, then $\chi(\mathcal F_2)= \chi(\mathcal F_1)+\chi(\mathcal F_3)$
+\end{proposition}
+\begin{Proof}
+    Follows from long exact seqence 2)
+\end{Proof}
+
+\begin{definition}
+    If $C$ is a proper normal curve and $\mathcal L$ is a line bundle, then $\bm{deg\,\mathcal L:=\chi(\mathcal L)-\chi(\mathcal O_C)}$
+\end{definition}
+
+\begin{proposition}
+$deg\,\mathcal O(D)=deg\,(D)$, in particular, $deg:Pic(C)\to\mathbb Z$ is additive
+\end{proposition}
+\begin{Proof}
+    To be continued ...
+    
+\end{Proof}
+
+Recall that for a finite type scheme $X$ and a closed point $x\in X(k)$. We define a \textbf{tangent space} $T_xX:=Hom_k(\mathfrak m_{X,x}/\mathfrak m_{X,x}^2 , k)$
+
+There is a coherent sheaf (sheaf of differentials) $\Omega_{X/k}$ such that $\forall x\in X(k)$, $i^\ast_x\Omega_{X/k}=\mathfrak m_{X,x}/\mathfrak m_{X,x}^2$
+
+\begin{definition}
+    A finite type $k$-scheme of pure dimension $n$ is smooth if $\Omega_{X/k}$ is locally free of rank $n$
+
+    If $X$ is a normal curve, then $\Omega_{X/k}$ is a line bundle, called \textbf{canonical line bundle}
+\end{definition}
+
+\begin{definition}
+    If $C$ is a proper normal curve, then it's \textbf{genus} $g$ is defined as $\;\bm{g=h^0(\Omega_{X/k})=dim_k\Gamma(C,\Omega_{C/k})}$
+\end{definition}
+
+\begin{theorem}
+    \textbf{Riemann-Roch}
+
+    Let $C$ be a proper normal curve and $\mathcal L$ a line bundle
+    
+    Then $\;\bm{h^0(\mathcal L)-h^0(\Omega_{C/k}\otimes\mathcal L^\vee)=deg\,\mathcal L+1-g}$
+\end{theorem}
+
+\begin{example}
+    If $\mathcal L=\mathcal O_C$, then 
+    $$
+    h^0(\mathcal O_C)-h^0(\Omega_{C/k})= deg(\mathcal O_C)+1-g= 1-g= 1-h^0(\Omega_{C/k}),\;h^0(\mathcal O_C)=1
+    $$
+
+    If $\mathcal L=\Omega_{C/k}$, then 
+\begin{align*}
+\label{sup}
+h^0(\Omega_{C/k})-h^0(\mathcal O_C)
+&=deg(\Omega_{C/k})+1-g\\
+g-1&=deg(\Omega_{C/k})+1-g\\
+deg(\Omega_{C/k})&=2g-2
+\end{align*}
+\end{example}
+
+\begin{Proof}
+    (Theorem \ref{Thm 6.71})
+    
+\end{Proof}
+
 
 
 
